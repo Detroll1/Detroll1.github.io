@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Портфолио — Detroll</title>
+<meta name="description" content="Портфолио веб-проектов: Pulse (музыкальный сайт), Northline Realty, Noodle House, AURA Detailing, HOD. Чистые HTML/CSS/JS, адаптив, без фреймворков." />
+<meta name="theme-color" content="#0a0a0a" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --bg:#0a0a0a; --panel:#121212; --line:rgba(255,255,255,.08);
+    --ink:#f2efe8; --muted:#9b968c; --gold:#c7a76c;
+  }
+  *{ margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
+  html{ scroll-behavior:smooth; }
+  body{
+    background:var(--bg); color:var(--ink);
+    font-family:"Inter",system-ui,sans-serif;
+    overflow-x:hidden;
+    background-image:radial-gradient(circle at 80% -10%,rgba(199,167,108,.10),transparent 34%),
+                     radial-gradient(circle at -10% 40%,rgba(199,167,108,.05),transparent 28%);
+  }
+  ::selection{ background:var(--gold); color:#0a0a0a; }
+  ::-webkit-scrollbar{ width:10px; } ::-webkit-scrollbar-track{ background:#0a0a0a; }
+  ::-webkit-scrollbar-thumb{ background:#262626; border-radius:8px; border:2px solid #0a0a0a; }
+
+  .wrap{ width:min(1180px,100% - 40px); margin-inline:auto; }
+  .font-d{ font-family:"Space Grotesk",sans-serif; }
+
+  /* header */
+  header{ border-bottom:1px solid var(--line); position:sticky; top:0; z-index:50;
+    background:rgba(10,10,10,.72); backdrop-filter:blur(16px); -webkit-backdrop-filter:blur(16px); }
+  .head{ height:72px; display:flex; align-items:center; justify-content:space-between; gap:16px; }
+  .logo{ display:flex; align-items:center; gap:12px; }
+  .logo-mark{ width:36px; height:36px; border-radius:10px; border:1px solid rgba(199,167,108,.6);
+    display:grid; place-items:center; font-family:"Space Grotesk"; font-weight:600; color:var(--gold); }
+  .logo b{ font-family:"Space Grotesk"; letter-spacing:.14em; }
+  .logo span{ display:block; font-size:10px; letter-spacing:.28em; color:var(--muted); }
+  nav{ display:flex; gap:26px; }
+  nav a{ color:var(--muted); text-decoration:none; font-size:13.5px; transition:color .25s; }
+  nav a:hover{ color:var(--ink); }
+  nav a .n{ color:var(--gold); font-size:11px; margin-right:4px; }
+
+  /* hero */
+  .hero{ padding:92px 0 72px; }
+  .kicker{ color:var(--gold); letter-spacing:.3em; text-transform:uppercase; font-size:11px; margin-bottom:20px; }
+  h1{ font-family:"Space Grotesk"; font-size:clamp(2.5rem,6vw,4.6rem); line-height:1.02; font-weight:600; letter-spacing:-.03em; }
+  h1 em{ font-style:italic; color:var(--gold); }
+  .hero p{ color:var(--muted); max-width:60ch; margin-top:22px; font-size:16px; line-height:1.7; }
+  .stats{ display:flex; gap:44px; margin-top:44px; flex-wrap:wrap; }
+  .stats div b{ font-family:"Space Grotesk"; font-size:30px; display:block; }
+  .stats div span{ color:var(--muted); font-size:12px; letter-spacing:.16em; text-transform:uppercase; }
+
+  /* projects */
+  .sec-t{ font-family:"Space Grotesk"; font-size:28px; font-weight:600; margin-bottom:8px; }
+  .sec-sub{ color:var(--muted); font-size:14px; margin-bottom:36px; }
+  .grid{ display:grid; grid-template-columns:repeat(auto-fill,minmax(330px,1fr)); gap:22px; }
+  .card{
+    background:var(--panel); border:1px solid var(--line); border-radius:18px; overflow:hidden;
+    display:flex; flex-direction:column; text-decoration:none; color:var(--ink);
+    transition:transform .45s cubic-bezier(.16,1,.3,1), border-color .3s ease, box-shadow .3s ease;
+  }
+  .card:hover{ transform:translateY(-7px); border-color:rgba(199,167,108,.5);
+    box-shadow:0 30px 70px -30px rgba(0,0,0,.9), 0 0 0 1px rgba(199,167,108,.15), 0 16px 44px -18px rgba(199,167,108,.28); }
+  .shot{ aspect-ratio:16/10; overflow:hidden; background:#111; position:relative; }
+  .shot img{ width:100%; height:100%; object-fit:cover; object-position:top; transform:scale(1.01);
+    transition:transform 1.1s cubic-bezier(.16,1,.3,1); }
+  .card:hover .shot img{ transform:scale(1.06); }
+  .shot .o{ position:absolute; top:12px; right:12px; font-size:11px; letter-spacing:.1em; color:#0a0a0a;
+    background:var(--gold); padding:5px 11px; border-radius:999px; font-weight:600; opacity:0; transition:opacity .3s; }
+  .card:hover .shot .o{ opacity:1; }
+  .b{ padding:20px 22px 22px; display:flex; flex-direction:column; flex:1; }
+  .card h3{ font-family:"Space Grotesk"; font-size:21px; font-weight:600; display:flex; align-items:center; gap:10px; }
+  .card h3 .dot{ width:7px; height:7px; border-radius:50%; background:var(--gold); }
+  .card .d{ color:var(--muted); font-size:13.5px; line-height:1.6; margin-top:10px; flex:1; }
+  .tags{ display:flex; flex-wrap:wrap; gap:8px; margin-top:16px; }
+  .tags span{ font-size:11px; color:var(--muted); border:1px solid var(--line); padding:5px 10px; border-radius:999px; }
+  .card .go{ margin-top:16px; font-size:12px; letter-spacing:.18em; text-transform:uppercase; color:var(--gold); font-weight:600; }
+
+  /* about + footer */
+  .about{ border-top:1px solid var(--line); margin-top:84px; padding:64px 0; }
+  .about h2{ font-family:"Space Grotesk"; font-size:26px; margin-bottom:16px; }
+  .about p{ color:var(--muted); font-size:14.5px; line-height:1.7; max-width:70ch; }
+  .about ul{ margin-top:22px; display:grid; grid-template-columns:repeat(auto-fill,minmax(240px,1fr)); gap:12px; list-style:none; }
+  .about li{ color:var(--muted); font-size:13.5px; display:flex; gap:10px; align-items:center; }
+  .about li::before{ content:"✓"; color:var(--gold); }
+  footer{ border-top:1px solid var(--line); padding:32px 0; color:var(--muted); font-size:13px;
+    display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px; }
+
+  @media(max-width:640px){
+    nav{ gap:14px; } nav a span.n{ display:none; }
+    .stats{ gap:28px; }
+    .grid{ grid-template-columns:1fr; }
+  }
+  @media (prefers-reduced-motion:reduce){
+    *,*::before,*::after{ animation-duration:.01ms!important; transition-duration:.01ms!important; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap head">
+    <div class="logo">
+      <span class="logo-mark">D</span>
+      <div><b>DETROLL</b><span>WEB · PORTFOLIO</span></div>
+    </div>
+    <nav>
+      <a href="#work"><span class="n">01</span>Работы</a>
+      <a href="#about"><span class="n">02</span>Обо мне</a>
+      <a href="https://github.com/Detroll1" target="_blank" rel="noopener">GitHub ↗</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero wrap">
+  <div class="kicker">Портфолио · 2026</div>
+  <h1>Сайты, которые <em>работают</em>,<br/>а не просто выглядят.</h1>
+  <p>Пять учебных веб-проектов (pet-проектов) — от музыкального сервиса с плеером до брендовых лендингов и конструкторов заказов. Всё на чистом HTML/CSS/JS: без сборщиков, без зависимостей, адаптивно и быстро.</p>
+  <div class="stats">
+    <div><b>5</b><span>проектов</span></div>
+    <div><b>762+</b><span>записей в Pulse</span></div>
+    <div><b>100%</b><span>чистый стек</span></div>
+  </div>
+</section>
+
+<section id="work" class="wrap" style="padding-bottom:20px">
+  <h2 class="sec-t">Избранные работы</h2>
+  <p class="sec-sub">Учебные примеры вёрстки и кода — живые демо на GitHub Pages на хостинг / GitHub Pages.</p>
+
+  <div class="grid">
+
+    <a class="card" href="https://Detroll1.github.io/pulse/">
+      <div class="shot"><img src="assets/screens/pulse.png" alt="Pulse — музыкальный сайт" loading="lazy" /><span class="o">Открыть →</span></div>
+      <div class="b">
+        <h3><span class="dot"></span>Pulse — музыкальный сервис</h3>
+        <p class="d">Каталог СНГ-музыки: 762 трека, 29 исполнителей, 78 альбомов. Свой аудиоплеер, поиск и фильтры, профили артистов, плейлисты, статистика прослушиваний. Живые превью через iTunes и YouTube.</p>
+        <div class="tags"><span>HTML/CSS/JS</span><span>Плеер</span><span>Data-каталог</span></div>
+        <span class="go">Посмотреть проект →</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://Detroll1.github.io/northline-realty/">
+      <div class="shot"><img src="assets/screens/northline.png" alt="Northline Realty" loading="lazy" /><span class="o">Открыть →</span></div>
+      <div class="b">
+        <h3><span class="dot"></span>Northline Realty</h3>
+        <p class="d">Премиальный лендинг агентства недвижимости Москвы: каталог объектов с фильтрами по бюджету/району, избранное на localStorage, модальные карточки, формы заявок, параллакс и анимации появления.</p>
+        <div class="tags"><span>Лендинг</span><span>Фильтры</span><span>Tailwind</span></div>
+        <span class="go">Посмотреть проект →</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://Detroll1.github.io/noodle-house/">
+      <div class="shot"><img src="assets/screens/noodle.png" alt="Noodle House" loading="lazy" /><span class="o">Открыть →</span></div>
+      <div class="b">
+        <h3><span class="dot"></span>Noodle House</h3>
+        <p class="d">Агрессивный сайт доставки лапши: меню с корзиной, конструктор персонального бокса с живым расчётом цены, промокоды со скидками, оформление заказа и модуль успеха.</p>
+        <div class="tags"><span>E-commerce</span><span>Конструктор</span><span>Корзина</span></div>
+        <span class="go">Посмотреть проект →</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://Detroll1.github.io/aura-detailing/">
+      <div class="shot"><img src="assets/screens/aura.png" alt="AURA Detailing" loading="lazy" /><span class="o">Открыть →</span></div>
+      <div class="b">
+        <h3><span class="dot"></span>AURA Detailing</h3>
+        <p class="d">Детилинг-студия премиум-класса: конфигуратор услуг с автоподсчётом цены и времени, слайдер «до/после», галерея работ, форма записи с сохранением конфигурации.</p>
+        <div class="tags"><span>Конфигуратор</span><span>Галерея</span><span>Запись</span></div>
+        <span class="go">Посмотреть проект →</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://Detroll1.github.io/hod-watches/">
+      <div class="shot"><img src="assets/screens/hod.png" alt="Ход — реставрация часов" loading="lazy" /><span class="o">Открыть →</span></div>
+      <div class="b">
+        <h3><span class="dot"></span>Ход — мастерская часов</h3>
+        <p class="d">Сайт мастерской реставрации механических часов в Санкт-Петербурге: услуги, философия, галерея работ с реальными фото восстановленных часов.</p>
+        <div class="tags"><span>Лендинг</span><span>Галерея</span><span>Адаптив</span></div>
+        <span class="go">Посмотреть проект →</span>
+      </div>
+    </a>
+
+  </div>
+</section>
+
+<section id="about" class="about">
+  <div class="wrap">
+    <h2>О проектах</h2>
+    <p>Все проекты — самостоятельные и законченные: клацни любую карточку, сайт откроется внутри портфолио. Фокус на честном инженерном исполнении: валидная вёрстка, доступность с клавиатуры, производительность и адаптивность под мобильные.</p>
+    <ul>
+      <li>Чистый HTML/CSS/JS — без сборщиков и фреймворков</li>
+      <li>Полная адаптивность: 360px → 4K</li>
+      <li>Доступность: ARIA, клавиатура, prefers-reduced-motion</li>
+      <li>Собственные данные и логика — не заглушки</li>
+      <li>Готовы к деплою на GitHub Pages / любой хостинг</li>
+    </ul>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap" style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;width:100%">
+    <span>© 2026 Detroll · Веб-портфолио</span>
+    <span>Сделано на чистом HTML/CSS/JS</span>
+  </div>
+</footer>
+
+</body>
+</html>
