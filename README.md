@@ -1,43 +1,12 @@
-# Портфолио — Detroll
+# detroll1.github.io
 
-Шесть веб-проектов на чистом HTML/CSS/JS + рабочие инструменты-демо (Telegram-бот, парсер).
+Хаб портфолио. Сама страница — этот репозиторий.
+Проекты лежат отдельно и открываются со своих GitHub Pages.
 
-| Проект | Папка | Что внутри |
-|---|---|---|
-| **Pulse** | `projects/pulse/` | Музыкальный сервис: 762 трека / 29 артистов / 78 альбомов, свой аудиоплеер, поиск, плейлисты, статистика. |
-| **Northline Realty** | `projects/northline/` | Лендинг премиальной недвижимости: каталог с фильтрами, избранное, модалки, формы. |
-| **Noodle House** | `projects/noodle/` | Доставка лапши: меню, корзина, конструктор бокса, промокоды, оформление заказа. |
-| **AURA Detailing** | `projects/aura/` | Детилинг-студия: конфигуратор услуг с расчётом цены, до/после, запись. |
-| **Ход (часы)** | `projects/hod/` | Мастерская реставрации механических часов, СПб: услуги, галерея работ. |
-| **LAB** | `projects/lab/` | 7 живых canvas/WebGL/GLSL-экспериментов: потоки частиц, физика ткани, стая, аттрактор, WebGL-тор, плазма, глитч. |
+- Pulse — https://detroll1.github.io/pulse
+- LAB — https://detroll1.github.io/lab
+- Ход — https://detroll1.github.io/hod-watches
+- Northline, Noodle House, AURA — концепт-лендинги, ссылки на хабе
+- Leadbot, Scraper — код на GitHub, не веб-демо
 
-**Инструменты (рабочие демо, отдельные репозитории):**
-- **Leadbot** — Telegram-бот приёма заявок: услуга → имя → телефон → время, сохранение в SQLite, уведомление владельцу. Работает живьём. → `github.com/Detroll1/leadbot`
-- **Scraper** — парсер: собирает данные с сайта в Excel + JSON (Python: requests + BeautifulSoup + openpyxl). → `github.com/Detroll1/scraper`
-
-**Контакты:** Telegram: [@Detroll](https://t.me/Detroll) · Email: detrollq@gmail.com · Discord: Detroll1
-
-## Запуск локально
-
-```bash
-python -m http.server 8124
-# → http://127.0.0.1:8124
-```
-
-## Деплой на GitHub Pages
-
-Репозиторий `username.github.io` (или ветка `gh-pages` репозитория). Root-страница = `index.html`, проекты — в `projects/` со своими `index.html`.
-
-Файлы `.nojekyll`, `README.md` уже на месте.
-
-## Стек
-
-- Чистый HTML/CSS/JS, без сборщиков и фреймворков.
-- Адаптив (360px → 4K), доступность (ARIA, клавиатура, `prefers-reduced-motion`).
-- Данные и логика собственные, без заглушек и lorem.
-
-© 2026 — собрано вручную.
-
-## Контакты
-
-Telegram: [@Detroll](https://t.me/Detroll) · Email: detrollq@gmail.com · Discord: Detroll1
+Telegram: [@Detroll](https://t.me/Detroll) · detrollq@gmail.com
