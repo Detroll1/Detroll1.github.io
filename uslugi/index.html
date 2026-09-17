@@ -410,9 +410,13 @@
 
 <section id="zayavka" class="wrap">
   <h2 class="sec-t">Оставить заявку</h2>
-  <p class="sec-sub">Опишите задачу, отвечу в течение дня. Заявка уходит в Telegram или на почту, ничего на сервер не отправляется.</p>
+  <p class="sec-sub">Опишите задачу, отвечу в течение дня. Заявка приходит мне в Telegram сразу после отправки.</p>
 
   <form class="form" id="leadform" novalidate>
+    <div class="field" style="position:absolute;left:-9999px" aria-hidden="true">
+      <label for="f-company">Компания</label>
+      <input type="text" id="f-company" name="company" tabindex="-1" autocomplete="off" />
+    </div>
     <div class="field">
       <label for="f-name">Имя</label>
       <input type="text" id="f-name" name="name" required />
@@ -440,9 +444,11 @@
       <div class="err">Заполните это поле</div>
     </div>
     <div class="fbtns">
-      <button type="button" class="fbtn fbtn-gold" id="btn-tg">Отправить в Telegram</button>
+      <button type="button" class="fbtn fbtn-gold" id="btn-send">Отправить заявку</button>
+      <button type="button" class="fbtn fbtn-line" id="btn-tg">Написать в Telegram</button>
       <button type="button" class="fbtn fbtn-line" id="btn-mail">Отправить на почту</button>
     </div>
+    <div class="ok" id="errmsg" style="color:#e07a6a">Не получилось отправить. Напишите в Telegram или на почту, кнопки ниже, либо скопируйте текст заявки.</div>
     <div class="preview" id="preview">
       <div class="pl">Текст заявки, можно скопировать</div>
       <pre id="preview-text"></pre>
@@ -477,6 +483,8 @@
   var preview = document.getElementById('preview');
   var previewText = document.getElementById('preview-text');
   var okmsg = document.getElementById('okmsg');
+  var errmsg = document.getElementById('errmsg');
+  var LEAD_API = 'https://detroll-lead.detroll.workers.dev/';
 
   function val(id){ return document.getElementById(id).value.trim(); }
 
@@ -507,10 +515,48 @@
     preview.classList.add('show');
   }
 
+  document.getElementById('btn-send').addEventListener('click', function(){
+    if (!validate()) return;
+    var btn = this;
+    var text = buildText();
+    showPreview(text);
+    okmsg.classList.remove('show');
+    errmsg.classList.remove('show');
+    btn.disabled = true;
+    btn.textContent = 'Отправляю...';
+    var done = function(){
+      btn.disabled = false;
+      btn.textContent = 'Отправить заявку';
+    };
+    fetch(LEAD_API, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        name: val('f-name'),
+        contact: val('f-contact'),
+        service: document.getElementById('f-service').value,
+        task: val('f-task'),
+        company: val('f-company')
+      })
+    }).then(function(r){ return r.json(); })
+      .then(function(d){
+        if (d && d.ok) {
+          okmsg.textContent = 'Заявка отправлена, отвечу в течение дня.';
+          okmsg.classList.add('show');
+        } else {
+          errmsg.classList.add('show');
+        }
+        done();
+      })
+      .catch(function(){ errmsg.classList.add('show'); done(); });
+  });
+
   document.getElementById('btn-tg').addEventListener('click', function(){
     if (!validate()) return;
     var text = buildText();
     showPreview(text);
+    errmsg.classList.remove('show');
+    okmsg.textContent = 'Ссылка открыта в новой вкладке. Если Telegram не подставил текст, скопируйте его из блока выше и отправьте вручную.';
     window.open('https://t.me/Detroll?text=' + encodeURIComponent(text), '_blank');
     okmsg.classList.add('show');
   });
@@ -521,6 +567,8 @@
     showPreview(text);
     window.location.href = 'mailto:detrollq@gmail.com?subject=' +
       encodeURIComponent('Заявка с сайта - ' + val('f-name')) + '&body=' + encodeURIComponent(text);
+    errmsg.classList.remove('show');
+    okmsg.textContent = 'Открылось письмо с текстом заявки. Отправьте его, и оно придёт мне на почту.';
     okmsg.classList.add('show');
   });
 
