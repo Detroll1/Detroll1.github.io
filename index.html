@@ -90,10 +90,28 @@
   footer{ border-top:1px solid var(--line); padding:32px 0; color:var(--muted); font-size:13px;
     display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px; }
 
+  /* прайс на главной */
+  .pricelist{ border:1px solid var(--line); border-radius:16px; overflow:hidden; background:var(--panel); }
+  .price-row{ display:grid; grid-template-columns:1.5fr .8fr .7fr; gap:14px; align-items:baseline;
+    padding:18px 24px; border-bottom:1px solid var(--line); text-decoration:none; color:var(--ink);
+    transition:background .25s; }
+  .price-row:last-child{ border-bottom:none; }
+  .price-row:hover{ background:rgba(199,167,108,.06); }
+  .price-row .pn{ font-family:"Space Grotesk"; font-size:16.5px; font-weight:600; }
+  .price-row .pp{ color:var(--gold); font-family:"Space Grotesk"; font-size:16px; font-weight:600; }
+  .price-row .pt{ color:var(--muted); font-size:13.5px; }
+  .price-note{ color:var(--muted); font-size:13px; line-height:1.7; margin-top:18px; max-width:78ch; }
+  .btn{ display:inline-block; padding:15px 26px; border-radius:999px; font-weight:600; text-decoration:none; }
+  .btn-gold{ background:var(--gold); color:#0a0a0a; }
+  .btn-line{ border:1px solid var(--line); color:var(--ink); }
+  .btn:hover{ opacity:.88; }
+  .btn-line:hover{ border-color:rgba(199,167,108,.5); opacity:1; }
+
   @media(max-width:640px){
     nav{ gap:14px; } nav a span.n{ display:none; }
     .stats{ gap:28px; }
     .grid{ grid-template-columns:1fr; }
+    .price-row{ grid-template-columns:1fr; gap:4px; padding:16px 18px; }
   }
   @media (prefers-reduced-motion:reduce){
     *,*::before,*::after{ animation-duration:.01ms!important; transition-duration:.01ms!important; }
@@ -111,7 +129,7 @@
     <nav>
       <a href="#work"><span class="n">01</span>Работы</a>
       <a href="#about"><span class="n">02</span>Обо мне</a>
-      <a href="uslugi/"><span class="n">03</span>Услуги</a>
+      <a href="uslugi/" data-ev="nav-uslugi"><span class="n">03</span>Услуги</a>
       <a href="https://github.com/Detroll1" target="_blank" rel="noopener">GitHub ↗</a>
     </nav>
   </div>
@@ -127,8 +145,8 @@
       <div><b>code + live</b><span>сайты и код</span></div>
         </div>
         <div style="margin-top:26px;display:flex;gap:14px;flex-wrap:wrap">
-          <a href="https://t.me/Detroll" style="display:inline-block;padding:15px 26px;border-radius:999px;background:var(--gold);color:#0a0a0a;font-weight:600;text-decoration:none">Написать в Telegram →</a>
-          <a href="#work" style="display:inline-block;padding:15px 24px;border-radius:999px;border:1px solid var(--line);color:var(--ink);text-decoration:none">Смотреть проекты</a>
+          <a href="uslugi/" class="btn btn-gold" data-ev="hero-uslugi">Услуги и цены →</a>
+          <a href="https://t.me/Detroll" class="btn btn-line" data-ev="hero-tg" target="_blank" rel="noopener">Написать в Telegram</a>
         </div>
       </section>
 
@@ -221,6 +239,36 @@
                       </div>
                     </section>
 
+<section id="uslugi-ceny" class="wrap" style="padding-bottom:24px">
+  <h2 class="sec-t">Услуги и цены</h2>
+  <p class="sec-sub">Фиксированная цена и срок. Опции (корзина, админка, поиск, хранение заявок, анимации) добавляются к базе. Цену держу ниже рынка, пока собираю отзывы.</p>
+
+  <div class="pricelist">
+    <a class="price-row" href="uslugi/" data-ev="price-uslugi">
+      <span class="pn">Лендинг под ключ</span><span class="pp">3 500 ₽</span><span class="pt">4 дня</span>
+    </a>
+    <a class="price-row" href="uslugi/" data-ev="price-uslugi">
+      <span class="pn">Вёрстка по макету Figma</span><span class="pp">от 1 500 ₽</span><span class="pt">от 2 дней</span>
+    </a>
+    <a class="price-row" href="uslugi/" data-ev="price-uslugi">
+      <span class="pn">Telegram-бот для заявок</span><span class="pp">2 500 ₽</span><span class="pt">4 дня</span>
+    </a>
+    <a class="price-row" href="uslugi/" data-ev="price-uslugi">
+      <span class="pn">Парсер данных в Excel</span><span class="pp">1 500 ₽</span><span class="pt">3 дня</span>
+    </a>
+    <a class="price-row" href="uslugi/" data-ev="price-uslugi">
+      <span class="pn">Каталог товаров на сайте</span><span class="pp">6 000 ₽</span><span class="pt">7 дней</span>
+    </a>
+  </div>
+
+  <p class="price-note">Правки по вашим замечаниям входят в срок, сдаю исходники и живую ссылку. Если задача не подходит под эти цены, напишите, посчитаю отдельно.</p>
+
+  <div style="margin-top:22px;display:flex;gap:12px;flex-wrap:wrap">
+    <a href="uslugi/#zayavka" class="btn btn-gold" data-ev="prices-zayavka">Оставить заявку →</a>
+    <a href="uslugi/" class="btn btn-line" data-ev="prices-uslugi">Что входит в каждую услугу</a>
+  </div>
+</section>
+
 <section id="about" class="about">
   <div class="wrap">
     <h2>Обо мне</h2>
@@ -266,6 +314,25 @@
     <span>Telegram: @Detroll · detrollq@gmail.com</span>
   </div>
 </footer>
+
+<script>
+// Счётчик посещений и кликов: своя статистика, без сторонних сервисов и куки.
+(function(){
+  var API = 'https://detroll-lead.detroll.workers.dev/hit';
+  function send(event){
+    var path = location.pathname.replace(/index\.html$/, '');
+    try {
+      fetch(API + '?p=' + encodeURIComponent(path) + '&e=' + encodeURIComponent(event),
+            { mode: 'no-cors', keepalive: true });
+    } catch (e) {}
+  }
+  send('view');
+  document.addEventListener('click', function(e){
+    var el = e.target.closest('[data-ev]');
+    if (el) send(el.getAttribute('data-ev'));
+  }, true);
+})();
+</script>
 
 </body>
 </html>

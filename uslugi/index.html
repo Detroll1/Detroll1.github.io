@@ -165,7 +165,7 @@
       <div><b>DETROLL</b><span>WEB · PORTFOLIO</span></div>
     </a>
     <nav>
-      <a href="../">← Портфолио</a>
+      <a href="../" data-ev="nav-hub">← Портфолио</a>
       <a href="#uslugi"><span class="n">01</span>Услуги</a>
       <a href="#ceny"><span class="n">02</span>Цены</a>
       <a href="#faq"><span class="n">03</span>Вопросы</a>
@@ -444,9 +444,9 @@
       <div class="err">Заполните это поле</div>
     </div>
     <div class="fbtns">
-      <button type="button" class="fbtn fbtn-gold" id="btn-send">Отправить заявку</button>
-      <button type="button" class="fbtn fbtn-line" id="btn-tg">Написать в Telegram</button>
-      <button type="button" class="fbtn fbtn-line" id="btn-mail">Отправить на почту</button>
+      <button type="button" class="fbtn fbtn-gold" id="btn-send" data-ev="click-send">Отправить заявку</button>
+      <button type="button" class="fbtn fbtn-line" id="btn-tg" data-ev="click-tg">Написать в Telegram</button>
+      <button type="button" class="fbtn fbtn-line" id="btn-mail" data-ev="click-mail">Отправить на почту</button>
     </div>
     <div class="ok" id="errmsg" style="color:#e07a6a">Не получилось отправить. Напишите в Telegram или на почту, кнопки ниже, либо скопируйте текст заявки.</div>
     <div class="preview" id="preview">
@@ -543,6 +543,7 @@
         if (d && d.ok) {
           okmsg.textContent = 'Заявка отправлена, отвечу в течение дня.';
           okmsg.classList.add('show');
+          if (window.siteHit) window.siteHit('form-sent');
         } else {
           errmsg.classList.add('show');
         }
@@ -592,6 +593,26 @@
   });
 
   form.addEventListener('submit', function(e){ e.preventDefault(); });
+})();
+</script>
+
+<script>
+// Счётчик посещений и кликов: своя статистика, без сторонних сервисов и куки.
+(function(){
+  var API = 'https://detroll-lead.detroll.workers.dev/hit';
+  function send(event){
+    var path = location.pathname.replace(/index\.html$/, '');
+    try {
+      fetch(API + '?p=' + encodeURIComponent(path) + '&e=' + encodeURIComponent(event),
+            { mode: 'no-cors', keepalive: true });
+    } catch (e) {}
+  }
+  window.siteHit = send;
+  send('view');
+  document.addEventListener('click', function(e){
+    var el = e.target.closest('[data-ev]');
+    if (el) send(el.getAttribute('data-ev'));
+  }, true);
 })();
 </script>
 
