@@ -11,13 +11,13 @@
 <meta property="og:site_name" content="Detroll" />
 <meta property="og:locale" content="ru_RU" />
 <meta property="og:url" content="https://detroll1.github.io/uslugi/" />
-<meta property="og:title" content="Услуги и цены — Detroll: сайты, боты, автоматизация" />
+<meta property="og:title" content="Услуги и цены Detroll: сайты, боты, автоматизация" />
 <meta property="og:description" content="Девять услуг с фиксированной ценой и сроком: лендинг 3 500 ₽, вёрстка от 1 500 ₽, бот 2 500 ₽, парсер 1 500 ₽, каталог 6 000 ₽, мини-апп, доработка, аудит, ИИ-агент." />
 <meta property="og:image" content="https://detroll1.github.io/assets/og/uslugi-1200x630.png" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="Услуги и цены — Detroll: сайты, боты, автоматизация" />
+<meta name="twitter:title" content="Услуги и цены Detroll: сайты, боты, автоматизация" />
 <meta name="twitter:description" content="Девять услуг с фиксированной ценой и сроком: лендинг, вёрстка, бот, парсер, каталог, мини-апп, доработка, аудит, ИИ-агент." />
 <meta name="twitter:image" content="https://detroll1.github.io/assets/og/uslugi-1200x630.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -153,8 +153,9 @@
   @media(max-width:900px){
     .prow{ grid-template-columns:1fr; gap:8px; }
   }
-  /* в две колонки девять карточек дают одну пустую ячейку: последняя занимает всю строку */
-  @media(min-width:641px) and (max-width:1030px){
+  /* в две колонки девять карточек дают одну пустую ячейку: последняя занимает всю строку.
+     Две колонки сетка держит до ширины окна 1073px (1180-40 в контейнере = 1033px < 330*3+44) */
+  @media(min-width:641px) and (max-width:1073px){
     .grid > .card:last-child{ grid-column:span 2; }
   }
   @media(max-width:640px){
@@ -165,7 +166,6 @@
     .hero{ padding:64px 0 48px; }
     section{ padding:48px 0; }
     .grid, .wgrid{ grid-template-columns:1fr; }
-    .grid > .card:nth-child(5){ grid-column:auto; }
     .form{ padding:22px; }
   }
   @media (prefers-reduced-motion:reduce){
