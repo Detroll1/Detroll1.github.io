@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Система ИИ-агентов, которая ведёт мои проекты · Detroll</title>
+<meta name="description" content="Своя система из четырёх ИИ-ролей: одна планирует, вторая пишет код, третья проверяет, четвёртая советует. Показываю, как она устроена и что уже делает." />
+<meta name="theme-color" content="#0a0a0a" />
+<link rel="canonical" href="https://detroll1.github.io/ai-agent/" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Detroll" />
+<meta property="og:locale" content="ru_RU" />
+<meta property="og:url" content="https://detroll1.github.io/ai-agent/" />
+<meta property="og:title" content="Система ИИ-агентов, которая ведёт мои проекты" />
+<meta property="og:description" content="Своя система из четырёх ИИ-ролей: одна планирует, вторая пишет код, третья проверяет, четвёртая советует. Показываю, как она устроена и что уже делает." />
+<meta property="og:image" content="https://detroll1.github.io/ai-agent/og-1200x630.jpg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Система ИИ-агентов, которая ведёт мои проекты" />
+<meta name="twitter:description" content="Своя система из четырёх ИИ-ролей: одна планирует, вторая пишет код, третья проверяет, четвёртая советует. Показываю, как она устроена и что уже делает." />
+<meta name="twitter:image" content="https://detroll1.github.io/ai-agent/og-1200x630.jpg" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --bg:#0a0a0a; --panel:#121212; --line:rgba(255,255,255,.08);
+    --ink:#f2efe8; --muted:#9b968c; --gold:#c7a76c;
+  }
+  *{ margin:0; padding:0; box-sizing:border-box; }
+  body{
+    background:var(--bg); color:var(--ink); font-family:"Inter",system-ui,sans-serif;
+    background-image:radial-gradient(circle at 80% -10%,rgba(199,167,108,.10),transparent 34%),
+                     radial-gradient(circle at -10% 40%,rgba(199,167,108,.05),transparent 28%);
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{ width:min(1180px,100% - 40px); margin-inline:auto; }
+  header{ border-bottom:1px solid var(--line); position:sticky; top:0; z-index:50;
+    background:rgba(10,10,10,.72); backdrop-filter:blur(16px); }
+  .head{ height:72px; display:flex; align-items:center; justify-content:space-between; gap:16px; }
+  .logo{ display:flex; align-items:center; gap:12px; text-decoration:none; color:var(--ink); }
+  .logo-mark{ width:36px; height:36px; border-radius:10px; border:1px solid rgba(199,167,108,.6);
+    display:grid; place-items:center; font-family:"Space Grotesk"; font-weight:600; color:var(--gold); }
+  .logo b{ font-family:"Space Grotesk"; letter-spacing:.14em; }
+  .logo span{ display:block; font-size:10px; letter-spacing:.28em; color:var(--muted); }
+  nav{ display:flex; gap:22px; font-size:13.5px; }
+  nav a{ color:var(--muted); text-decoration:none; }
+  nav a:hover{ color:var(--ink); }
+  .hero{ padding:72px 0 34px; }
+  .kicker{ color:var(--gold); font-size:12px; letter-spacing:.24em; text-transform:uppercase; }
+  h1{ font-family:"Space Grotesk"; font-size:clamp(30px,5vw,54px); line-height:1.08; letter-spacing:-.02em; margin-top:18px; }
+  .hero p{ color:var(--muted); max-width:66ch; margin-top:20px; font-size:16px; line-height:1.7; }
+  .shot{ margin:34px 0 8px; border:1px solid var(--line); border-radius:18px; overflow:hidden; background:#0d0d0f; }
+  .shot img{ display:block; width:100%; height:auto; }
+  .cap{ color:var(--muted); font-size:13px; margin-top:12px; }
+  .tags{ display:flex; flex-wrap:wrap; gap:8px; margin:22px 0 6px; }
+  .tags span{ border:1px solid var(--line); border-radius:999px; padding:6px 12px; font-size:12px; color:var(--muted); }
+  .btns{ display:flex; gap:12px; flex-wrap:wrap; margin:26px 0 60px; }
+  .btn{ display:inline-block; padding:13px 22px; border-radius:999px; text-decoration:none; font-weight:600; font-size:14px; }
+  .btn-gold{ background:var(--gold); color:#0a0a0a; }
+  .btn-line{ border:1px solid var(--line); color:var(--ink); }
+  footer{ border-top:1px solid var(--line); padding:28px 0; color:var(--muted); font-size:13px; }
+  footer .frow{ display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px; }
+  footer a{ color:var(--muted); text-decoration:none; }
+  footer a:hover{ color:var(--ink); }
+  .roles{ display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin:34px 0 8px; }
+  .role{ border:1px solid var(--line); border-radius:14px; padding:18px; background:var(--panel); }
+  .role h3{ font-family:"Space Grotesk"; font-size:18px; font-weight:600; }
+  .role .model{ color:var(--gold); font-size:12.5px; margin-top:6px; }
+  .role p{ color:var(--muted); font-size:13.5px; line-height:1.6; margin-top:10px; }
+  .facts{ border:1px solid var(--line); border-radius:14px; background:var(--panel); padding:18px; margin:34px 0 8px; }
+  .facts li{ list-style:none; color:var(--muted); font-size:14px; line-height:1.7; padding-left:14px; position:relative; margin-bottom:10px; }
+  .facts li:last-child{ margin-bottom:0; }
+  .facts li::before{ content:"-"; position:absolute; left:0; color:var(--gold); }
+  h2{ font-family:"Space Grotesk"; font-size:24px; font-weight:600; margin-top:48px; }
+  pre.term{
+    background:#0d0d0f; border:1px solid var(--line); border-radius:14px; padding:18px;
+    font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace; font-size:12.5px; line-height:1.7;
+    color:var(--ink); overflow-x:auto; white-space:pre;
+  }
+  @media(max-width:640px){
+    .head{ height:auto; padding:12px 0; flex-wrap:wrap; row-gap:8px; }
+    nav{ gap:14px; font-size:12.5px; }
+    .hero{ padding:48px 0 24px; }
+  }
+  @media(max-width:900px){
+    .roles{ grid-template-columns:repeat(2,1fr); }
+  }
+  @media(max-width:560px){
+    .roles{ grid-template-columns:1fr; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap head">
+    <a class="logo" href="../">
+      <span class="logo-mark">D</span>
+      <div><b>DETROLL</b><span>WEB · PORTFOLIO</span></div>
+    </a>
+    <nav>
+      <a href="../#work">Работы</a>
+      <a href="../uslugi/">Услуги и цены</a>
+      <a href="https://t.me/Detroll" target="_blank" rel="noopener">Telegram</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="hero">
+    <div class="kicker">Работа · моя система</div>
+    <h1>Система ИИ-агентов, которая ведёт мои проекты</h1>
+    <p>Четыре ИИ-роли работают вместе на моих проектах: одна планирует задачу, вторая пишет код, третья проверяет написанное, четвёртая разбирает спорные места. Каждая роль на своей модели, чтобы у них не совпадали слепые зоны. Система ведёт мои сайты, бота заявок и автопостер: посты выходят по расписанию, проверки запускаются одной командой, сбои видно сразу.</p>
+  </section>
+
+  <h2>Роли и модели</h2>
+  <div class="roles">
+    <div class="role">
+      <h3>МОЗГ</h3>
+      <div class="model">оркестратор</div>
+      <p>ставит задачи, следит за работой, отчитывается по этапам.</p>
+    </div>
+    <div class="role">
+      <h3>РУКИ</h3>
+      <div class="model">glm-5.3-flash</div>
+      <p>пишет код, запускает его, правит по замечаниям проверки.</p>
+    </div>
+    <div class="role">
+      <h3>ПРОВЕРКА</h3>
+      <div class="model">deepseek-v4-flash</div>
+      <p>читает и проверяет, писать не может: запись закрыта на уровне платформы.</p>
+    </div>
+    <div class="role">
+      <h3>СОВЕТНИК</h3>
+      <div class="model">minimax-m3</div>
+      <p>разбирает задачу и предлагает план до начала работы.</p>
+    </div>
+  </div>
+
+  <h2>Что уже работает на этой системе</h2>
+  <ul class="facts">
+    <li>Проверка всей системы одной командой: 51 пункт, сейчас 0 сбоев.</li>
+    <li>Диспетчер сам держит лимит правок и возвращает ошибку, если проверяющая роль что-то записала.</li>
+    <li>Автопостер ВК: 48 постов в сутки по расписанию, в очереди 748 фото, опубликовано 158 постов.</li>
+    <li>Сторож расхода подписки: раз в час сверяет лимиты и пишет в Telegram только у порога.</li>
+  </ul>
+
+  <h2>Как это выглядит</h2>
+  <div class="shot">
+    <pre class="term">[ОК]   ruki: модель opencode-go/glm-5.3-flash есть в подписке
+[ОК]   proverka: модель opencode-go/deepseek-v4-flash есть в подписке
+[ОК]   sovetnik: модель opencode-go/minimax-m3 есть в подписке
+[ОК]   диспетчер следит за read-only ролями (слепок папки до/после)
+[ОК]   внешний сторож: слепок снят и запись поймана (код 2)
+
+ИТОГО: успешно 51, сбоев 0</pre>
+  </div>
+  <div class="cap">Так выглядит проверка системы: одна команда, 51 пункт, ни одного сбоя.</div>
+
+  <div class="shot">
+    <pre class="term">[ruki] правка 0 …
+[proverka] проверка 1: вердикт ОК
+ИТОГ: сделано и принято проверкой за 0 правок, 1 проверок.</pre>
+  </div>
+  <div class="cap">Цикл работы: руки пишут, проверка принимает. Правки идут по кругу, но не больше двух раз.</div>
+
+  <div class="tags">
+    <span>ИИ-агенты</span>
+    <span>автоматизация</span>
+    <span>оркестрация</span>
+    <span>Telegram</span>
+    <span>Python</span>
+    <span>проверка</span>
+  </div>
+
+  <div class="btns">
+    <a class="btn btn-gold" href="../uslugi/">Обсудить своего агента</a>
+    <a class="btn btn-line" href="../#work">Другие работы</a>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap frow">
+    <span>© 2026 Detroll · Веб-разработка</span>
+    <span>
+      Telegram: <a href="https://t.me/Detroll" target="_blank" rel="noopener">@Detroll</a> ·
+      <a href="mailto:detrollq@gmail.com">detrollq@gmail.com</a> ·
+      <a href="../">Портфолио</a>
+    </span>
+  </div>
+</footer>
+
+</body>
+</html>
