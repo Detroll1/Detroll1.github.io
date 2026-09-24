@@ -67,6 +67,15 @@
   .done h2{ font-size: 20px; margin-bottom: 8px; }
   .done p{ color:var(--muted); font-size: 14px; }
   a{ color:var(--accent); }
+
+  @media (max-width: 380px){
+    body{ padding: 0 12px; }
+    h1{ font-size: 24px; }
+    .card, .field input, .field select{ font-size: 16px; }
+  }
+  @media (min-width: 700px){
+    body{ max-width: 620px; margin: 0 auto; }
+  }
 </style>
 </head>
 <body>
