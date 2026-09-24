@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Первый экран фитнес-клуба X'FLOW GYM · Detroll</title>
+<title>Первый экран фитнес-клуба X'FLOW GYM - Detroll</title>
 <meta name="description" content="Первый экран фитнес-клуба по макету: заголовок, фото зала, кнопка записи, цифры и карточка тренера. Учебный макет, клуб вымышленный." />
-<meta name="theme-color" content="#0a0a0a" />
+<meta name="theme-color" content="#F4F1EA" />
 <link rel="canonical" href="https://detroll1.github.io/fitness/" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="Detroll" />
@@ -20,65 +20,67 @@
 <meta name="twitter:title" content="Первый экран фитнес-клуба X'FLOW GYM" />
 <meta name="twitter:description" content="Первый экран фитнес-клуба по макету: заголовок, фото зала, кнопка записи, цифры и карточка тренера. Учебный макет, клуб вымышленный." />
 <meta name="twitter:image" content="https://detroll1.github.io/fitness/og-1200x630.jpg" />
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
 <style>
-  :root{
-    --bg:#0a0a0a; --panel:#121212; --line:rgba(255,255,255,.08);
-    --ink:#f2efe8; --muted:#9b968c; --gold:#c7a76c;
-  }
-  *{ margin:0; padding:0; box-sizing:border-box; }
-  body{
-    background:var(--bg); color:var(--ink); font-family:"Inter",system-ui,sans-serif;
-    background-image:radial-gradient(circle at 80% -10%,rgba(199,167,108,.10),transparent 34%),
-                     radial-gradient(circle at -10% 40%,rgba(199,167,108,.05),transparent 28%);
-    -webkit-font-smoothing:antialiased;
-  }
+  @font-face{ font-family:"VelaSans"; font-weight:400; font-display:swap; src:url("../assets/fonts/VelaSans-Regular.ttf") format("truetype"); }
+  @font-face{ font-family:"VelaSans"; font-weight:500; font-display:swap; src:url("../assets/fonts/VelaSans-Medium.ttf") format("truetype"); }
+  @font-face{ font-family:"VelaSans"; font-weight:700; font-display:swap; src:url("../assets/fonts/VelaSans-Bold.ttf") format("truetype"); }
+  @font-face{ font-family:"VelaSans"; font-weight:800; font-display:swap; src:url("../assets/fonts/VelaSans-ExtraBold.ttf") format("truetype"); }
+  @font-face{ font-family:"Golos"; font-weight:400; font-display:swap; src:url("../assets/fonts/Golos-Text-400.woff2") format("woff2"); }
+  @font-face{ font-family:"Golos"; font-weight:500; font-display:swap; src:url("../assets/fonts/Golos-Text-500.woff2") format("woff2"); }
+  :root{ --paper:#F4F1EA; --ink:#17160F; --muted:#6B675C; --line:#D9D3C6; --accent:#B4441F; --on-accent:#FFF6F1; }
+  *{ margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
+  body{ background:var(--paper); color:var(--ink); font-family:"Golos",system-ui,sans-serif; font-size:17px; line-height:1.6; overflow-x:hidden; }
+  ::selection{ background:var(--accent); color:var(--on-accent); }
+  h1,h2,.btn{ font-family:"VelaSans",system-ui,sans-serif; }
+  h1{ text-wrap:balance; }
+  p{ text-wrap:pretty; }
+  img{ display:block; max-width:100%; }
   .wrap{ width:min(1180px,100% - 40px); margin-inline:auto; }
-  header{ border-bottom:1px solid var(--line); position:sticky; top:0; z-index:50;
-    background:rgba(10,10,10,.72); backdrop-filter:blur(16px); }
-  .head{ height:72px; display:flex; align-items:center; justify-content:space-between; gap:16px; }
-  .logo{ display:flex; align-items:center; gap:12px; text-decoration:none; color:var(--ink); }
-  .logo-mark{ width:36px; height:36px; border-radius:10px; border:1px solid rgba(199,167,108,.6);
-    display:grid; place-items:center; font-family:"Space Grotesk"; font-weight:600; color:var(--gold); }
-  .logo b{ font-family:"Space Grotesk"; letter-spacing:.14em; }
-  .logo span{ display:block; font-size:10px; letter-spacing:.28em; color:var(--muted); }
-  nav{ display:flex; gap:22px; font-size:13.5px; }
-  nav a{ color:var(--muted); text-decoration:none; }
-  nav a:hover{ color:var(--ink); }
-  .hero{ padding:72px 0 34px; }
-  .kicker{ color:var(--gold); font-size:12px; letter-spacing:.24em; text-transform:uppercase; }
-  h1{ font-family:"Space Grotesk"; font-size:clamp(30px,5vw,54px); line-height:1.08; letter-spacing:-.02em; margin-top:18px; }
-  .hero p{ color:var(--muted); max-width:66ch; margin-top:20px; font-size:16px; line-height:1.7; }
-  .shot{ margin:34px 0 8px; border:1px solid var(--line); border-radius:18px; overflow:hidden; background:#0d0d0f; }
-  .shot img{ display:block; width:100%; height:auto; }
-  .cap{ color:var(--muted); font-size:13px; margin-top:12px; }
-  .tags{ display:flex; flex-wrap:wrap; gap:8px; margin:22px 0 6px; }
-  .tags span{ border:1px solid var(--line); border-radius:999px; padding:6px 12px; font-size:12px; color:var(--muted); }
-  .btns{ display:flex; gap:12px; flex-wrap:wrap; margin:26px 0 60px; }
-  .btn{ display:inline-block; padding:13px 22px; border-radius:999px; text-decoration:none; font-weight:600; font-size:14px; }
-  .btn-gold{ background:var(--gold); color:#0a0a0a; }
+  header{ position:sticky; top:0; z-index:50; background:var(--paper); border-bottom:1px solid var(--line); }
+  .head{ height:78px; display:flex; align-items:center; justify-content:space-between; gap:20px; }
+  .logo{ display:flex; align-items:baseline; gap:12px; text-decoration:none; color:var(--ink); }
+  .logo b{ font-family:"VelaSans"; font-weight:800; font-size:19px; letter-spacing:-0.01em; }
+  .logo span{ color:var(--muted); font-size:13px; }
+  nav{ display:flex; gap:24px; }
+  nav a{ color:var(--muted); text-decoration:none; font-size:15px; padding-bottom:2px; border-bottom:1px solid transparent; }
+  nav a:hover{ color:var(--ink); border-bottom-color:var(--accent); }
+  .kicker{ color:var(--muted); font-size:14px; }
+  h1{ font-size:clamp(1.9rem,4.2vw,3.2rem); font-weight:800; line-height:1.05; letter-spacing:-0.02em; margin-top:14px; }
+  .lead{ color:var(--muted); margin-top:20px; }
+  .shot{ border:1px solid var(--line); }
+  .shot img{ width:100%; }
+  .cap{ color:var(--muted); font-size:15px; }
+  .tags{ color:var(--muted); font-size:15px; }
+  .tags span + span::before{ content:" / "; color:var(--line); }
+  .btns{ display:flex; gap:12px; flex-wrap:wrap; margin:30px 0 64px; }
+  .btn{ display:inline-block; padding:15px 26px; border-radius:3px; font-weight:500; font-size:16px; text-decoration:none; }
+  .btn-gold{ background:var(--accent); color:var(--on-accent); }
   .btn-line{ border:1px solid var(--line); color:var(--ink); }
-  footer{ border-top:1px solid var(--line); padding:28px 0; color:var(--muted); font-size:13px; }
+  .btn-gold:hover{ background:#9c3a1a; }
+  .btn-line:hover{ border-color:var(--ink); }
+  footer{ border-top:1px solid var(--line); padding:26px 0; color:var(--muted); font-size:15px; }
   footer .frow{ display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px; }
-  footer a{ color:var(--muted); text-decoration:none; }
+  footer a{ color:var(--muted); text-decoration:none; border-bottom:1px solid var(--line); }
   footer a:hover{ color:var(--ink); }
   @media(max-width:640px){
-    .head{ height:auto; padding:12px 0; flex-wrap:wrap; row-gap:8px; }
-    nav{ gap:14px; font-size:12.5px; }
-    .hero{ padding:48px 0 24px; }
+    body{ font-size:16px; }
+    .head{ height:auto; padding:14px 0; flex-direction:column; align-items:flex-start; gap:10px; }
+    nav{ gap:16px; border-top:1px solid var(--line); padding-top:12px; width:100%; }
+    nav a{ font-size:14px; }
   }
+  .hero{ padding:72px 0 0; }
+  .row{ display:grid; grid-template-columns:minmax(0,.9fr) minmax(0,1.35fr); gap:52px; align-items:start; margin-top:38px; }
+  .row .lead{ max-width:44ch; }
+  .row .shot{ margin-right:-8vw; }
+  .row .btns{ margin-bottom:40px; }
+  @media(max-width:960px){ .row{ grid-template-columns:1fr; gap:30px; } .row .shot{ margin-right:0; } }
 </style>
 </head>
 <body>
 
 <header>
   <div class="wrap head">
-    <a class="logo" href="../">
-      <span class="logo-mark">D</span>
-      <div><b>DETROLL</b><span>WEB · PORTFOLIO</span></div>
-    </a>
+    <a class="logo" href="../"><b>Detroll</b><span>сайты, боты, автоматизация</span></a>
     <nav>
       <a href="../#work">Работы</a>
       <a href="../uslugi/">Услуги и цены</a>
@@ -89,36 +91,31 @@
 
 <main class="wrap">
   <section class="hero">
-    <div class="kicker">Работа · первый экран по макету</div>
+    <div class="kicker">Работа: первый экран по макету</div>
     <h1>Первый экран фитнес-клуба X'FLOW GYM</h1>
-    <p>Первый экран фитнес-клуба: заголовок, фото зала, кнопка записи, цифры и карточка с тренером. Сверстал по макету один в один: размеры, отступы, шрифт и цвета взяты из Figma, своего не добавлял. Замерил результат: среднее расхождение с макетом 7.9 из 255, это меньше трёх процентов. Клуб, тексты и фото вымышленные: это учебная работа.</p>
   </section>
-
-  <div class="shot">
-    <img src="fitness-1440x900.jpg" alt="Первый экран фитнес-клуба X'FLOW GYM, свёрстанный по макету" />
-  </div>
-  <div class="cap">Кадр 1440×900. Клуб, тексты и фото вымышленные: это учебный макет, а не сайт клиента.</div>
-
-  <div class="tags">
-    <span>Первый экран</span>
-    <span>По макету</span>
-    <span>HTML/CSS</span>
-    <span>1440×900</span>
-    <span>Адаптив</span>
-  </div>
-
-  <div class="btns">
-    <a class="btn btn-gold" href="../uslugi/">Сверстать по моему макету →</a>
-    <a class="btn btn-line" href="../#work">Другие работы</a>
+  <div class="row">
+    <div>
+      <p class="lead">Первый экран фитнес-клуба: заголовок, фото зала, кнопка записи, цифры и карточка с тренером. Сверстал по макету один в один: размеры, отступы, шрифт и цвета взяты из Figma, своего не добавлял. Замерил результат: среднее расхождение с макетом 7.9 из 255, это меньше трёх процентов. Клуб, тексты и фото вымышленные: это учебная работа.</p>
+      <div class="tags"><span>Первый экран</span><span>По макету</span><span>HTML/CSS</span><span>1440×900</span><span>Адаптив</span></div>
+      <div class="btns">
+        <a class="btn-gold" href="../uslugi/">Сверстать по моему макету</a>
+    <a class="btn-line" href="../#work">Другие работы</a>
+    </div>
+    </div>
+    <div>
+      <div class="shot"><img src="fitness-1440x900.jpg" alt="Первый экран фитнес-клуба X'FLOW GYM, свёрстанный по макету" /></div>
+      <div class="cap">Кадр 1440×900. Клуб, тексты и фото вымышленные: это учебный макет, а не сайт клиента.</div>
+    </div>
   </div>
 </main>
 
 <footer>
   <div class="wrap frow">
-    <span>© 2026 Detroll · Веб-разработка</span>
-    <span>
-      Telegram: <a href="https://t.me/Detroll" target="_blank" rel="noopener">@Detroll</a> ·
-      <a href="mailto:detrollq@gmail.com">detrollq@gmail.com</a> ·
+    <span>© 2026 Detroll, веб-разработка</span>
+    <span style="display:flex;gap:16px;flex-wrap:wrap">
+      <a href="https://t.me/Detroll" target="_blank" rel="noopener">@Detroll</a>
+      <a href="mailto:detrollq@gmail.com">detrollq@gmail.com</a>
       <a href="../">Портфолио</a>
     </span>
   </div>
