@@ -4,22 +4,22 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Ковчег: пример сайта кафе в Нижнем Новгороде - Detroll</title>
-<meta name="description" content="Демо-макет сайта кафе: первый экран, меню с ценами, галерея, отзывы, бронь стола. Кафе вымышленное, показываю как пример работы.">
-<meta name="theme-color" content="#141210">
-<link rel="canonical" href="https://detroll1.github.io/cafe/" />
-<meta property="og:type" content="website" />
-<meta property="og:site_name" content="Detroll" />
-<meta property="og:locale" content="ru_RU" />
-<meta property="og:url" content="https://detroll1.github.io/cafe/" />
-<meta property="og:title" content="Ковчег: пример сайта кафе в Нижнем Новгороде" />
-<meta property="og:description" content="Демо-макет сайта кафе: первый экран, меню с ценами, галерея, отзывы, бронь стола. Кафе вымышленное, показываю как пример работы." />
-<meta property="og:image" content="https://detroll1.github.io/cafe/og-1200x630.jpg" />
-<meta property="og:image:width" content="1200" />
-<meta property="og:image:height" content="630" />
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="Ковчег: пример сайта кафе в Нижнем Новгороде" />
-<meta name="twitter:description" content="Демо-макет сайта кафе: первый экран, меню с ценами, галерея, отзывы, бронь стола. Кафе вымышленное, показываю как пример работы." />
-<meta name="twitter:image" content="https://detroll1.github.io/cafe/og-1200x630.jpg" />
+<meta name="description" content="Демо-макет сайта кафе: меню с ценами, фотографии зала и кухни, отзывы гостей и бронь стола. Кафе вымышленное, показываю как пример работы.">
+<meta name="theme-color" content="#FBF7F0">
+<link rel="canonical" href="https://detroll1.github.io/cafe/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Detroll">
+<meta property="og:locale" content="ru_RU">
+<meta property="og:url" content="https://detroll1.github.io/cafe/">
+<meta property="og:title" content="Ковчег: пример сайта кафе в Нижнем Новгороде">
+<meta property="og:description" content="Демо-макет сайта кафе: меню с ценами, фотографии зала и кухни, отзывы гостей и бронь стола. Кафе вымышленное, показываю как пример работы.">
+<meta property="og:image" content="https://detroll1.github.io/cafe/og-1200x630.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Ковчег: пример сайта кафе в Нижнем Новгороде">
+<meta name="twitter:description" content="Демо-макет сайта кафе: меню с ценами, фотографии зала и кухни, отзывы гостей и бронь стола.">
+<meta name="twitter:image" content="https://detroll1.github.io/cafe/og-1200x630.jpg">
 <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
@@ -27,10 +27,10 @@
 <header class="header">
   <div class="container header-in">
     <a class="logo" href="#top">Ковчег</a>
-    <nav class="nav" id="nav">
+    <nav class="nav" id="nav" aria-label="Основная навигация">
       <a href="#menu">Меню</a>
       <a href="#about">О нас</a>
-      <a href="#gallery">Галерея</a>
+      <a href="#gallery">Фотографии</a>
       <a href="#reviews">Отзывы</a>
       <a href="#contacts">Контакты</a>
     </nav>
@@ -46,188 +46,170 @@
 
   <section class="hero">
     <img class="hero-img" src="assets/img/hall.jpg" alt="Зал кафе «Ковчег» вечером, тёплый свет и накрытые столы" width="1400" height="934">
-    <div class="hero-overlay"></div>
-    <div class="container hero-in">
-      <h1>Ковчег</h1>
-      <p class="hero-lead">Домашняя кухня в центре Нижнего: завтраки с 8 утра, свежая выпечка и кофе на своём зерне.</p>
-      <div class="hero-actions">
-        <a class="btn btn-primary" href="#bron">Забронировать стол</a>
-        <a class="btn btn-ghost" href="#menu">Посмотреть меню</a>
+    <div class="hero-in">
+      <div class="container">
+        <div class="hero-card">
+          <h1 class="hero-title">Ковчег</h1>
+          <p class="hero-text">Домашняя кухня в центре Нижнего: завтраки с восьми утра, хлеб из своей печи и кофе на своём зерне.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#menu">Посмотреть меню</a>
+            <a class="btn btn-ghost" href="#bron">Забронировать стол</a>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <section class="stats" aria-label="Коротко о кафе">
-    <div class="container stats-in">
-      <div class="stat">
-        <span class="stat-num">8:00</span>
-        <span class="stat-label">открываемся каждый день</span>
-      </div>
-      <div class="stat">
-        <span class="stat-num">20 минут</span>
-        <span class="stat-label">среднее ожидание блюда</span>
-      </div>
-      <div class="stat">
-        <span class="stat-num">4.8</span>
-        <span class="stat-label">рейтинг у гостей</span>
-      </div>
-    </div>
-  </section>
-
-  <section class="section" id="menu">
+  <section class="menu" id="menu">
     <div class="container">
-      <h2>Меню</h2>
-      <p class="section-lead">Готовим небольшими партиями, поэтому часть позиций к вечеру заканчивается. Это честно.</p>
-      <div class="menu-grid">
-        <article class="menu-card">
+      <div class="menu-head">
+        <h2>Меню</h2>
+        <p>Готовим небольшими партиями, поэтому часть позиций к вечеру заканчивается. Это честно.</p>
+      </div>
+
+      <div class="menu-cols">
+        <div class="menu-col">
           <h3>Завтраки</h3>
-          <p class="menu-note">с 8:00 до 12:00</p>
-          <ul class="menu-list">
-            <li>
-              <div class="menu-item-head"><span class="menu-name">Сырники со сметаной и вареньем</span><span class="menu-price">320 ₽</span></div>
-              <p class="menu-desc">Творожные, с ванилью, подаются горячими</p>
-            </li>
-            <li>
-              <div class="menu-item-head"><span class="menu-name">Омлет с томатами и зеленью</span><span class="menu-price">290 ₽</span></div>
-              <p class="menu-desc">Пышный, на трёх яйцах, с тостом из своего хлеба</p>
-            </li>
-            <li>
-              <div class="menu-item-head"><span class="menu-name">Овсяная каша с ягодами и мёдом</span><span class="menu-price">260 ₽</span></div>
-              <p class="menu-desc">На молоке или воде, ягоды по сезону</p>
-            </li>
-          </ul>
-        </article>
-        <article class="menu-card">
+          <p class="when">с 8:00 до 12:00</p>
+          <div class="dish">
+            <div><div class="dish-name">Сырники со сметаной и вареньем</div><div class="dish-desc">Творожные, с ванилью, подаются горячими</div></div>
+            <span class="price">320 ₽</span>
+          </div>
+          <div class="dish">
+            <div><div class="dish-name">Омлет с томатами и зеленью</div><div class="dish-desc">Пышный, на трёх яйцах, с тостом из своего хлеба</div></div>
+            <span class="price">290 ₽</span>
+          </div>
+          <div class="dish">
+            <div><div class="dish-name">Овсяная каша с ягодами и мёдом</div><div class="dish-desc">На молоке или воде, ягоды по сезону</div></div>
+            <span class="price">260 ₽</span>
+          </div>
+        </div>
+
+        <div class="menu-col">
           <h3>Основные блюда</h3>
-          <p class="menu-note">с 12:00 до закрытия</p>
-          <ul class="menu-list">
-            <li>
-              <div class="menu-item-head"><span class="menu-name">Паста с грибами и сливками</span><span class="menu-price">520 ₽</span></div>
-              <p class="menu-desc">Белые грибы, пармезан, чёрный перец</p>
-            </li>
-            <li>
-              <div class="menu-item-head"><span class="menu-name">Плов с бараниной</span><span class="menu-price">640 ₽</span></div>
-              <p class="menu-desc">Готовится порционно, ждёт около 25 минут</p>
-            </li>
-            <li>
-              <div class="menu-item-head"><span class="menu-name">Суп-лапша с уткой</span><span class="menu-price">450 ₽</span></div>
-              <p class="menu-desc">Бульон варим с утра, лапшу раскатываем сами</p>
-            </li>
-          </ul>
-        </article>
-        <article class="menu-card">
+          <p class="when">с 12:00 до закрытия</p>
+          <div class="dish">
+            <div><div class="dish-name">Паста с грибами и сливками</div><div class="dish-desc">Белые грибы, пармезан, чёрный перец</div></div>
+            <span class="price">520 ₽</span>
+          </div>
+          <div class="dish">
+            <div><div class="dish-name">Плов с бараниной</div><div class="dish-desc">Готовится порционно, ждёт около 25 минут</div></div>
+            <span class="price">640 ₽</span>
+          </div>
+          <div class="dish">
+            <div><div class="dish-name">Суп-лапша с уткой</div><div class="dish-desc">Бульон варим с утра, лапшу раскатываем сами</div></div>
+            <span class="price">450 ₽</span>
+          </div>
+        </div>
+
+        <div class="menu-col">
           <h3>Напитки</h3>
-          <p class="menu-note">весь день</p>
-          <ul class="menu-list">
+          <p class="when">весь день</p>
+          <div class="dish">
+            <div><div class="dish-name">Капучино на своём зерне</div><div class="dish-desc">Обжарка из нижегородской ростерии</div></div>
+            <span class="price">180 ₽</span>
+          </div>
+          <div class="dish">
+            <div><div class="dish-name">Домашний лимонад</div><div class="dish-desc">Облепиха с розмарином или лимон с мятой</div></div>
+            <span class="price">220 ₽</span>
+          </div>
+          <div class="dish">
+            <div><div class="dish-name">Чай облепиха с мёдом</div><div class="dish-desc">Пряный, с апельсином, в чайнике на двоих</div></div>
+            <span class="price">240 ₽</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="strip" id="gallery">
+    <div class="container">
+      <div class="strip-row">
+        <figure>
+          <img src="assets/img/dish-breakfast.jpg" alt="Сырники со сметаной на завтрак" loading="lazy">
+          <figcaption>Завтраки с восьми утра</figcaption>
+        </figure>
+        <figure>
+          <img src="assets/img/dish-pasta.jpg" alt="Паста с грибами и сливками" loading="lazy">
+          <figcaption>Горячее готовим порционно</figcaption>
+        </figure>
+        <figure>
+          <img src="assets/img/hall-2.jpg" alt="Второй зал кафе днём" loading="lazy">
+          <figcaption>Два зала, 60 мест</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="about">
+    <div class="container">
+      <div class="section-head">
+        <h2>О нас</h2>
+        <p>Небольшое кафе на 60 мест. Кухня видна из зала, хлеб печём на месте.</p>
+      </div>
+      <div class="about">
+        <div>
+          <p class="about-lead">«Ковчег» открылся в 2019 году. Мы держим короткое меню и меняем его четыре раза в год под сезон.</p>
+          <ul class="about-list">
             <li>
-              <div class="menu-item-head"><span class="menu-name">Капучино на своём зерне</span><span class="menu-price">180 ₽</span></div>
-              <p class="menu-desc">Обжарка из нижегородской ростерии</p>
+              <h3>Кухня</h3>
+              <p>Продукты везём от хозяйств области, хлеб печём каждое утро. Меню меняется четыре раза в год под сезон.</p>
             </li>
             <li>
-              <div class="menu-item-head"><span class="menu-name">Домашний лимонад</span><span class="menu-price">220 ₽</span></div>
-              <p class="menu-desc">Облепиха с розмарином или лимон с мятой</p>
+              <h3>Зал</h3>
+              <p>Два зала на 60 мест: тихий наверху и большой с видом на открытую кухню. Пять минут пешком от Покровки.</p>
             </li>
             <li>
-              <div class="menu-item-head"><span class="menu-name">Чай облепиха с мёдом</span><span class="menu-price">240 ₽</span></div>
-              <p class="menu-desc">Пряный, с апельсином, в чайнике на двоих</p>
+              <h3>Доставка</h3>
+              <p>Возим по городу за 40-60 минут, блюда приезжают горячими. Бесплатно при заказе от 1500 рублей.</p>
             </li>
           </ul>
-        </article>
+        </div>
+        <figure>
+          <img src="assets/img/dish-main.jpg" alt="Горячее блюдо из меню кафе" loading="lazy">
+        </figure>
       </div>
     </div>
   </section>
 
-  <section class="section section-alt" id="about">
+  <section class="section" id="reviews">
     <div class="container">
-      <h2>О нас</h2>
-      <p class="section-lead">«Ковчег» открылся в 2019 году. Небольшое кафе на 60 мест, где кухня видна из зала, а хлеб пекут на месте.</p>
-      <div class="about-grid">
-        <article class="about-card">
-          <span class="about-icon">
-            <svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15.914 4a1.5 1.5 0 00-2.474-1.561l-9 9A1.5 1.5 0 005.5 14h4.002a.5.5 0 01.471.666L8.086 20a1.5 1.5 0 002.475 1.56l9-9A1.5 1.5 0 0018.5 10h-3.997a.5.5 0 01-.472-.667z"/></svg>
-          </span>
-          <h3>Кухня</h3>
-          <p>Продукты везём от хозяйств области, хлеб печём каждое утро. Меню меняется четыре раза в год под сезон.</p>
-        </article>
-        <article class="about-card">
-          <span class="about-icon">
-            <svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>
-          </span>
-          <h3>Зал</h3>
-          <p>Два зала на 60 мест: тихий наверху и большой с видом на открытую кухню. Пять минут пешком от Покровки.</p>
-        </article>
-        <article class="about-card">
-          <span class="about-icon">
-            <svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
-          </span>
-          <h3>Доставка</h3>
-          <p>Возим по городу за 40-60 минут, блюда приезжают горячими. Бесплатно при заказе от 1500 рублей.</p>
-        </article>
+      <div class="section-head">
+        <h2>Отзывы гостей</h2>
+        <p>Пишем как есть, без правок.</p>
       </div>
-    </div>
-  </section>
-
-  <section class="section" id="gallery">
-    <div class="container">
-      <h2>Галерея</h2>
-      <p class="section-lead">Несколько кадров из зала и кухни, снятых в обычный будний день.</p>
-      <div class="gallery-grid">
-        <figure class="gallery-item"><img src="assets/img/hall-2.jpg" alt="Основной зал кафе днём" width="1400" height="934" loading="lazy"></figure>
-        <figure class="gallery-item"><img src="assets/img/dish-main.jpg" alt="Основное блюдо с мясом и овощами" width="1600" height="1067" loading="lazy"></figure>
-        <figure class="gallery-item"><img src="assets/img/dish-breakfast.jpg" alt="Завтрак: блинчики с ягодами" width="1237" height="1600" loading="lazy"></figure>
-        <figure class="gallery-item"><img src="assets/img/dish-pasta.jpg" alt="Паста, которую подают в кафе" width="1400" height="960" loading="lazy"></figure>
-      </div>
-    </div>
-  </section>
-
-  <section class="section section-alt" id="reviews">
-    <div class="container">
-      <h2>Отзывы</h2>
-      <div class="reviews-grid">
-        <article class="review-card">
-          <div class="review-stars" aria-label="Оценка 5 из 5">
-            <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"/></svg>
-            <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"/></svg>
-            <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"/></svg>
-            <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"/></svg>
-            <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"/></svg>
-          </div>
-          <blockquote>Пришли на завтрак случайно, теперь бываем каждую субботу. Сырники как у бабушки, кофе крепкий, официанты помнят наш заказ.</blockquote>
-          <p class="review-author">Анна Смирнова</p>
-        </article>
-        <article class="review-card">
-          <div class="review-stars" aria-label="Оценка 5 из 5">
-            <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"/></svg>
-            <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"/></svg>
-            <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"/></svg>
-            <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"/></svg>
-            <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"/></svg>
-          </div>
-          <blockquote>Бронировал стол на восемь человек на день рождения. Всё вовремя, кухня вытянула большой заказ, счёт оказался приятным.</blockquote>
-          <p class="review-author">Дмитрий Волков</p>
-        </article>
+      <div class="quotes">
+        <blockquote class="quote">
+          <p>Пришли на завтрак случайно, теперь бываем каждую субботу. Сырники как у бабушки, кофе крепкий, официанты помнят наш заказ.</p>
+          <cite>Анна Смирнова, завтраки</cite>
+        </blockquote>
+        <blockquote class="quote">
+          <p>Бронировал стол на восемь человек на день рождения. Всё вовремя, кухня вытянула большой заказ, счёт оказался приятным.</p>
+          <cite>Дмитрий Волков, банкет на 8 человек</cite>
+        </blockquote>
       </div>
     </div>
   </section>
 
   <section class="section" id="contacts">
-    <div class="container contacts-grid">
-      <div class="contacts-info">
+    <div class="container">
+      <div class="section-head">
         <h2>Контакты</h2>
-        <ul class="contacts-list">
-          <li>
-            <svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-            <div><h3>Часы работы</h3><p>Пн-чт: 8:00-22:00<br>Пт-вс: 8:00-23:00</p></div>
-          </li>
-          <li>
-            <svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>
-            <div><h3>Адрес</h3><p>Нижний Новгород,<br>ул. Большая Покровская, 82</p></div>
-          </li>
-          <li>
-            <svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384"/></svg>
-            <div><h3>Телефон</h3><p><a class="phone-link" href="tel:+78314102540">+7 (831) 410-25-40</a></p></div>
-          </li>
-        </ul>
+        <p>Мы в центре, пять минут от Большой Покровской.</p>
+      </div>
+      <div class="contacts">
+        <div class="contact">
+          <h3>Часы работы</h3>
+          <p>Пн-чт: 8:00-22:00<br>Пт-вс: 8:00-23:00</p>
+        </div>
+        <div class="contact">
+          <h3>Адрес</h3>
+          <p>Нижний Новгород,<br>улица Большая Покровская, 82</p>
+        </div>
+        <div class="contact">
+          <h3>Телефон</h3>
+          <p><a class="phone-link" href="tel:+783****2540">+7 (831) 410-25-40</a></p>
+        </div>
       </div>
       <figure class="contacts-photo">
         <img src="assets/img/drink-coffee.jpg" alt="Кофе и десерт на столе у окна" width="1600" height="1067" loading="lazy">
@@ -235,7 +217,7 @@
     </div>
   </section>
 
-  <section class="section section-alt" id="bron">
+  <section class="section" id="bron">
     <div class="container bron-grid">
       <div class="bron-intro">
         <h2>Забронировать стол</h2>
@@ -276,11 +258,11 @@
   <div class="container footer-in">
     <div class="footer-col">
       <span class="logo">Ковчег</span>
-      <p class="footer-note">Кафе домашней кухни<br>на Большой Покровской</p>
+      <p class="footer-note">Кафе домашней кухни на Большой Покровской</p>
     </div>
     <div class="footer-col">
       <h3>Телефон</h3>
-      <p><a class="phone-link" href="tel:+78314102540">+7 (831) 410-25-40</a></p>
+      <p><a class="phone-link" href="tel:+783****2540">+7 (831) 410-25-40</a></p>
     </div>
     <div class="footer-col">
       <h3>Часы работы</h3>
