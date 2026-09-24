@@ -28,62 +28,62 @@
   @font-face{ font-family:"Golos"; font-weight:400; font-display:swap; src:url("../assets/fonts/Golos-Text-400.woff2") format("woff2"); }
   @font-face{ font-family:"Golos"; font-weight:500; font-display:swap; src:url("../assets/fonts/Golos-Text-500.woff2") format("woff2"); }
   :root{ --paper:#F4F1EA; --ink:#17160F; --muted:#6B675C; --line:#D9D3C6; --accent:#B4441F; --on-accent:#FFF6F1; }
-  *{ margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
-  body{ background:var(--paper); color:var(--ink); font-family:"Golos",system-ui,sans-serif; font-size:17px; line-height:1.6; overflow-x:hidden; }
+  *{ margin: 0; padding: 0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
+  body{ background:var(--paper); color:var(--ink); font-family:"Golos",system-ui,sans-serif; font-size: 16px; line-height:1.6; overflow-x:hidden; }
   ::selection{ background:var(--accent); color:var(--on-accent); }
   h1,h2,h3,.btn{ font-family:"VelaSans",system-ui,sans-serif; }
   h1,h2{ text-wrap:balance; }
   p{ text-wrap:pretty; }
   .wrap{ width:min(1180px,100% - 40px); margin-inline:auto; }
   header{ position:sticky; top:0; z-index:50; background:var(--paper); border-bottom:1px solid var(--line); }
-  .head{ height:78px; display:flex; align-items:center; justify-content:space-between; gap:20px; }
-  .logo{ display:flex; align-items:baseline; gap:12px; text-decoration:none; color:var(--ink); }
-  .logo > div{ display:flex; align-items:baseline; gap:12px; }
+  .head{ height:78px; display:flex; align-items:center; justify-content:space-between; gap: 20px; }
+  .logo{ display:flex; align-items:baseline; gap: 12px; text-decoration:none; color:var(--ink); }
+  .logo > div{ display:flex; align-items:baseline; gap: 12px; }
   .logo-mark{ display:none; }
-  .logo b{ font-family:"VelaSans"; font-weight:800; font-size:19px; letter-spacing:-0.01em; }
-  .logo span{ color:var(--muted); font-size:13px; }
-  nav{ display:flex; gap:24px; }
-  nav a{ color:var(--muted); text-decoration:none; font-size:15px; padding-bottom:2px; border-bottom:1px solid transparent; }
+  .logo b{ font-family:"VelaSans"; font-weight:800; font-size: 18px; letter-spacing:-0.01em; }
+  .logo span{ color:var(--muted); font-size: 12px; }
+  nav{ display:flex; gap: 24px; }
+  nav a{ color:var(--muted); text-decoration:none; font-size: 14px; padding-bottom: 2px; border-bottom:1px solid transparent; }
   nav a:hover{ color:var(--ink); border-bottom-color:var(--accent); }
-  .hero{ padding:72px 0 8px; }
-  .kicker{ color:var(--muted); font-size:14px; }
-  h1{ font-size:clamp(1.9rem,4.2vw,3.2rem); font-weight:800; line-height:1.05; letter-spacing:-0.02em; margin-top:14px; }
-  .hero p{ color:var(--muted); max-width:62ch; margin-top:20px; }
-  .shot{ margin:34px 0 8px; border:1px solid var(--line); }
+  .hero{ padding: 72px 0 8px; }
+  .kicker{ color:var(--muted); font-size: 14px; }
+  h1{ font-size:clamp(1.9rem,4.2vw,3.2rem); font-weight:800; line-height:1.05; letter-spacing:-0.02em; margin-top: 12px; }
+  .hero p{ color:var(--muted); max-width:62ch; margin-top: 20px; }
+  .shot{ margin: 32px 0 8px; border:1px solid var(--line); }
   .shot img{ display:block; width:100%; height:auto; }
-  .cap{ color:var(--muted); font-size:15px; margin-top:12px; }
-  .tags{ display:flex; flex-wrap:wrap; gap:14px; margin:22px 0 6px; color:var(--muted); font-size:15px; }
+  .cap{ color:var(--muted); font-size: 14px; margin-top: 12px; }
+  .tags{ display:flex; flex-wrap:wrap; gap: 12px; margin: 20px 0 6px; color:var(--muted); font-size: 14px; }
   .tags span + span::before{ content:" / "; color:var(--line); }
-  .btns{ display:flex; gap:12px; flex-wrap:wrap; margin:28px 0 56px; }
-  .btn{ display:inline-block; padding:15px 26px; border-radius:3px; text-decoration:none; font-weight:500; font-size:16px; }
+  .btns{ display:flex; gap: 12px; flex-wrap:wrap; margin: 24px 0 56px; }
+  .btn{ display:inline-block; padding: 16px 24px; border-radius:3px; text-decoration:none; font-weight:500; font-size: 16px; }
   .btn-gold{ background:var(--accent); color:var(--on-accent); }
   .btn-line{ border:1px solid var(--line); color:var(--ink); }
   .btn-gold:hover{ background:#9c3a1a; }
   .btn-line:hover{ border-color:var(--ink); }
-  footer{ margin-top:56px; border-top:1px solid var(--line); padding:26px 0; color:var(--muted); font-size:15px; }
-  footer .frow{ display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px; }
+  footer{ margin-top: 56px; border-top:1px solid var(--line); padding: 24px 0; color:var(--muted); font-size: 14px; }
+  footer .frow{ display:flex; justify-content:space-between; flex-wrap:wrap; gap: 12px; }
   footer a{ color:var(--muted); text-decoration:none; border-bottom:1px solid var(--line); }
   footer a:hover{ color:var(--ink); }
-  .roles{ display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:0 36px; margin:30px 0 8px; }
-  .role{ border-top:1px solid var(--line); padding:18px 0 22px; }
-  .role h3{ font-size:18px; font-weight:700; }
-  .role .model{ color:var(--accent); font-size:14px; margin-top:6px; font-variant-numeric:tabular-nums; }
-  .role p{ color:var(--muted); font-size:15px; margin-top:10px; }
-  .facts{ border-top:1px solid var(--line); margin:30px 0 8px; padding-top:18px; }
-  .facts li{ list-style:none; color:var(--muted); font-size:15.5px; padding-left:16px; position:relative; margin-bottom:10px; }
-  .facts li:last-child{ margin-bottom:0; }
+  .roles{ display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap: 0 36px; margin: 32px 0 8px; }
+  .role{ border-top:1px solid var(--line); padding: 16px 0 20px; }
+  .role h3{ font-size: 18px; font-weight:700; }
+  .role .model{ color:var(--accent); font-size: 14px; margin-top: 6px; font-variant-numeric:tabular-nums; }
+  .role p{ color:var(--muted); font-size: 14px; margin-top: 8px; }
+  .facts{ border-top:1px solid var(--line); margin: 32px 0 8px; padding-top: 16px; }
+  .facts li{ list-style:none; color:var(--muted); font-size: 16px; padding-left: 16px; position:relative; margin-bottom: 8px; }
+  .facts li:last-child{ margin-bottom: 0; }
   .facts li::before{ content:""; position:absolute; left:0; top:.72em; width:8px; height:1px; background:var(--accent); }
-  h2{ font-size:clamp(1.4rem,2.4vw,1.9rem); font-weight:700; letter-spacing:-0.01em; margin-top:52px; padding-bottom:14px; border-bottom:1px solid var(--ink); }
-  pre.term{ background:var(--ink); color:#EFEBE2; border-radius:3px; padding:18px; margin-top:16px;
-    font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace; font-size:13px; line-height:1.7;
+  h2{ font-size:clamp(1.4rem,2.4vw,1.9rem); font-weight:700; letter-spacing:-0.01em; margin-top: 48px; padding-bottom: 12px; border-bottom:1px solid var(--ink); }
+  pre.term{ background:var(--ink); color:#EFEBE2; border-radius:3px; padding: 16px; margin-top: 16px;
+    font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace; font-size: 12px; line-height:1.7;
     overflow-x:auto; white-space:pre; }
   @media(max-width:900px){ .roles{ grid-template-columns:repeat(2,minmax(0,1fr)); } }
   @media(max-width:640px){
-    body{ font-size:16px; }
-    .head{ height:auto; padding:14px 0; flex-direction:column; align-items:flex-start; gap:10px; }
-    nav{ gap:16px; border-top:1px solid var(--line); padding-top:12px; width:100%; }
-    nav a{ font-size:14px; }
-    .hero{ padding:44px 0 8px; }
+    body{ font-size: 16px; }
+    .head{ height:auto; padding: 12px 0; flex-direction:column; align-items:flex-start; gap: 8px; }
+    nav{ gap: 16px; border-top:1px solid var(--line); padding-top: 12px; width:100%; }
+    nav a{ font-size: 14px; }
+    .hero{ padding: 40px 0 8px; }
     .roles{ grid-template-columns:1fr; }
   }
 </style>
@@ -180,7 +180,7 @@
 <footer>
   <div class="wrap frow">
     <span>© 2026 Detroll, веб-разработка</span>
-    <span style="display:flex;gap:16px;flex-wrap:wrap"><a href="https://t.me/Detroll" target="_blank" rel="noopener">@Detroll</a><a href="mailto:detrollq@gmail.com">detrollq@gmail.com</a><a href="../">Портфолио</a></span>
+    <span style="display:flex;gap: 16px;flex-wrap:wrap"><a href="https://t.me/Detroll" target="_blank" rel="noopener">@Detroll</a><a href="mailto:detrollq@gmail.com">detrollq@gmail.com</a><a href="../">Портфолио</a></span>
   </div>
 </footer>
 
