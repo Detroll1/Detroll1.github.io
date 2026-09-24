@@ -1,19 +1,19 @@
 /* Демо-макет сайта салона «Лаванда». Запись и мастера на первом плане, сдержанная светлая схема. */
 
+@font-face{ font-family:"Golos"; font-weight:400; font-display:swap; src:url("../fonts/Golos-Text-400.woff2") format("woff2"); }
+@font-face{ font-family:"Golos"; font-weight:500; font-display:swap; src:url("../fonts/Golos-Text-500.woff2") format("woff2"); }
+@font-face{ font-family:"Golos"; font-weight:600; font-display:swap; src:url("../fonts/Golos-Text-600.woff2") format("woff2"); }
 @font-face{ font-family:"Vela"; font-weight:400; font-display:swap; src:url("../fonts/VelaSans-Regular.ttf") format("truetype"); }
 @font-face{ font-family:"Vela"; font-weight:500; font-display:swap; src:url("../fonts/VelaSans-Medium.ttf") format("truetype"); }
 @font-face{ font-family:"Vela"; font-weight:700; font-display:swap; src:url("../fonts/VelaSans-Bold.ttf") format("truetype"); }
 @font-face{ font-family:"Vela"; font-weight:800; font-display:swap; src:url("../fonts/VelaSans-ExtraBold.ttf") format("truetype"); }
-@font-face{ font-family:"Inter"; font-weight:400; font-display:swap; src:url("../fonts/Inter-Regular.woff2") format("woff2"); }
-@font-face{ font-family:"Inter"; font-weight:500; font-display:swap; src:url("../fonts/Inter-Medium.woff2") format("woff2"); }
-@font-face{ font-family:"Inter"; font-weight:600; font-display:swap; src:url("../fonts/Inter-SemiBold.woff2") format("woff2"); }
 
 :root{
   --paper:#F5F3F1; --ink:#1A1917; --muted:#6C6A66; --line:#DED9D3; --accent:#4A5A6A; --on-accent:#F7F6F3;
 }
 *{ margin: 0; padding: 0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
 html{ scroll-behavior:smooth; }
-body{ background:var(--paper); color:var(--ink); font-family:"Inter",system-ui,sans-serif; font-size: 16px; line-height:1.6; overflow-x:hidden; }
+body{ background:var(--paper); color:var(--ink); font-family:"Golos",system-ui,sans-serif; font-size: 16px; line-height:1.6; overflow-x:hidden; }
 img{ display:block; max-width:100%; }
 a{ color:inherit; }
 h1,h2,h3,.btn,.logo,.price{ font-family:"Vela",system-ui,sans-serif; }
@@ -69,7 +69,7 @@ p{ text-wrap:pretty; }
 .master__photo{ width:100%; aspect-ratio:4/3; object-fit:cover; border:1px solid var(--line); }
 .master__name{ font-size: 18px; font-weight:700; margin-top: 16px; }
 .master__role{ color:var(--accent); font-size: 14px; margin-top: 4px; }
-.master__text{ color:var(--muted); font-size: 14px; margin-top: 8px; }
+.master__text{ color:var(--muted); font-size: 16px; margin-top: 8px; }
 
 /* услуги: таблица строками */
 .prices{ margin-top: 24px; }
@@ -128,7 +128,7 @@ p{ text-wrap:pretty; }
 .contact__link{ color:var(--ink); text-decoration:none; border-bottom:1px solid var(--accent); }
 
 /* подвал */
-.footer{ border-top:1px solid var(--line); background:#EFEDEA; }
+.footer{ border-top:1px solid var(--line); background:#ECE9EE; }
 .footer__in{ display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap: 32px; padding: 32px 0; }
 .footer__title{ font-size: 14px; font-weight:600; color:var(--muted); }
 .footer__text{ font-size: 16px; margin-top: 8px; }
@@ -137,6 +137,10 @@ p{ text-wrap:pretty; }
 .footer__link{ color:var(--ink); text-decoration:none; border-bottom:1px solid var(--line); }
 .footer__demo{ border-top:1px solid var(--line); padding: 16px 0 20px; color:var(--muted); font-size: 14px; }
 
+@media(max-width:900px){
+  .section__head{ flex-direction:column; gap: 8px; align-items:flex-start; }
+  .section__head p{ text-align:left; }
+}
 @media(max-width:1000px){
   .hero__grid{ grid-template-columns:1fr; gap: 32px; }
   .hero__photo img{ aspect-ratio:16/10; }
@@ -144,6 +148,9 @@ p{ text-wrap:pretty; }
   .gallery{ grid-template-columns:repeat(2,minmax(0,1fr)); }
   .form-block{ grid-template-columns:1fr; gap: 32px; }
   .steps{ grid-template-columns:1fr; }
+}
+@media(max-width:860px){
+  .header__right .btn{ display:none; }
 }
 @media(max-width:700px){
   body{ font-size: 16px; }
