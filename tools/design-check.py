@@ -145,6 +145,18 @@ def main():
                 css_path = cand
                 break
     if not css_path:
+        # сначала искать css рядом со страницей, потом где угодно
+        html_dirs = {os.path.dirname(os.path.join(root, f)) for f in html_files}
+        for dirpath, _dirs, files in os.walk(root):
+            if dirpath not in html_dirs:
+                continue
+            for f in files:
+                if f.endswith(".css"):
+                    css_path = os.path.join(dirpath, f)
+                    break
+            if css_path:
+                break
+    if not css_path:
         for dirpath, _dirs, files in os.walk(root):
             for f in files:
                 if f.endswith(".css"):
@@ -152,8 +164,14 @@ def main():
                     break
             if css_path:
                 break
-    css = read(css_path) if css_path else ""
-    print(f"проверяю: {', '.join(html_files)}" + (f" + {os.path.basename(css_path)}" if css_path else " (без css)"))
+    # стили, записанные прямо в страницах, тоже считаются
+    inline = "\n".join(m.group(1) for m in re.finditer(r"<style[^>]*>(.*?)</style>", html, re.S))
+    parts = [p for p in (read(css_path) if css_path else "", inline) if p]
+    css = "\n".join(parts)
+    where = [os.path.basename(css_path)] if css_path else []
+    if inline:
+        where.append("инлайн-стили")
+    print(f"проверяю: {', '.join(html_files)}" + (f" + {', '.join(where)}" if where else " (без css)"))
 
     problems = check_sources(root, html, css)
     sizes, spac = css_numbers(css)
