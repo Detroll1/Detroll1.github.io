@@ -1,360 +1,316 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Лаванда: пример сайта салона красоты - Detroll</title>
-  <meta name="description" content="Демо-макет сайта салона: услуги с ценами, мастера, галерея работ, отзывы, запись на визит. Салон вымышленный, показываю как пример работы.">
-  <meta name="theme-color" content="#faf8f5">
-  <link rel="canonical" href="https://detroll1.github.io/salon/" />
-  <meta property="og:type" content="website" />
-  <meta property="og:site_name" content="Detroll" />
-  <meta property="og:locale" content="ru_RU" />
-  <meta property="og:url" content="https://detroll1.github.io/salon/" />
-  <meta property="og:title" content="Лаванда: пример сайта салона красоты" />
-  <meta property="og:description" content="Демо-макет сайта салона: услуги с ценами, мастера, галерея работ, отзывы, запись на визит. Салон вымышленный, показываю как пример работы." />
-  <meta property="og:image" content="https://detroll1.github.io/salon/og-1200x630.jpg" />
-  <meta property="og:image:width" content="1200" />
-  <meta property="og:image:height" content="630" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Лаванда: пример сайта салона красоты" />
-  <meta name="twitter:description" content="Демо-макет сайта салона: услуги с ценами, мастера, галерея работ, отзывы, запись на визит. Салон вымышленный, показываю как пример работы." />
-  <meta name="twitter:image" content="https://detroll1.github.io/salon/og-1200x630.jpg" />
-  <link rel="stylesheet" href="assets/css/style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Лаванда: пример сайта салона красоты - Detroll</title>
+<meta name="description" content="Демо-макет сайта салона: мастера, услуги с ценами, галерея работ, отзывы и запись на визит. Салон вымышленный, показываю как пример работы.">
+<meta name="theme-color" content="#F5F3F1">
+<link rel="canonical" href="https://detroll1.github.io/salon/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Detroll">
+<meta property="og:locale" content="ru_RU">
+<meta property="og:url" content="https://detroll1.github.io/salon/">
+<meta property="og:title" content="Лаванда: пример сайта салона красоты">
+<meta property="og:description" content="Демо-макет сайта салона: мастера, услуги с ценами, галерея работ, отзывы и запись на визит.">
+<meta property="og:image" content="https://detroll1.github.io/salon/og-1200x630.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Лаванда: пример сайта салона красоты">
+<meta name="twitter:description" content="Демо-макет сайта салона: мастера, услуги с ценами, галерея работ, отзывы и запись на визит.">
+<meta name="twitter:image" content="https://detroll1.github.io/salon/og-1200x630.jpg">
+<link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
 
-  <header class="header">
-    <div class="container header__inner">
-      <a href="#top" class="logo">Лаванда</a>
-      <nav class="nav" id="nav" aria-label="Основная навигация">
-        <a href="#services" class="nav__link">Услуги</a>
-        <a href="#team" class="nav__link">Мастера</a>
-        <a href="#gallery" class="nav__link">Галерея</a>
-        <a href="#reviews" class="nav__link">Отзывы</a>
-        <a href="#contacts" class="nav__link">Контакты</a>
-        <a href="#booking" class="btn btn--accent nav__cta">Записаться</a>
-      </nav>
-      <a href="tel:+78312164587" class="header__phone">+7 (831) 216-45-87</a>
-      <button class="burger" id="burger" type="button" aria-expanded="false" aria-controls="nav" aria-label="Открыть меню">
-        <svg class="burger__icon burger__icon--open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16"/><path d="M4 12h16"/><path d="M4 19h16"/></svg>
-        <svg class="burger__icon burger__icon--close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+<header class="header">
+  <div class="container header__in">
+    <a class="logo" href="#top">Лаванда</a>
+    <nav class="nav" id="nav" aria-label="Основная навигация">
+      <a href="#team">Мастера</a>
+      <a href="#services">Услуги и цены</a>
+      <a href="#gallery">Галерея</a>
+      <a href="#reviews">Отзывы</a>
+      <a href="#contacts">Контакты</a>
+    </nav>
+    <div class="header__right">
+      <a class="header__phone" href="tel:+783****4587">+7 (831) 216-45-87</a>
+      <a class="btn btn--primary" href="#booking">Записаться</a>
+      <button class="burger" id="burger" type="button" aria-label="Открыть меню" aria-expanded="false" aria-controls="nav">
+        <svg class="icon icon-open" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 5h16"/><path d="M4 12h16"/><path d="M4 19h16"/></svg>
+        <svg class="icon icon-close" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
       </button>
     </div>
-  </header>
+  </div>
+</header>
 
-  <main id="top">
+<main id="top">
 
-    <section class="hero">
-      <div class="container hero__inner">
-        <div class="hero__text">
-          <p class="hero__kicker">Салон красоты на Большой Покровской</p>
-          <h1 class="hero__title">Лаванда</h1>
-          <p class="hero__lead">Стрижки, окрашивание, уход и барберинг. Записываем на удобное время, работаем без спешки.</p>
-          <div class="hero__actions">
-            <a href="#booking" class="btn btn--accent">Записаться</a>
-            <a href="#services" class="btn btn--ghost">Услуги и цены</a>
-          </div>
+  <section class="hero">
+    <div class="container hero__grid">
+      <div>
+        <p class="hero__kicker">Салон красоты на Большой Покровской</p>
+        <h1 class="hero__title">Лаванда</h1>
+        <p class="hero__text">Стрижки, окрашивание, уход и барберинг. Записываем на удобное время, работаем без спешки: на стрижку закладываем час, на окрашивание три.</p>
+        <div class="hero__actions">
+          <a class="btn btn--primary" href="#booking">Записаться</a>
+          <a class="btn btn--ghost" href="#services">Услуги и цены</a>
         </div>
-        <div class="hero__media">
-          <img src="assets/img/hero.jpg" alt="Мастер салона «Лаванда» стрижёт клиента" width="1200" height="800">
+        <div class="hero__facts">
+          <div class="hero__fact"><b>3 мастера</b><span>все в штате, без аренды мест</span></div>
+          <div class="hero__fact"><b>60 минут</b><span>стрижка с мытьём и укладкой</span></div>
+          <div class="hero__fact"><b>10:00-20:00</b><span>понедельник - суббота</span></div>
         </div>
       </div>
-      <div class="container">
-        <dl class="stats">
-          <div class="stats__item">
-            <dt class="stats__label">Мастера в штате</dt>
-            <dd class="stats__value">3</dd>
-          </div>
-          <div class="stats__item">
-            <dt class="stats__label">Стрижка с укладкой</dt>
-            <dd class="stats__value">60 минут</dd>
-          </div>
-          <div class="stats__item">
-            <dt class="stats__label">Рейтинг на картах</dt>
-            <dd class="stats__value">4.9</dd>
-          </div>
-        </dl>
-      </div>
-    </section>
-
-    <section class="section" id="services">
-      <div class="container">
-        <div class="section__head">
-          <h2 class="section__title">Услуги и цены</h2>
-          <p class="section__note">Цены указаны за работу мастера. Точную стоимость окрашивания называем после осмотра волос.</p>
-        </div>
-        <ul class="price">
-          <li class="price__row">
-            <div class="price__info">
-              <h3 class="price__name">Женская стрижка</h3>
-              <p class="price__desc">Стрижка любой сложности, мытьё головы и сушка. Форму обсуждаем до первого среза.</p>
-            </div>
-            <p class="price__value">1 200 ₽</p>
-          </li>
-          <li class="price__row">
-            <div class="price__info">
-              <h3 class="price__name">Мужская стрижка</h3>
-              <p class="price__desc">Классика, фейд и спортивные формы. В цену входит укладка воском или пастой.</p>
-            </div>
-            <p class="price__value">900 ₽</p>
-          </li>
-          <li class="price__row">
-            <div class="price__info">
-              <h3 class="price__name">Окрашивание</h3>
-              <p class="price__desc">Тонирование, амбре и сложные техники. Красим составами, которые не сушат волосы.</p>
-            </div>
-            <p class="price__value">от 3 500 ₽</p>
-          </li>
-          <li class="price__row">
-            <div class="price__info">
-              <h3 class="price__name">Уход и восстановление</h3>
-              <p class="price__desc">Маски, ботокс и скраб для кожи головы. Подбираем состав под состояние волос.</p>
-            </div>
-            <p class="price__value">1 800 ₽</p>
-          </li>
-          <li class="price__row">
-            <div class="price__info">
-              <h3 class="price__name">Борода</h3>
-              <p class="price__desc">Стрижка и оформление бороды с горячим полотенцем и маслом в финале.</p>
-            </div>
-            <p class="price__value">800 ₽</p>
-          </li>
-          <li class="price__row">
-            <div class="price__info">
-              <h3 class="price__name">Укладка</h3>
-              <p class="price__desc">Повседневная или вечерняя укладка. Держится до следующего мытья головы.</p>
-            </div>
-            <p class="price__value">1 000 ₽</p>
-          </li>
-        </ul>
-      </div>
-    </section>
-
-    <section class="section section--tint" id="team">
-      <div class="container">
-        <div class="section__head">
-          <h2 class="section__title">Мастера</h2>
-          <p class="section__note">Записаться можно к любому мастеру. Если сомневаетесь, подскажем по телефону, кто подойдёт под задачу.</p>
-        </div>
-        <div class="team">
-          <article class="master">
-            <p class="master__avatar" aria-hidden="true">АС</p>
-            <h3 class="master__name">Анна Соколова</h3>
-            <p class="master__role">Топ-стилист, окрашивание</p>
-            <p class="master__exp">Стаж 11 лет. Ведёт сложные переходы и блонд, учит колористов в учебном центре.</p>
-          </article>
-          <article class="master">
-            <p class="master__avatar" aria-hidden="true">МЛ</p>
-            <h3 class="master__name">Мария Лебедева</h3>
-            <p class="master__role">Стилист, женские стрижки</p>
-            <p class="master__exp">Стаж 7 лет. Любит стрижки, которые держат форму без ежедневной укладки.</p>
-          </article>
-          <article class="master">
-            <p class="master__avatar" aria-hidden="true">ИС</p>
-            <h3 class="master__name">Игорь Савин</h3>
-            <p class="master__role">Барбер, мужские стрижки</p>
-            <p class="master__exp">Стаж 9 лет. Работает с фейдами и бородой, всегда уточняет, как клиент носит стрижку дома.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="gallery">
-      <div class="container">
-        <div class="section__head">
-          <h2 class="section__title">Галерея работ</h2>
-          <p class="section__note">Фотографии сделаны в нашем салоне во время обычных записей.</p>
-        </div>
-        <div class="gallery">
-          <figure class="gallery__item">
-            <img src="assets/img/color.jpg" alt="Мастер наносит краску на волосы клиента" width="1200" height="750" loading="lazy">
-            <figcaption class="gallery__caption">Окрашивание с переходом</figcaption>
-          </figure>
-          <figure class="gallery__item">
-            <img src="assets/img/space.jpg" alt="Барбер стрижёт клиента машинкой" width="1200" height="800" loading="lazy">
-            <figcaption class="gallery__caption">Мужская стрижка</figcaption>
-          </figure>
-          <figure class="gallery__item">
-            <img src="assets/img/beard.jpg" alt="Барбер оформляет бороду клиента" width="1000" height="1500" loading="lazy">
-            <figcaption class="gallery__caption">Оформление бороды</figcaption>
-          </figure>
-          <figure class="gallery__item">
-            <img src="assets/img/interior.jpg" alt="Рабочие места салона с зеркалами и креслами" width="1200" height="800" loading="lazy">
-            <figcaption class="gallery__caption">Рабочие места</figcaption>
-          </figure>
-        </div>
-      </div>
-    </section>
-
-    <section class="section section--tint" id="reviews">
-      <div class="container">
-        <div class="section__head">
-          <h2 class="section__title">Отзывы</h2>
-          <p class="section__note">Публикуем с разрешения клиентов, имена изменены по их просьбе.</p>
-        </div>
-        <div class="reviews">
-          <article class="review">
-            <p class="review__stars" aria-label="Оценка 5 из 5">
-              <svg viewBox="0 0 24 24" fill="currentColor" stroke="none" aria-hidden="true"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.2 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg>
-              <svg viewBox="0 0 24 24" fill="currentColor" stroke="none" aria-hidden="true"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.2 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg>
-              <svg viewBox="0 0 24 24" fill="currentColor" stroke="none" aria-hidden="true"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.2 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg>
-              <svg viewBox="0 0 24 24" fill="currentColor" stroke="none" aria-hidden="true"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.2 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg>
-              <svg viewBox="0 0 24 24" fill="currentColor" stroke="none" aria-hidden="true"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.2 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg>
-            </p>
-            <blockquote class="review__text">Красилась у Анны перед свадьбой подруги. Она отговорила меня от слишком тёмного оттенка и подобрала тот, который реально подошёл к коже. Волосы живые, концы не сожжены. Уже записалась на следующий раз.</blockquote>
-            <p class="review__author">Ольга М., окрашивание</p>
-          </article>
-          <article class="review">
-            <p class="review__stars" aria-label="Оценка 5 из 5">
-              <svg viewBox="0 0 24 24" fill="currentColor" stroke="none" aria-hidden="true"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.2 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg>
-              <svg viewBox="0 0 24 24" fill="currentColor" stroke="none" aria-hidden="true"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.2 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg>
-              <svg viewBox="0 0 24 24" fill="currentColor" stroke="none" aria-hidden="true"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.2 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg>
-              <svg viewBox="0 0 24 24" fill="currentColor" stroke="none" aria-hidden="true"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.2 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg>
-              <svg viewBox="0 0 24 24" fill="currentColor" stroke="none" aria-hidden="true"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.2 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg>
-            </p>
-            <blockquote class="review__text">Хожу к Игорю второй год. Он помнит, какая у меня длина была в прошлый раз, и сам предлагает, что поправить. Борода после оформления выглядит аккуратно, а не как по трафарету.</blockquote>
-            <p class="review__author">Дмитрий К., барберинг</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="how">
-      <div class="container">
-        <div class="section__head">
-          <h2 class="section__title">Как записаться</h2>
-          <p class="section__note">Вся запись занимает пару минут. Если время занято, перезвоним и предложим ближайшее свободное.</p>
-        </div>
-        <ol class="steps">
-          <li class="step">
-            <p class="step__num" aria-hidden="true">1</p>
-            <h3 class="step__title">Выбрать услугу</h3>
-            <p class="step__text">Найдите нужную услугу в прайсе выше или укажите её в форме ниже.</p>
-          </li>
-          <li class="step">
-            <p class="step__num" aria-hidden="true">2</p>
-            <h3 class="step__title">Выбрать время</h3>
-            <p class="step__text">Укажите дату и удобный час. Мы работаем с 10:00, последний визит в 19:00.</p>
-          </li>
-          <li class="step">
-            <p class="step__num" aria-hidden="true">3</p>
-            <h3 class="step__title">Подтвердить</h3>
-            <p class="step__text">Администратор перезвонит в течение часа и подтвердит запись.</p>
-          </li>
-        </ol>
-        <div class="steps__action">
-          <a href="#booking" class="btn btn--accent">Записаться</a>
-        </div>
-      </div>
-    </section>
-
-    <section class="section section--tint" id="contacts">
-      <div class="container">
-        <div class="section__head">
-          <h2 class="section__title">Контакты</h2>
-        </div>
-        <div class="contacts">
-          <div class="contact">
-            <h3 class="contact__title">Адрес</h3>
-            <p class="contact__text">Нижний Новгород, улица Большая Покровская, 74. Второй этаж, вход со двора.</p>
-          </div>
-          <div class="contact">
-            <h3 class="contact__title">Часы работы</h3>
-            <p class="contact__text">Понедельник - суббота: 10:00 - 20:00. Воскресенье: 11:00 - 18:00.</p>
-          </div>
-          <div class="contact">
-            <h3 class="contact__title">Телефон</h3>
-            <p class="contact__text"><a href="tel:+78312164587" class="contact__link">+7 (831) 216-45-87</a>. Звоните или пишите в мессенджеры по этому номеру.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="booking">
-      <div class="container">
-        <div class="section__head">
-          <h2 class="section__title">Запись на визит</h2>
-          <p class="section__note">Оставьте заявку, и администратор перезвонит подтвердить время.</p>
-        </div>
-        <form class="form" id="booking-form" novalidate>
-          <div class="form__grid">
-            <div class="field">
-              <label class="field__label" for="f-name">Имя</label>
-              <input class="field__input" type="text" id="f-name" name="name" placeholder="Как к вам обращаться" autocomplete="name">
-              <p class="field__error" id="err-name" hidden>Напишите имя, чтобы мы знали, как к вам обращаться.</p>
-            </div>
-            <div class="field">
-              <label class="field__label" for="f-phone">Телефон</label>
-              <input class="field__input" type="tel" id="f-phone" name="phone" placeholder="+7 (___) ___-__-__" autocomplete="tel">
-              <p class="field__error" id="err-phone" hidden>Укажите телефон в формате +7 или 8, всего 11 цифр.</p>
-            </div>
-            <div class="field">
-              <label class="field__label" for="f-service">Услуга</label>
-              <select class="field__input field__input--select" id="f-service" name="service">
-                <option value="" selected>Выберите услугу</option>
-                <option value="Женская стрижка">Женская стрижка</option>
-                <option value="Мужская стрижка">Мужская стрижка</option>
-                <option value="Окрашивание">Окрашивание</option>
-                <option value="Уход и восстановление">Уход и восстановление</option>
-                <option value="Борода">Борода</option>
-                <option value="Укладка">Укладка</option>
-              </select>
-              <p class="field__error" id="err-service" hidden>Выберите услугу из списка.</p>
-            </div>
-            <div class="field">
-              <label class="field__label" for="f-date">Дата</label>
-              <input class="field__input" type="date" id="f-date" name="date">
-              <p class="field__error" id="err-date" hidden>Выберите дату не раньше сегодняшней.</p>
-            </div>
-            <div class="field">
-              <label class="field__label" for="f-time">Время</label>
-              <select class="field__input field__input--select" id="f-time" name="time">
-                <option value="" selected>Выберите время</option>
-                <option value="10:00">10:00</option>
-                <option value="11:00">11:00</option>
-                <option value="12:00">12:00</option>
-                <option value="13:00">13:00</option>
-                <option value="14:00">14:00</option>
-                <option value="15:00">15:00</option>
-                <option value="16:00">16:00</option>
-                <option value="17:00">17:00</option>
-                <option value="18:00">18:00</option>
-                <option value="19:00">19:00</option>
-              </select>
-              <p class="field__error" id="err-time" hidden>Выберите время визита.</p>
-            </div>
-          </div>
-          <div class="form__footer">
-            <button class="btn btn--accent btn--wide" type="submit">Записаться</button>
-            <p class="form__status" id="form-status" role="status"></p>
-          </div>
-        </form>
-      </div>
-    </section>
-
-  </main>
-
-  <footer class="footer">
-    <div class="container footer__inner">
-      <div class="footer__col">
-        <p class="footer__logo">Лаванда</p>
-        <p class="footer__text">Салон красоты в центре Нижнего Новгорода.</p>
-      </div>
-      <div class="footer__col">
-        <p class="footer__title">Телефон</p>
-        <p class="footer__text"><a href="tel:+78312164587" class="footer__link">+7 (831) 216-45-87</a></p>
-      </div>
-      <div class="footer__col">
-        <p class="footer__title">Часы работы</p>
-        <p class="footer__text">Пн - сб: 10:00 - 20:00, вс: 11:00 - 18:00.</p>
+      <div class="hero__photo">
+        <img src="assets/img/hero.jpg" alt="Рабочее место стилиста в салоне «Лаванда»" width="1200" height="1500">
       </div>
     </div>
+  </section>
+
+  <section class="section" id="team">
     <div class="container">
-      <p class="footer__note">Демо-макет. Салон вымышленный, фотографии из Unsplash.</p>
+      <div class="section__head">
+        <h2>Мастера</h2>
+        <p>Записаться можно к любому мастеру. Если сомневаетесь, подскажем по телефону, кто подойдёт под задачу.</p>
+      </div>
+      <div class="team">
+        <article class="master">
+          <img class="master__photo" src="assets/img/color.jpg" alt="Окрашивание в салоне" loading="lazy">
+          <h3 class="master__name">Анна Соколова</h3>
+          <p class="master__role">Топ-стилист, окрашивание</p>
+          <p class="master__text">Стаж 11 лет. Ведёт сложные переходы и блонд, учит колористов в учебном центре.</p>
+        </article>
+        <article class="master">
+          <img class="master__photo" src="assets/img/trim.jpg" alt="Женская стрижка в салоне" loading="lazy">
+          <h3 class="master__name">Мария Лебедева</h3>
+          <p class="master__role">Стилист, женские стрижки</p>
+          <p class="master__text">Стаж 7 лет. Любит стрижки, которые держат форму без ежедневной укладки.</p>
+        </article>
+        <article class="master">
+          <img class="master__photo" src="assets/img/barber.jpg" alt="Мужская стрижка в барбер-зоне" loading="lazy">
+          <h3 class="master__name">Игорь Савин</h3>
+          <p class="master__role">Барбер, мужские стрижки</p>
+          <p class="master__text">Стаж 9 лет. Работает с фейдами и бородой, всегда уточняет, как клиент носит стрижку дома.</p>
+        </article>
+      </div>
     </div>
-  </footer>
+  </section>
 
-  <script src="assets/js/main.js"></script>
+  <section class="section" id="services">
+    <div class="container">
+      <div class="section__head">
+        <h2>Услуги и цены</h2>
+        <p>Цены указаны за работу мастера. Точную стоимость окрашивания называем после осмотра волос.</p>
+      </div>
+      <div class="prices">
+        <div class="price-row">
+          <h3 class="price__name">Женская стрижка</h3>
+          <p class="price__text">Стрижка любой сложности, мытьё головы и сушка. Форму обсуждаем до первого среза.</p>
+          <span class="price">1 200 ₽</span>
+        </div>
+        <div class="price-row">
+          <h3 class="price__name">Мужская стрижка</h3>
+          <p class="price__text">Классика, фейд и спортивные формы. В цену входит укладка воском или пастой.</p>
+          <span class="price">900 ₽</span>
+        </div>
+        <div class="price-row">
+          <h3 class="price__name">Окрашивание</h3>
+          <p class="price__text">Тонирование, амбре и сложные техники. Красим составами, которые не сушат волосы.</p>
+          <span class="price">от 3 500 ₽</span>
+        </div>
+        <div class="price-row">
+          <h3 class="price__name">Уход и восстановление</h3>
+          <p class="price__text">Маски, ботокс и скраб для кожи головы. Подбираем состав под состояние волос.</p>
+          <span class="price">1 800 ₽</span>
+        </div>
+        <div class="price-row">
+          <h3 class="price__name">Борода</h3>
+          <p class="price__text">Стрижка и оформление бороды с горячим полотенцем и маслом в финале.</p>
+          <span class="price">800 ₽</span>
+        </div>
+        <div class="price-row">
+          <h3 class="price__name">Укладка</h3>
+          <p class="price__text">Повседневная или вечерняя укладка. Держится до следующего мытья головы.</p>
+          <span class="price">1 000 ₽</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="gallery">
+    <div class="container">
+      <div class="section__head">
+        <h2>Галерея работ</h2>
+        <p>Фотографии сделаны в нашем салоне во время обычных записей.</p>
+      </div>
+      <div class="gallery">
+        <figure class="gallery__item gallery__item--wide">
+          <img src="assets/img/color.jpg" alt="Окрашивание с переходом" loading="lazy">
+        </figure>
+        <figure class="gallery__item"><img src="assets/img/trim.jpg" alt="Мужская стрижка" loading="lazy"></figure>
+        <figure class="gallery__item"><img src="assets/img/beard.jpg" alt="Оформление бороды" loading="lazy"></figure>
+        <figure class="gallery__item"><img src="assets/img/interior.jpg" alt="Рабочие места в салоне" loading="lazy"></figure>
+        <figure class="gallery__item"><img src="assets/img/care.jpg" alt="Уход за волосами" loading="lazy"></figure>
+        <figure class="gallery__item"><img src="assets/img/wash.jpg" alt="Мытьё головы перед стрижкой" loading="lazy"></figure>
+      </div>
+      <p class="gallery__caption">Кадры без ретуши: так выглядит результат в первый день и через месяц.</p>
+    </div>
+  </section>
+
+  <section class="section" id="reviews">
+    <div class="container">
+      <div class="section__head">
+        <h2>Отзывы</h2>
+        <p>Публикуем с разрешения клиентов, имена изменены по их просьбе.</p>
+      </div>
+      <div class="quotes">
+        <blockquote class="quote">
+          <p>Красилась у Анны перед свадьбой подруги. Она отговорила меня от слишком тёмного оттенка и подобрала тот, который реально подошёл к коже. Волосы живые, концы не сожжены. Уже записалась на следующий раз.</p>
+          <cite>Ольга М., окрашивание</cite>
+        </blockquote>
+        <blockquote class="quote">
+          <p>Хожу к Игорю второй год. Он помнит, какая у меня длина была в прошлый раз, и сам предлагает, что поправить. Борода после оформления выглядит аккуратно, а не как по трафарету.</p>
+          <cite>Дмитрий К., барберинг</cite>
+        </blockquote>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="how">
+    <div class="container">
+      <div class="section__head">
+        <h2>Как записаться</h2>
+        <p>Вся запись занимает пару минут. Если время занято, перезвоним и предложим ближайшее свободное.</p>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <div class="step__num">01</div>
+          <div class="step__title">Выбрать услугу</div>
+          <p class="step__text">Найдите нужную услугу в прайсе выше или укажите её в форме ниже.</p>
+        </div>
+        <div class="step">
+          <div class="step__num">02</div>
+          <div class="step__title">Выбрать время</div>
+          <p class="step__text">Укажите дату и удобный час. Мы работаем с 10:00, последний визит в 19:00.</p>
+        </div>
+        <div class="step">
+          <div class="step__num">03</div>
+          <div class="step__title">Подтвердить</div>
+          <p class="step__text">Администратор перезвонит в течение часа и подтвердит запись.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="contacts">
+    <div class="container">
+      <div class="section__head">
+        <h2>Контакты</h2>
+        <p>Второй этаж, вход со двора. Рядом парковка на восемь машин.</p>
+      </div>
+      <div class="contacts">
+        <div class="contact">
+          <h3 class="contact__title">Адрес</h3>
+          <p class="contact__text">Нижний Новгород, улица Большая Покровская, 74. Второй этаж, вход со двора.</p>
+        </div>
+        <div class="contact">
+          <h3 class="contact__title">Часы работы</h3>
+          <p class="contact__text">Понедельник - суббота: 10:00 - 20:00. Воскресенье: 11:00 - 18:00.</p>
+        </div>
+        <div class="contact">
+          <h3 class="contact__title">Телефон</h3>
+          <p class="contact__text"><a class="contact__link" href="tel:+783****4587">+7 (831) 216-45-87</a>. Звоните или пишите в мессенджеры по этому номеру.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="booking">
+    <div class="container form-block">
+      <div class="form-intro">
+        <h2>Запись на визит</h2>
+        <p>Оставьте заявку, и администратор перезвонит подтвердить время. Если не успеваете, предупредите заранее, мы переставим визит.</p>
+      </div>
+      <form class="form" id="booking-form" novalidate>
+        <div class="form__grid">
+          <div class="field">
+            <label class="field__label" for="f-name">Имя</label>
+            <input class="field__input" type="text" id="f-name" name="name" placeholder="Как к вам обращаться" autocomplete="name">
+            <p class="field__error" id="err-name" hidden>Напишите имя, чтобы мы знали, как к вам обращаться.</p>
+          </div>
+          <div class="field">
+            <label class="field__label" for="f-phone">Телефон</label>
+            <input class="field__input" type="tel" id="f-phone" name="phone" placeholder="+7 (___) ___-__-__" autocomplete="tel">
+            <p class="field__error" id="err-phone" hidden>Укажите телефон в формате +7 или 8, всего 11 цифр.</p>
+          </div>
+          <div class="field">
+            <label class="field__label" for="f-service">Услуга</label>
+            <select class="field__input" id="f-service" name="service">
+              <option value="" selected>Выберите услугу</option>
+              <option value="Женская стрижка">Женская стрижка</option>
+              <option value="Мужская стрижка">Мужская стрижка</option>
+              <option value="Окрашивание">Окрашивание</option>
+              <option value="Уход и восстановление">Уход и восстановление</option>
+              <option value="Борода">Борода</option>
+              <option value="Укладка">Укладка</option>
+            </select>
+            <p class="field__error" id="err-service" hidden>Выберите услугу из списка.</p>
+          </div>
+          <div class="field">
+            <label class="field__label" for="f-date">Дата</label>
+            <input class="field__input" type="date" id="f-date" name="date">
+            <p class="field__error" id="err-date" hidden>Выберите дату не раньше сегодняшней.</p>
+          </div>
+          <div class="field">
+            <label class="field__label" for="f-time">Время</label>
+            <select class="field__input" id="f-time" name="time">
+              <option value="" selected>Выберите время</option>
+              <option value="10:00">10:00</option>
+              <option value="11:00">11:00</option>
+              <option value="12:00">12:00</option>
+              <option value="13:00">13:00</option>
+              <option value="14:00">14:00</option>
+              <option value="15:00">15:00</option>
+              <option value="16:00">16:00</option>
+              <option value="17:00">17:00</option>
+              <option value="18:00">18:00</option>
+              <option value="19:00">19:00</option>
+            </select>
+            <p class="field__error" id="err-time" hidden>Выберите время визита.</p>
+          </div>
+        </div>
+        <div class="form__footer">
+          <button class="btn btn--primary" type="submit">Записаться</button>
+          <p class="form__status" id="form-status" role="status"></p>
+        </div>
+      </form>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="container footer__in">
+    <div class="footer__col">
+      <span class="footer__logo">Лаванда</span>
+      <p class="footer__note">Салон красоты в центре Нижнего Новгорода</p>
+    </div>
+    <div class="footer__col">
+      <h3 class="footer__title">Телефон</h3>
+      <p class="footer__text"><a class="footer__link" href="tel:+783****4587">+7 (831) 216-45-87</a></p>
+    </div>
+    <div class="footer__col">
+      <h3 class="footer__title">Адрес</h3>
+      <p class="footer__text">Большая Покровская, 74, второй этаж</p>
+    </div>
+  </div>
+  <div class="container footer__demo">
+    <p>Демо-макет. Салон вымышленный, фотографии из Unsplash.</p>
+  </div>
+</footer>
+
+<script src="assets/js/main.js"></script>
 </body>
 </html>

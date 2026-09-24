@@ -47,6 +47,7 @@
   header{ position:sticky; top:0; z-index:50; background:var(--paper); border-bottom:1px solid var(--line); }
   .head{ height:78px; display:flex; align-items:center; justify-content:space-between; gap:20px; }
   .logo{ display:flex; align-items:baseline; gap:12px; text-decoration:none; color:var(--ink); }
+  .logo > div{ display:flex; align-items:baseline; gap:12px; }
   .logo-mark{ display:none; }
   .logo b{ font-family:"VelaSans"; font-weight:800; font-size:19px; letter-spacing:-0.01em; }
   .logo span{ color:var(--muted); font-size:13px; }
@@ -56,7 +57,7 @@
   nav a .n{ display:none; }
 
   /* первый экран */
-  .hero{ padding:80px 0 56px; }
+  .hero{ padding:72px 0 30px; }
   .kicker{ color:var(--muted); font-size:14px; letter-spacing:.02em; }
   h1{ font-size:clamp(2.1rem,4.8vw,3.7rem); line-height:1.04; font-weight:800; letter-spacing:-0.02em; margin-top:14px; max-width:24ch; }
   .hero p{ color:var(--muted); max-width:52ch; margin-top:20px; }
@@ -68,14 +69,14 @@
   .btn-line:hover{ border-color:var(--ink); }
 
   /* секции */
-  section{ padding:64px 0 0; }
+  section{ padding:52px 0 0; }
   .sec-t{ font-size:clamp(1.5rem,2.6vw,2.1rem); font-weight:700; letter-spacing:-0.01em;
     padding-bottom:16px; border-bottom:1px solid var(--ink); }
   .sec-sub{ color:var(--muted); font-size:15px; margin-top:14px; max-width:74ch; }
 
   /* услуги */
-  .grid{ display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:0 64px; margin-top:8px; align-items:start; }
-  .card{ border-bottom:1px solid var(--line); padding:26px 0; display:flex; flex-direction:column; }
+  .grid{ columns:2; column-gap:64px; margin-top:8px; }
+  .card{ break-inside:avoid; border-bottom:1px solid var(--line); padding:26px 0; display:block; }
   .card h3{ font-size:20px; font-weight:700; line-height:1.25; letter-spacing:-0.01em; }
   .card .price{ color:var(--accent); font-family:"VelaSans"; font-weight:500; font-size:17px; margin-top:8px;
     font-variant-numeric:tabular-nums; }
@@ -156,9 +157,6 @@
     .wcard{ grid-template-columns:1fr; }
     .wcard .go{ grid-column:1; grid-row:auto; }
   }
-  @media(min-width:641px){
-    .grid > .card:last-child:nth-child(odd){ grid-column:span 2; }
-  }
   @media(max-width:640px){
     body{ font-size:16px; }
     .head{ height:auto; padding:14px 0; flex-direction:column; align-items:flex-start; gap:10px; }
@@ -166,7 +164,7 @@
     nav a{ font-size:14px; }
     .hero{ padding:44px 0 40px; }
     section{ padding:44px 0 0; }
-    .grid, .wgrid{ grid-template-columns:1fr; gap:0; }
+    .grid{ columns:1; } .wgrid{ grid-template-columns:1fr; }
     .form{ padding-top:20px; }
   }
   @media (prefers-reduced-motion:reduce){
