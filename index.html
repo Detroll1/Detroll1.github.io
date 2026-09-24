@@ -43,7 +43,7 @@
   a{ color:inherit; }
   img{ display:block; max-width:100%; }
 
-  .wrap{ width:min(1320px,100% - 40px); margin-inline:auto; }
+  .wrap{ --page: 1320px; width:min(var(--page),100% - 40px); margin-inline:auto; }
   .rule{ height:1px; background:var(--line); }
 
   /* шапка */
@@ -60,7 +60,7 @@
   .hero{ padding: 72px 0 32px; }
   .hero .label{ color:var(--muted); font-size: 14px; letter-spacing:.02em; }
   .hero h1{ font-size:clamp(2.2rem,5vw,3.9rem); font-weight:800; line-height:1.03; letter-spacing:-0.02em;
-    margin-top: 16px; max-width:22ch; }
+    margin-top: 16px; max-width:26ch; }
   .hero-row{ display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1.35fr); gap: 56px; margin-top: 36px; align-items:end; }
   .hero-txt .lead{ color:var(--muted); max-width:42ch; }
   .hero-actions{ display:flex; gap: 12px; flex-wrap:wrap; margin-top: 32px; }
@@ -68,6 +68,14 @@
   .hero-shot img{ width:100%; border:1px solid var(--line); }
   .hero-shot .cap{ color:var(--ink); font-size: 14px; margin-top: 12px; }
   .hero-shot .cap a{ color:var(--accent); text-decoration:none; border-bottom:1px solid var(--accent); }
+  @media(min-width:1200px){
+    /* кадр работы уходит за правый край сетки, а не стоит ровным боксом */
+    .hero-shot{ --bleed: max(0px, min(48px, (100vw - var(--page)) / 2 - 8px)); margin-right: calc(-1 * var(--bleed)); }
+  }
+  @media(max-width:900px){
+    .sec-head{ flex-direction:column; gap: 8px; align-items:flex-start; }
+    .sec-head p{ text-align:left; }
+  }
 
   .btn{ display:inline-block; padding: 16px 24px; border-radius:3px; font-weight:500; font-size: 16px; text-decoration:none; }
   .btn-solid{ background:var(--accent); color:var(--on-accent); }
@@ -280,7 +288,7 @@
   <a class="work" href="ai-agent/">
     <span class="num">10</span>
     <div>
-      <h3>ИИ-агент под вашу задачу</h3>
+      <h3>ИИ-агент: отвечает клиентам и разбирает заявки</h3>
       <p class="d">Агент отвечает клиентам, разбирает заявки, готовит отчёты. Показываю, как он устроен и чем проверяется результат.</p>
       <p class="tags"><span>Автоматизация</span><span>Агенты</span></p>
     </div>
@@ -321,11 +329,11 @@
 <section id="uslugi-ceny" class="wrap">
   <div class="sec-head">
     <h2>Услуги и цены</h2>
-    <div class="note">Девять услуг с фиксированной ценой и сроком. Опции вроде корзины, админки или аналитики добавляются к базе.</div>
+    <div class="note">Девять услуг с фиксированной ценой и сроком. Корзина, админка или аналитика: если нужно, добавляем отдельно.</div>
   </div>
 
   <div class="price-head"><span>Услуга</span><span>Цена</span><span>Срок</span></div>
-  <a class="price-row" href="uslugi/" data-ev="price-uslugi"><span class="pn">Лендинг под ключ</span><span class="pp">3 500 ₽</span><span class="pt">4 дня</span></a>
+  <a class="price-row" href="uslugi/" data-ev="price-uslugi"><span class="pn">Одностраничный сайт</span><span class="pp">3 500 ₽</span><span class="pt">4 дня</span></a>
   <a class="price-row" href="uslugi/" data-ev="price-uslugi"><span class="pn">Вёрстка по макету Figma</span><span class="pp">от 1 500 ₽</span><span class="pt">от 2 дней</span></a>
   <a class="price-row" href="uslugi/" data-ev="price-uslugi"><span class="pn">Telegram-бот для заявок</span><span class="pp">2 500 ₽</span><span class="pt">4 дня</span></a>
   <a class="price-row" href="uslugi/" data-ev="price-uslugi"><span class="pn">Парсер данных в Excel</span><span class="pp">1 500 ₽</span><span class="pt">3 дня</span></a>
@@ -333,7 +341,7 @@
   <a class="price-row" href="uslugi/" data-ev="price-uslugi"><span class="pn">Telegram Mini App: витрина или запись</span><span class="pp">3 500 ₽</span><span class="pt">5 дней</span></a>
   <a class="price-row" href="uslugi/" data-ev="price-uslugi"><span class="pn">Доработка сайта: правки, адаптив, ускорение</span><span class="pp">2 000 ₽</span><span class="pt">3 дня</span></a>
   <a class="price-row" href="uslugi/" data-ev="price-uslugi"><span class="pn">Аудит первого экрана: отчёт с числами</span><span class="pp">3 000 ₽</span><span class="pt">3 дня</span></a>
-  <a class="price-row" href="uslugi/" data-ev="price-uslugi"><span class="pn">ИИ-агент под вашу задачу</span><span class="pp">4 000 ₽</span><span class="pt">5 дней</span></a>
+  <a class="price-row" href="uslugi/" data-ev="price-uslugi"><span class="pn">ИИ-агент: отвечает клиентам</span><span class="pp">4 000 ₽</span><span class="pt">5 дней</span></a>
 
   <p class="note">Правки по вашим замечаниям входят в срок, отдаю исходники и живую ссылку. Если задача не подходит под эти цены, напишите, посчитаю отдельно.</p>
 
