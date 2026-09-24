@@ -19,7 +19,7 @@ a{ color:inherit; }
 h1,h2,h3,.btn,.logo,.price{ font-family:"Vela",system-ui,sans-serif; }
 h1,h2{ text-wrap:balance; }
 p{ text-wrap:pretty; }
-.container{ width:min(1180px,100% - 40px); margin-inline:auto; }
+.container{ width:min(1320px,100% - 40px); margin-inline:auto; }
 .visually-hidden{ position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); }
 
 /* шапка */

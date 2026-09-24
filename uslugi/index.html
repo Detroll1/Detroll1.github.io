@@ -41,7 +41,7 @@
   h1,h2{ text-wrap:balance; }
   p{ text-wrap:pretty; }
 
-  .wrap{ width:min(1180px,100% - 40px); margin-inline:auto; }
+  .wrap{ width:min(1320px,100% - 40px); margin-inline:auto; }
 
   /* шапка */
   header{ position:sticky; top:0; z-index:50; background:var(--paper); border-bottom:1px solid var(--line); }
@@ -63,9 +63,9 @@
   .hero p{ color:var(--muted); max-width:52ch; margin-top: 20px; }
   .btns{ margin-top: 32px; display:flex; gap: 12px; flex-wrap:wrap; }
   .btn{ display:inline-block; padding: 16px 24px; border-radius:3px; font-weight:500; font-size: 16px; text-decoration:none; }
-  .btn-gold{ background:var(--accent); color:var(--on-accent); }
+  .btn-accent{ background:var(--accent); color:var(--on-accent); }
   .btn-line{ border:1px solid var(--line); color:var(--ink); }
-  .btn-gold:hover{ background:#9c3a1a; }
+  .btn-accent:hover{ background:#9c3a1a; }
   .btn-line:hover{ border-color:var(--ink); }
 
   /* секции */
@@ -135,7 +135,7 @@
   .field.invalid input, .field.invalid textarea{ border-color:var(--accent); }
   .fbtns{ display:flex; gap: 12px; flex-wrap:wrap; margin-top: 6px; }
   .fbtn{ padding: 12px 24px; border-radius:3px; font-weight:500; font-size: 16px; cursor:pointer; border:none; }
-  .fbtn-gold{ background:var(--accent); color:var(--on-accent); }
+  .fbtn-accent{ background:var(--accent); color:var(--on-accent); }
   .fbtn-line{ background:transparent; border:1px solid var(--line); color:var(--ink); }
   .fbtn:hover{ opacity:.9; }
   .preview{ display:none; margin-top: 20px; border-top:1px solid var(--line); padding-top: 16px; }
@@ -197,7 +197,7 @@
   <h1>Сайты, боты и автоматизация под задачу</h1>
   <p>Работаю на своём коде, без конструкторов. Показываю живые ссылки, а не скриншоты. Цены ниже рынка, пока собираю отзывы.</p>
   <div class="btns">
-    <a class="btn btn-gold" href="#zayavka">Оставить заявку</a>
+    <a class="btn btn-accent" href="#zayavka">Оставить заявку</a>
     <a class="btn btn-line" href="../#work">Смотреть работы</a>
   </div>
 </section>
@@ -571,11 +571,11 @@
       <div class="err">Заполните это поле</div>
     </div>
     <div class="fbtns">
-      <button type="button" class="fbtn fbtn-gold" id="btn-send" data-ev="click-send">Отправить заявку</button>
+      <button type="button" class="fbtn fbtn-accent" id="btn-send" data-ev="click-send">Отправить заявку</button>
       <button type="button" class="fbtn fbtn-line" id="btn-tg" data-ev="click-tg">Написать в Telegram</button>
       <button type="button" class="fbtn fbtn-line" id="btn-mail" data-ev="click-mail">Отправить на почту</button>
     </div>
-    <div class="ok" id="errmsg" style="color:#e07a6a">Не получилось отправить. Напишите в Telegram или на почту, кнопки ниже, либо скопируйте текст заявки.</div>
+    <div class="ok" id="errmsg" style="color:#A33B2A">Не получилось отправить. Напишите в Telegram или на почту, кнопки ниже, либо скопируйте текст заявки.</div>
     <div class="preview" id="preview">
       <div class="pl">Текст заявки, можно скопировать</div>
       <pre id="preview-text"></pre>
