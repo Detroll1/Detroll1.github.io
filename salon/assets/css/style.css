@@ -11,9 +11,9 @@
 :root{
   --paper:#F5F3F1; --ink:#1A1917; --muted:#6C6A66; --line:#DED9D3; --accent:#4A5A6A; --on-accent:#F7F6F3;
 }
-*{ margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
+*{ margin: 0; padding: 0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
 html{ scroll-behavior:smooth; }
-body{ background:var(--paper); color:var(--ink); font-family:"Inter",system-ui,sans-serif; font-size:17px; line-height:1.6; overflow-x:hidden; }
+body{ background:var(--paper); color:var(--ink); font-family:"Inter",system-ui,sans-serif; font-size: 16px; line-height:1.6; overflow-x:hidden; }
 img{ display:block; max-width:100%; }
 a{ color:inherit; }
 h1,h2,h3,.btn,.logo,.price{ font-family:"Vela",system-ui,sans-serif; }
@@ -23,142 +23,142 @@ p{ text-wrap:pretty; }
 
 /* шапка */
 .header{ position:sticky; top:0; z-index:40; background:var(--paper); border-bottom:1px solid var(--line); }
-.header__in{ height:74px; display:flex; align-items:center; justify-content:space-between; gap:22px; }
-.logo{ font-weight:800; font-size:22px; letter-spacing:-0.01em; text-decoration:none; }
-.nav{ display:flex; gap:22px; }
-.nav a{ color:var(--muted); text-decoration:none; font-size:15px; padding-bottom:2px; border-bottom:1px solid transparent; }
+.header__in{ height:74px; display:flex; align-items:center; justify-content:space-between; gap: 20px; }
+.logo{ font-weight:800; font-size: 20px; letter-spacing:-0.01em; text-decoration:none; }
+.nav{ display:flex; gap: 20px; }
+.nav a{ color:var(--muted); text-decoration:none; font-size: 14px; padding-bottom: 2px; border-bottom:1px solid transparent; }
 .nav a:hover{ color:var(--ink); border-bottom-color:var(--accent); }
-.header__right{ display:flex; align-items:center; gap:18px; }
-.header__phone{ font-size:16px; text-decoration:none; color:var(--ink); white-space:nowrap; }
+.header__right{ display:flex; align-items:center; gap: 16px; }
+.header__phone{ font-size: 16px; text-decoration:none; color:var(--ink); white-space:nowrap; }
 .header__phone:hover{ color:var(--accent); }
-.burger{ display:none; background:none; border:1px solid var(--line); border-radius:3px; padding:8px; cursor:pointer; color:var(--ink); }
+.burger{ display:none; background:none; border:1px solid var(--line); border-radius:3px; padding: 8px; cursor:pointer; color:var(--ink); }
 .burger .icon{ display:block; }
 .burger .icon-close{ display:none; }
 .burger[aria-expanded="true"] .icon-open{ display:none; }
 .burger[aria-expanded="true"] .icon-close{ display:block; }
 
 /* кнопки */
-.btn{ display:inline-block; padding:14px 24px; border-radius:3px; font-size:16px; font-weight:500; text-decoration:none; border:1px solid transparent; cursor:pointer; }
+.btn{ display:inline-block; padding: 12px 24px; border-radius:3px; font-size: 16px; font-weight:500; text-decoration:none; border:1px solid transparent; cursor:pointer; }
 .btn--primary{ background:var(--accent); color:var(--on-accent); }
 .btn--primary:hover{ background:#3d4c5b; }
 .btn--ghost{ border-color:var(--line); color:var(--ink); background:transparent; }
 .btn--ghost:hover{ border-color:var(--ink); }
 
 /* первый экран: текст слева, кадр справа */
-.hero{ padding:56px 0 8px; }
-.hero__grid{ display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:52px; align-items:start; }
-.hero__kicker{ color:var(--muted); font-size:15px; }
-.hero__title{ font-size:clamp(2.1rem,4.6vw,3.3rem); font-weight:800; line-height:1.02; letter-spacing:-0.02em; margin-top:14px; }
-.hero__text{ color:var(--muted); margin-top:18px; max-width:46ch; }
-.hero__actions{ display:flex; gap:12px; flex-wrap:wrap; margin-top:26px; }
-.hero__facts{ display:flex; gap:34px; flex-wrap:wrap; margin-top:32px; padding-top:20px; border-top:1px solid var(--line); }
-.hero__fact b{ font-family:"Vela"; font-weight:700; font-size:20px; display:block; font-variant-numeric:tabular-nums; }
-.hero__fact span{ color:var(--muted); font-size:14px; }
+.hero{ padding: 56px 0 8px; }
+.hero__grid{ display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap: 48px; align-items:start; }
+.hero__kicker{ color:var(--muted); font-size: 14px; }
+.hero__title{ font-size:clamp(2.1rem,4.6vw,3.3rem); font-weight:800; line-height:1.02; letter-spacing:-0.02em; margin-top: 12px; }
+.hero__text{ color:var(--muted); margin-top: 16px; max-width:46ch; }
+.hero__actions{ display:flex; gap: 12px; flex-wrap:wrap; margin-top: 24px; }
+.hero__facts{ display:flex; gap: 32px; flex-wrap:wrap; margin-top: 32px; padding-top: 20px; border-top:1px solid var(--line); }
+.hero__fact b{ font-family:"Vela"; font-weight:700; font-size: 20px; display:block; font-variant-numeric:tabular-nums; }
+.hero__fact span{ color:var(--muted); font-size: 14px; }
 .hero__photo img{ width:100%; aspect-ratio:4/5; object-fit:cover; border:1px solid var(--line); }
-.hero__photo{ padding-top:6px; }
+.hero__photo{ padding-top: 6px; }
 
 /* секции */
-.section{ padding:60px 0 0; scroll-margin-top:90px; }
-.section__head{ display:flex; align-items:baseline; justify-content:space-between; gap:20px; padding-bottom:16px; border-bottom:1px solid var(--ink); }
+.section{ padding: 56px 0 0; scroll-margin-top: 96px; }
+.section__head{ display:flex; align-items:baseline; justify-content:space-between; gap: 20px; padding-bottom: 16px; border-bottom:1px solid var(--ink); }
 .section__head h2{ font-size:clamp(1.4rem,2.6vw,2rem); font-weight:700; letter-spacing:-0.01em; }
-.section__head p{ color:var(--muted); font-size:15px; max-width:48ch; text-align:right; }
+.section__head p{ color:var(--muted); font-size: 14px; max-width:48ch; text-align:right; }
 
 /* мастера: три колонки сразу после первого экрана */
-.team{ display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:0 44px; margin-top:24px; }
-.master{ border-top:1px solid var(--line); padding:20px 0 26px; }
+.team{ display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap: 0 40px; margin-top: 24px; }
+.master{ border-top:1px solid var(--line); padding: 20px 0 24px; }
 .master__photo{ width:100%; aspect-ratio:4/3; object-fit:cover; border:1px solid var(--line); }
-.master__name{ font-size:19px; font-weight:700; margin-top:16px; }
-.master__role{ color:var(--accent); font-size:15px; margin-top:4px; }
-.master__text{ color:var(--muted); font-size:15px; margin-top:10px; }
+.master__name{ font-size: 18px; font-weight:700; margin-top: 16px; }
+.master__role{ color:var(--accent); font-size: 14px; margin-top: 4px; }
+.master__text{ color:var(--muted); font-size: 14px; margin-top: 8px; }
 
 /* услуги: таблица строками */
-.prices{ margin-top:24px; }
-.price-row{ display:grid; grid-template-columns:minmax(0,.9fr) minmax(0,1.6fr) auto; gap:24px; align-items:baseline;
-  padding:20px 0; border-bottom:1px solid var(--line); }
+.prices{ margin-top: 24px; }
+.price-row{ display:grid; grid-template-columns:minmax(0,.9fr) minmax(0,1.6fr) auto; gap: 24px; align-items:baseline;
+  padding: 20px 0; border-bottom:1px solid var(--line); }
 .price-row:hover{ background:rgba(74,90,106,.04); }
-.price__name{ font-family:"Vela"; font-weight:500; font-size:18px; }
-.price__text{ color:var(--muted); font-size:15px; }
+.price__name{ font-family:"Vela"; font-weight:500; font-size: 18px; }
+.price__text{ color:var(--muted); font-size: 14px; }
 .price{ font-family:"Vela"; font-weight:500; font-variant-numeric:tabular-nums; white-space:nowrap; }
 
 /* галерея: мозаика */
-.gallery{ display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:14px; margin-top:24px; }
+.gallery{ display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap: 12px; margin-top: 24px; }
 .gallery__item{ position:relative; overflow:hidden; border:1px solid var(--line); }
 .gallery__item img{ width:100%; height:100%; object-fit:cover; aspect-ratio:1/1; }
 .gallery__item--wide{ grid-column:span 2; grid-row:span 2; }
 .gallery__item--wide img{ aspect-ratio:auto; height:100%; }
-.gallery__caption{ color:var(--muted); font-size:14px; margin-top:8px; }
+.gallery__caption{ color:var(--muted); font-size: 14px; margin-top: 8px; }
 
 /* отзывы */
-.quotes{ display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:0 56px; margin-top:24px; }
-.quote{ border-top:1px solid var(--line); padding:20px 0; }
-.quote p{ font-size:19px; line-height:1.5; }
-.quote cite{ display:block; color:var(--muted); font-style:normal; font-size:15px; margin-top:12px; }
+.quotes{ display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap: 0 56px; margin-top: 24px; }
+.quote{ border-top:1px solid var(--line); padding: 20px 0; }
+.quote p{ font-size: 18px; line-height:1.5; }
+.quote cite{ display:block; color:var(--muted); font-style:normal; font-size: 14px; margin-top: 12px; }
 
 /* как записаться: шаги в строку */
-.steps{ display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:0 44px; margin-top:24px; }
-.step{ border-top:1px solid var(--line); padding:18px 0; }
-.step__num{ color:var(--accent); font-family:"Vela"; font-weight:500; font-size:15px; }
-.step__title{ font-family:"Vela"; font-weight:500; font-size:17px; margin-top:6px; }
-.step__text{ color:var(--muted); font-size:15px; margin-top:6px; }
+.steps{ display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap: 0 40px; margin-top: 24px; }
+.step{ border-top:1px solid var(--line); padding: 16px 0; }
+.step__num{ color:var(--accent); font-family:"Vela"; font-weight:500; font-size: 14px; }
+.step__title{ font-family:"Vela"; font-weight:500; font-size: 16px; margin-top: 6px; }
+.step__text{ color:var(--muted); font-size: 14px; margin-top: 6px; }
 
 /* запись */
-.form-block{ display:grid; grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr); gap:48px; align-items:start; margin-top:24px; padding-bottom:64px; }
+.form-block{ display:grid; grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr); gap: 48px; align-items:start; margin-top: 24px; padding-bottom: 64px; }
 .form-intro h2{ font-size:clamp(1.4rem,2.6vw,2rem); font-weight:700; }
-.form-intro p{ color:var(--muted); margin-top:14px; max-width:44ch; }
-.form{ border-top:1px solid var(--ink); padding-top:22px; display:grid; gap:16px; }
-.field{ display:flex; flex-direction:column; gap:7px; }
-.field__label{ font-size:14px; color:var(--muted); }
+.form-intro p{ color:var(--muted); margin-top: 12px; max-width:44ch; }
+.form{ border-top:1px solid var(--ink); padding-top: 20px; display:grid; gap: 16px; }
+.field{ display:flex; flex-direction:column; gap: 6px; }
+.field__label{ font-size: 14px; color:var(--muted); }
 .field__input{
   background:#fff; border:1px solid var(--line); border-radius:3px; color:var(--ink);
-  font:inherit; font-size:16px; padding:12px 14px; outline:none; width:100%;
+  font:inherit; font-size: 16px; padding: 12px 12px; outline:none; width:100%;
 }
 .field__input:focus{ border-color:var(--accent); }
 .field__input--invalid{ border-color:#A33B2A; }
-.form__grid{ display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:16px; }
-.field__error{ color:#A33B2A; font-size:14px; }
-.form__footer{ display:flex; align-items:center; gap:16px; flex-wrap:wrap; }
-.form__status{ color:var(--muted); font-size:16px; }
+.form__grid{ display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap: 16px; }
+.field__error{ color:#A33B2A; font-size: 14px; }
+.form__footer{ display:flex; align-items:center; gap: 16px; flex-wrap:wrap; }
+.form__status{ color:var(--muted); font-size: 16px; }
 .form__status--ok{ color:var(--accent); }
 
 /* контакты */
-.contacts{ display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:0 40px; margin-top:24px; }
-.contact{ border-top:1px solid var(--line); padding-top:16px; }
-.contact__title{ font-size:15px; font-weight:600; color:var(--muted); }
-.contact__text{ font-size:18px; margin-top:8px; }
+.contacts{ display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap: 0 40px; margin-top: 24px; }
+.contact{ border-top:1px solid var(--line); padding-top: 16px; }
+.contact__title{ font-size: 14px; font-weight:600; color:var(--muted); }
+.contact__text{ font-size: 18px; margin-top: 8px; }
 .contact__link{ color:var(--ink); text-decoration:none; border-bottom:1px solid var(--accent); }
 
 /* подвал */
 .footer{ border-top:1px solid var(--line); background:#EFEDEA; }
-.footer__in{ display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:30px; padding:34px 0; }
-.footer__title{ font-size:14px; font-weight:600; color:var(--muted); }
-.footer__text{ font-size:17px; margin-top:8px; }
-.footer__note{ color:var(--muted); font-size:15px; margin-top:8px; }
-.footer__logo{ font-family:"Vela"; font-weight:800; font-size:20px; }
+.footer__in{ display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap: 32px; padding: 32px 0; }
+.footer__title{ font-size: 14px; font-weight:600; color:var(--muted); }
+.footer__text{ font-size: 16px; margin-top: 8px; }
+.footer__note{ color:var(--muted); font-size: 14px; margin-top: 8px; }
+.footer__logo{ font-family:"Vela"; font-weight:800; font-size: 20px; }
 .footer__link{ color:var(--ink); text-decoration:none; border-bottom:1px solid var(--line); }
-.footer__demo{ border-top:1px solid var(--line); padding:16px 0 22px; color:var(--muted); font-size:14px; }
+.footer__demo{ border-top:1px solid var(--line); padding: 16px 0 20px; color:var(--muted); font-size: 14px; }
 
 @media(max-width:1000px){
-  .hero__grid{ grid-template-columns:1fr; gap:30px; }
+  .hero__grid{ grid-template-columns:1fr; gap: 32px; }
   .hero__photo img{ aspect-ratio:16/10; }
   .team{ grid-template-columns:repeat(2,minmax(0,1fr)); }
   .gallery{ grid-template-columns:repeat(2,minmax(0,1fr)); }
-  .form-block{ grid-template-columns:1fr; gap:30px; }
+  .form-block{ grid-template-columns:1fr; gap: 32px; }
   .steps{ grid-template-columns:1fr; }
 }
 @media(max-width:700px){
-  body{ font-size:16px; }
-  .header__in{ height:auto; padding:14px 0; flex-wrap:wrap; row-gap:12px; }
-  .nav{ display:none; width:100%; flex-direction:column; gap:12px; border-top:1px solid var(--line); padding-top:12px; }
+  body{ font-size: 16px; }
+  .header__in{ height:auto; padding: 12px 0; flex-wrap:wrap; row-gap: 12px; }
+  .nav{ display:none; width:100%; flex-direction:column; gap: 12px; border-top:1px solid var(--line); padding-top: 12px; }
   .nav.nav--open{ display:flex; }
   body.menu-open{ overflow:hidden; }
   .burger{ display:block; }
   .header__right .btn{ display:none; }
-  .hero{ padding:36px 0 8px; }
+  .hero{ padding: 36px 0 8px; }
   .team{ grid-template-columns:1fr; }
-  .price-row{ grid-template-columns:1fr; gap:6px; }
+  .price-row{ grid-template-columns:1fr; gap: 6px; }
   .price{ text-align:left; }
-  .quotes{ grid-template-columns:1fr; gap:0; }
-  .contacts{ grid-template-columns:1fr; gap:0; }
+  .quotes{ grid-template-columns:1fr; gap: 0; }
+  .contacts{ grid-template-columns:1fr; gap: 0; }
   .form__grid{ grid-template-columns:1fr; }
-  .footer__in{ grid-template-columns:1fr; gap:20px; }
+  .footer__in{ grid-template-columns:1fr; gap: 20px; }
 }
