@@ -35,7 +35,7 @@
   h1{ text-wrap:balance; }
   p{ text-wrap:pretty; }
   img{ display:block; max-width:100%; }
-  .wrap{ width:min(1180px,100% - 40px); margin-inline:auto; }
+  .wrap{ width:min(1320px,100% - 40px); margin-inline:auto; }
   header{ position:sticky; top:0; z-index:50; background:var(--paper); border-bottom:1px solid var(--line); }
   .head{ height:78px; display:flex; align-items:center; justify-content:space-between; gap: 20px; }
   .logo{ display:flex; align-items:baseline; gap: 12px; text-decoration:none; color:var(--ink); }
@@ -54,9 +54,9 @@
   .tags span + span::before{ content:" / "; color:var(--line); }
   .btns{ display:flex; gap: 12px; flex-wrap:wrap; margin: 32px 0 64px; }
   .btn{ display:inline-block; padding: 16px 24px; border-radius:3px; font-weight:500; font-size: 16px; text-decoration:none; }
-  .btn-gold{ background:var(--accent); color:var(--on-accent); }
+  .btn-accent{ background:var(--accent); color:var(--on-accent); }
   .btn-line{ border:1px solid var(--line); color:var(--ink); }
-  .btn-gold:hover{ background:#9c3a1a; }
+  .btn-accent:hover{ background:#9c3a1a; }
   .btn-line:hover{ border-color:var(--ink); }
   footer{ border-top:1px solid var(--line); padding: 24px 0; color:var(--muted); font-size: 14px; }
   footer .frow{ display:flex; justify-content:space-between; flex-wrap:wrap; gap: 12px; }
@@ -71,7 +71,7 @@
   .hero{ padding: 72px 0 0; }
   .row{ display:grid; grid-template-columns:minmax(0,.9fr) minmax(0,1.35fr); gap: 48px; align-items:start; margin-top: 36px; }
   .row .lead{ max-width:44ch; }
-  .row .shot{ margin-right: -8vw; }
+  .row .shot{ margin-right: 0; }
   .row .btns{ margin-bottom: 40px; }
   @media(max-width:960px){ .row{ grid-template-columns:1fr; gap: 32px; } .row .shot{ margin-right: 0; } }
 </style>
@@ -96,10 +96,10 @@
   </section>
   <div class="row">
     <div>
-      <p class="lead">Первый экран фитнес-клуба: заголовок, фото зала, кнопка записи, цифры и карточка с тренером. Сверстал по макету один в один: размеры, отступы, шрифт и цвета взяты из Figma, своего не добавлял. Замерил результат: среднее расхождение с макетом 7.9 из 255, это меньше трёх процентов. Клуб, тексты и фото вымышленные: это учебная работа.</p>
+      <p class="lead">Первый экран фитнес-клуба: заголовок, фото зала, кнопка записи, цифры и карточка с тренером. Сверстал по макету один в один: размеры, отступы, шрифт и цвета взяты из Figma, своего не добавлял. Замерил результат: среднее расхождение с макетом 7,9 из 255, это меньше трёх процентов. Клуб, тексты и фото вымышленные: это учебная работа.</p>
       <div class="tags"><span>Первый экран</span><span>По макету</span><span>HTML/CSS</span><span>1440×900</span><span>Адаптив</span></div>
       <div class="btns">
-        <a class="btn-gold" href="../uslugi/">Сверстать по моему макету</a>
+        <a class="btn-accent" href="../uslugi/">Сверстать по моему макету</a>
     <a class="btn-line" href="../#work">Другие работы</a>
     </div>
     </div>
