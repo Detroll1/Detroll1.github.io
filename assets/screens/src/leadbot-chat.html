@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="ru"><head><meta charset="utf-8" />
+<title>Leadbot: переписка с ботом</title>
+<style>
+  @font-face{ font-family:"VelaSans"; src:url("file:///C:/Users/detro/projects/site/assets/fonts/VelaSans-Bold.ttf") format("truetype"); font-weight:700; }
+  @font-face{ font-family:"VelaSans"; src:url("file:///C:/Users/detro/projects/site/assets/fonts/VelaSans-ExtraBold.ttf") format("truetype"); font-weight:800; }
+  @font-face{ font-family:"Golos"; src:url("file:///C:/Users/detro/projects/site/assets/fonts/Golos-Text-400.woff2") format("woff2"); font-weight:400; }
+  @font-face{ font-family:"Golos"; src:url("file:///C:/Users/detro/projects/site/assets/fonts/Golos-Text-600.woff2") format("woff2"); font-weight:600; }
+  :root{ --paper:#F4F1EA; --ink:#17160F; --muted:#6B675C; --line:#D9D3C6; --accent:#B4441F; }
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  body{ width:1280px; height:800px; background:var(--paper); font-family:"Golos",sans-serif; color:var(--ink);
+        padding:44px 64px; display:flex; flex-direction:column; gap:8px; overflow:hidden; }
+  .bar{ display:flex; align-items:baseline; justify-content:space-between; border-bottom:1px solid var(--line); padding-bottom:16px; }
+  .bar b{ font-family:"VelaSans"; font-weight:800; font-size:27px; letter-spacing:-.01em; }
+  .bar span{ color:var(--muted); font-size:18px; }
+  .chat{ border:1px solid var(--line); background:#FBF9F5; display:flex; flex-direction:column; flex:1; }
+  .chat .head{ display:flex; align-items:center; gap:14px; padding:14px 22px; border-bottom:1px solid var(--line); }
+  .chat .ava{ width:46px; height:46px; border-radius:50%; background:var(--accent); color:#fff;
+               font-family:"VelaSans"; font-weight:700; font-size:23px; display:flex; align-items:center; justify-content:center; }
+  .chat .who b{ font-family:"VelaSans"; font-weight:700; font-size:22px; display:block; }
+  .chat .who span{ color:var(--muted); font-size:16px; }
+  .chat .body{ padding:16px 22px; display:flex; flex-direction:column; gap:8px; }
+  .row{ display:flex; }
+  .row.r{ justify-content:flex-end; }
+  .b{ max-width:640px; padding:9px 15px; font-size:19px; line-height:1.3; border:1px solid var(--line); background:#fff; }
+  .row.r .b{ background:var(--accent); border-color:var(--accent); color:#fff; }
+  .row.r .b i{ font-style:normal; opacity:.75; font-size:17px; display:block; margin-top:4px; }
+  .foot{ display:flex; gap:26px; align-items:center; color:var(--muted); font-size:18px; }
+  .foot b{ color:var(--ink); font-family:"VelaSans"; font-weight:700; }
+</style></head>
+<body>
+  <div class="bar"><b>Leadbot</b><span>бот заявок: услуга, имя, телефон, время</span></div>
+
+  <div class="chat">
+    <div class="head">
+      <span class="ava">L</span>
+      <span class="who"><b>Leadbot</b><span>бот, отвечает за пару секунд</span></span>
+    </div>
+    <div class="body">
+      <div class="row"><div class="b">Что нужно сделать?</div></div>
+      <div class="row r"><div class="b">Сайт-визитка <i>13:41</i></div></div>
+      <div class="row"><div class="b">Как вас зовут?</div></div>
+      <div class="row r"><div class="b">Ирина <i>13:41</i></div></div>
+      <div class="row"><div class="b">Телефон для связи?</div></div>
+      <div class="row r"><div class="b">900 123-45-67 <i>13:42</i></div></div>
+      <div class="row"><div class="b">Когда удобно позвонить?</div></div>
+      <div class="row r"><div class="b">Завтра, после 12:00 <i>13:42</i></div></div>
+    </div>
+  </div>
+
+  <div class="foot">
+    <span><b>Заявка</b> пишется в базу и уходит владельцу в чат</span>
+    <span><b>Ответы</b> владельца приходят клиенту через тот же бот</span>
+  </div>
+<script>/*MEASURE*/document.title="H="+document.body.scrollHeight+" W="+document.body.scrollWidth;</script>
+</body></html>

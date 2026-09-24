@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="ru"><head><meta charset="utf-8" />
+<title>Scraper: терминал и таблица</title>
+<style>
+  @font-face{ font-family:"VelaSans"; src:url("file:///C:/Users/detro/projects/site/assets/fonts/VelaSans-Bold.ttf") format("truetype"); font-weight:700; }
+  @font-face{ font-family:"VelaSans"; src:url("file:///C:/Users/detro/projects/site/assets/fonts/VelaSans-ExtraBold.ttf") format("truetype"); font-weight:800; }
+  @font-face{ font-family:"Golos"; src:url("file:///C:/Users/detro/projects/site/assets/fonts/Golos-Text-400.woff2") format("woff2"); font-weight:400; }
+  @font-face{ font-family:"Golos"; src:url("file:///C:/Users/detro/projects/site/assets/fonts/Golos-Text-600.woff2") format("woff2"); font-weight:600; }
+  :root{ --paper:#F4F1EA; --ink:#17160F; --muted:#6B675C; --line:#D9D3C6; --accent:#B4441F; }
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  body{ width:1280px; height:800px; background:var(--paper); font-family:"Golos",sans-serif; color:var(--ink);
+        padding:56px 72px; display:flex; flex-direction:column; gap:22px; }
+  .bar{ display:flex; align-items:baseline; justify-content:space-between; border-bottom:1px solid var(--line); padding-bottom:16px; }
+  .bar b{ font-family:"VelaSans"; font-weight:800; font-size:30px; letter-spacing:-.01em; }
+  .bar span{ color:var(--muted); font-size:20px; }
+  .wrap{ display:grid; grid-template-columns:1fr 400px; gap:28px; flex:1; align-items:stretch; }
+  .term{ background:var(--ink); color:#EDE9E1; padding:26px 28px; align-self:stretch; font-family:ui-monospace,Consolas,"Courier New",monospace;
+         font-size:19px; line-height:1.7; }
+  .term .ttl{ display:flex; gap:10px; align-items:center; margin-bottom:20px; color:#9C978C; font-size:17px; }
+  .term .dot{ width:12px; height:12px; border-radius:50%; background:#4A463C; }
+  .term .p{ color:var(--accent); }
+  .term .ok{ color:#8FA98C; }
+  .sheet{ border:1px solid var(--line); background:#FBF9F5; display:flex; flex-direction:column; }
+  .sheet .sh{ padding:14px 18px; border-bottom:1px solid var(--line); font-family:"VelaSans"; font-weight:700; font-size:19px; }
+  .sheet table{ width:100%; border-collapse:collapse; font-size:18px; }
+  .sheet td{ padding:10px 18px; border-bottom:1px solid var(--line); }
+  .sheet td:last-child{ text-align:right; font-variant-numeric:tabular-nums; color:var(--muted); }
+  .sheet tr:last-child td{ border-bottom:none; }
+  .foot{ color:var(--muted); font-size:20px; }
+  .foot b{ color:var(--ink); font-family:"VelaSans"; font-weight:700; }
+</style></head>
+<body>
+  <div class="bar"><b>Scraper</b><span>парсер: собрал со страницы и выгрузил в Excel и JSON</span></div>
+
+  <div class="wrap">
+    <div class="term">
+      <div class="ttl"><span class="dot"></span><span class="dot"></span><span class="dot"></span> терминал, настоящий вывод с прогона</div>
+<span class="p">$</span> python run.py --source demo --out result.xlsx --limit 8
+Источник: Демо-каталог книг (локальный офлайн-источник)
+Записей получено: 12, взято первых 8 (--limit 8)
+Excel: result.xlsx (листы «Данные» и «Сводка»)
+JSON:  result.json
+<span class="ok">Готово.</span>
+<span class="p">$</span> python -m unittest discover -s tests
+Ran 11 tests in 0.043s
+<span class="ok">OK</span>
+    </div>
+
+    <div class="sheet">
+      <div class="sh">result.xlsx, лист «Данные» (фрагмент)</div>
+      <table>
+        <tr><td>Мастер и Маргарита</td><td>599 ₽</td></tr>
+        <tr><td>Преступление и наказание</td><td>449,50 ₽</td></tr>
+        <tr><td>Евгений Онегин</td><td>329 ₽</td></tr>
+        <tr><td>Война и мир</td><td>1 249 ₽</td></tr>
+        <tr><td>Золотой телёнок</td><td>389 ₽</td></tr>
+        <tr><td>Двенадцать стульев</td><td>359 ₽</td></tr>
+        <tr><td>Анна Каренина</td><td>679 ₽</td></tr>
+        <tr><td>Капитанская дочка</td><td>259 ₽</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="foot"><b>Что умеет:</b> цены, каталоги, объявления. Excel с листами «Данные» и «Сводка», есть офлайн-демо и тесты.</div>
+</body></html>
