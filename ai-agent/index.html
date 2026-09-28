@@ -29,6 +29,7 @@
   @font-face{ font-family:"Golos"; font-weight:500; font-display:swap; src:url("../assets/fonts/Golos-Text-500.woff2") format("woff2"); }
   :root{ --paper:#F4F1EA; --ink:#17160F; --muted:#6B675C; --line:#D9D3C6; --accent:#B4441F; --on-accent:#FFF6F1; }
   *{ margin: 0; padding: 0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
+  a, button{ touch-action: manipulation; -webkit-user-select: none; user-select: none; }
   body{ background:var(--paper); color:var(--ink); font-family:"Golos",system-ui,sans-serif; font-size: 16px; line-height:1.6; overflow-x:hidden; }
   ::selection{ background:var(--accent); color:var(--on-accent); }
   h1,h2,h3,.btn{ font-family:"VelaSans",system-ui,sans-serif; }
@@ -44,7 +45,10 @@
   .logo span{ color:var(--muted); font-size: 12px; }
   nav{ display:flex; gap: 24px; }
   nav a{ color:var(--muted); text-decoration:none; font-size: 14px; padding-bottom: 2px; border-bottom:1px solid transparent; }
+
+@media (hover: hover) and (pointer: fine){
   nav a:hover{ color:var(--ink); border-bottom-color:var(--accent); }
+}
   .hero{ padding: 72px 0 8px; }
   .kicker{ color:var(--muted); font-size: 14px; }
   h1{ font-size:clamp(1.9rem,4.2vw,3.2rem); font-weight:800; line-height:1.05; letter-spacing:-0.02em; margin-top: 12px; }
@@ -58,12 +62,22 @@
   .btn{ display:inline-block; padding: 16px 24px; border-radius:3px; text-decoration:none; font-weight:500; font-size: 16px; }
   .btn-accent{ background:var(--accent); color:var(--on-accent); }
   .btn-line{ border:1px solid var(--line); color:var(--ink); }
+  .btn:active, .btn-accent:active, .btn-line:active{ transform: scale(.97); }
+
+@media (hover: hover) and (pointer: fine){
   .btn-accent:hover{ background:#9c3a1a; }
+}
+
+@media (hover: hover) and (pointer: fine){
   .btn-line:hover{ border-color:var(--ink); }
+}
   footer{ margin-top: 56px; border-top:1px solid var(--line); padding: 24px 0; color:var(--muted); font-size: 14px; }
   footer .frow{ display:flex; justify-content:space-between; flex-wrap:wrap; gap: 12px; }
   footer a{ color:var(--muted); text-decoration:none; border-bottom:1px solid var(--line); }
+
+@media (hover: hover) and (pointer: fine){
   footer a:hover{ color:var(--ink); }
+}
   .roles{ display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap: 0 36px; margin: 32px 0 8px; }
   .role{ border-top:1px solid var(--line); padding: 16px 0 20px; }
   .role h3{ font-size: 18px; font-weight:700; }
