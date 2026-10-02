@@ -233,7 +233,9 @@ function init(config) {
   const c = config.цвета || {};
   if (c.акцент) document.documentElement.style.setProperty('--accent', c.акцент);
   if (c.фон) document.documentElement.style.setProperty('--bg', c.фон);
-  if (config.фон_героя) document.documentElement.style.setProperty('--hero-image', "url('" + config.фон_героя + "')");
+  const photo = $('photo-img');
+  const photoCard = $('photo-card');
+  if (config.фон_героя) { photo.src = config.фон_героя; } else if (photoCard) { photoCard.hidden = true; }
   const услуги = config.услуги || [];
   const цены = услуги.map((s) => Number(s.цена) || 0).filter((n) => n > 0);
   const дешевле = цены.length ? Math.min.apply(null, цены) : 0;
