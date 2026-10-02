@@ -83,11 +83,21 @@ $('booking-form').addEventListener('submit', async (e) => {
   e.preventDefault();
   if (!state.service || !state.day || !state.time) return;
   const data = { имя: $('client-name').value.trim(), телефон: $('client-phone').value.trim(), услуга: state.service.название, день: state.day, время: state.time };
-  let number = 'З-' + String(Date.now()).slice(-6);
+  const number = 'З-' + String(Date.now()).slice(-6);
+  const note = $('confirm-note');
+  note.hidden = true;
   if (state.config.lead_url) {
-    try { await fetch(state.config.lead_url, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) }); }
-    catch { number += ' · не отправлено'; }
-  } else { number = 'Адрес приёма не настроен'; }
+    try {
+      const r = await fetch(state.config.lead_url, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) });
+      if (!r.ok) throw new Error(r.status);
+    } catch {
+      note.textContent = 'Заявка не ушла: адрес приёма не отвечает. Позвоните по телефону в шапке.';
+      note.hidden = false;
+    }
+  } else {
+    note.textContent = 'Демо-режим: заявка не отправлена, адрес приёма заявок не настроен.';
+    note.hidden = false;
+  }
   const list = bookings();
   list.push({ день: state.day, время: state.time, услуга: data.услуга, длительность: state.service.длительность_минут });
   localStorage.setItem(KEY, JSON.stringify(list));

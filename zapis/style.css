@@ -79,6 +79,7 @@ button { font: inherit; color: inherit; cursor: pointer; touch-action: manipulat
 .confirm dt { font-size: 14px; color: var(--muted); }
 .confirm dd { text-align: right; }
 #confirm-number { color: var(--accent); }
+.confirm__note { font-size: 14px; color: var(--muted); }
 
 .services li, .days button, .times button, .field__input, .button--ghost {
   transition: border-color 150ms cubic-bezier(.23, 1, .32, 1), background-color 150ms cubic-bezier(.23, 1, .32, 1);
