@@ -12,9 +12,59 @@ const iso = (d) => d.getFullYear() + '-' + pad(d.getMonth() + 1) + '-' + pad(d.g
 const humanDay = (s) => new Date(s + 'T00:00:00').toLocaleDateString('ru-RU', { weekday: 'long', day: 'numeric', month: 'long' });
 const bookings = () => { try { return JSON.parse(localStorage.getItem(KEY)) || []; } catch { return []; } };
 
+/* Шаги записи: человек видит, что уже выбрано и что осталось — как в приложении, а не списком полей */
+function updateSteps() {
+  const box = $('steps');
+  if (!box) return;
+  const shortDay = state.day ? humanDay(state.day).replace(/^\w/, (c) => c.toUpperCase()) : '';
+  const done = {
+    service: state.service ? state.service.название : '',
+    when: state.day && state.time ? shortDay + ', ' + state.time : '',
+    data: ($('client-name').value.trim() && $('client-phone').value.trim()) ? 'готово' : '',
+  };
+  for (const item of box.querySelectorAll('.steps__item')) {
+    const value = done[item.dataset.step];
+    const label = item.querySelector('.steps__label');
+    const num = item.querySelector('.steps__num');
+    item.classList.toggle('steps__item--done', Boolean(value));
+    const base = item.dataset.step === 'service' ? 'Выберите услугу'
+      : item.dataset.step === 'when' ? 'День и время' : 'Имя и телефон';
+    label.textContent = value ? (item.dataset.step === 'data' ? 'Данные заполнены' : value) : base;
+    if (num) num.textContent = value ? '✓' : item.dataset.step === 'service' ? '1' : item.dataset.step === 'when' ? '2' : '3';
+  }
+  const summary = $('form-summary');
+  if (summary) {
+    summary.textContent = state.service && state.day && state.time
+      ? 'Вы записываетесь: ' + state.service.название + ' — ' + shortDay + ', ' + state.time
+      : '';
+  }
+}
+
+/* Файл для календаря: клиент одним тапом ставит запись в свой календарь */
+function calendarLink(b) {
+  const dur = Number(b.длительность) || 60;
+  const start = b.день.replace(/-/g, '') + 'T' + b.время.replace(':', '') + '00';
+  const endMin = toMin(b.время) + dur;
+  const end = b.день.replace(/-/g, '') + 'T' + pad(Math.floor(endMin / 60) % 24) + pad(endMin % 60) + '00';
+  const text = ['BEGIN:VCALENDAR', 'VERSION:2.0', 'BEGIN:VEVENT',
+    'SUMMARY:' + b.услуга, 'DTSTART:' + start, 'DTEND:' + end,
+    'LOCATION:' + (state.config.адрес || ''), 'DESCRIPTION:Запись ' + b.id, 'END:VEVENT', 'END:VCALENDAR'].join('\r\n');
+  return 'data:text/calendar;charset=utf-8,' + encodeURIComponent(text);
+}
+
 function pick(box, active) {
   for (const b of box.querySelectorAll('button[aria-pressed]')) b.setAttribute('aria-pressed', 'false');
   if (active) active.setAttribute('aria-pressed', 'true');
+}
+
+/* Если на сегодня времени уже не осталось, сразу открываем ближайший день со свободными окнами */
+function selectFirstFreeDay() {
+  const days = Array.from($('days').querySelectorAll('button'));
+  for (const day of days) {
+    day.click();
+    if ($('times').querySelector('button')) return day;
+  }
+  return null;
 }
 
 function buildServices() {
@@ -35,6 +85,7 @@ function buildServices() {
       $('price-sum').textContent = new Intl.NumberFormat('ru-RU').format(s.цена) + ' ₽';
       $('price-card').querySelector('.price__note').textContent = s.название + ', ' + s.длительность_минут + ' мин';
       renderTimes();
+      updateSteps();
     });
     li.append(b);
     list.append(li);
@@ -54,7 +105,7 @@ function buildDays() {
     b.textContent = i === 0
       ? 'Сегодня, ' + d.toLocaleDateString('ru-RU', { day: 'numeric', month: 'short' })
       : d.toLocaleDateString('ru-RU', { weekday: 'short', day: 'numeric', month: 'short' });
-    b.addEventListener('click', () => { state.day = b.dataset.date; state.time = null; pick(box, b); renderTimes(); });
+    b.addEventListener('click', () => { state.day = b.dataset.date; state.time = null; pick(box, b); renderTimes(); updateSteps(); });
     box.append(b);
   }
 }
@@ -77,20 +128,22 @@ function renderTimes() {
       b.type = 'button';
       b.setAttribute('aria-pressed', 'false');
       b.textContent = toHm(t);
-      b.addEventListener('click', () => { state.time = b.textContent; pick(box, b); });
+      b.addEventListener('click', () => { state.time = b.textContent; pick(box, b); updateSteps(); });
       box.append(b);
     }
   }
   if (!box.children.length) {
-    box.textContent = 'Свободного времени нет. Позвоните, подберём время вручную.';
+    box.textContent = 'На этот день свободного времени нет. Выберите другой день или позвоните — подберём время вручную.';
     $('submit-button').disabled = true;
     $('submit-button').textContent = 'Свободного времени нет';
+    updateSteps();
     return;
   }
   const first = box.querySelector('button');
   if (first) { state.time = first.textContent; pick(box, first); }
   $('submit-button').disabled = false;
   $('submit-button').textContent = 'Записаться';
+  updateSteps();
 }
 
 $('booking-form').addEventListener('submit', async (e) => {
@@ -136,6 +189,48 @@ $('hero-cta').addEventListener('click', () => {
   if (form) form.scrollIntoView({ behavior: 'smooth', block: 'center' });
 });
 
+for (const id of ['client-name', 'client-phone']) {
+  const el = $(id);
+  if (el) el.addEventListener('input', updateSteps);
+}
+
+/* Установка как приложение: кнопка «На экран Домой» ставит ярлык по-настоящему, а не картинкой */
+let installEvent = null;
+const installButton = $('install-button');
+const installHint = $('install-hint');
+const standalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
+const isIos = /iphone|ipad|ipod/i.test(navigator.userAgent);
+
+if (standalone && installButton) installButton.hidden = true;
+if (isIos && !standalone && installButton) installButton.hidden = false;
+
+window.addEventListener('beforeinstallprompt', (e) => {
+  e.preventDefault();
+  installEvent = e;
+  if (installButton) installButton.hidden = false;
+});
+
+window.addEventListener('appinstalled', () => { if (installButton) installButton.hidden = true; });
+
+if (installButton) {
+  installButton.addEventListener('click', async () => {
+    if (installEvent) {
+      installEvent.prompt();
+      const res = await installEvent.userChoice;
+      installEvent = null;
+      if (res && res.outcome === 'accepted') installButton.hidden = true;
+      return;
+    }
+    if (installHint) {
+      installHint.textContent = isIos
+        ? 'Нажмите «Поделиться» внизу экрана и выберите «На экран «Домой»» — приложение появится среди иконок и откроется без адресной строки.'
+        : 'Откройте меню браузера и выберите «Установить приложение» — запись появится среди иконок и откроется без адресной строки.';
+      installHint.hidden = false;
+      installHint.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+  });
+}
+
 /* Экраны внутри одной страницы: переключение как в приложении, без перезагрузки */
 function showScreen(name) {
   for (const s of document.querySelectorAll('.screen')) s.hidden = s.id !== 'screen-' + name;
@@ -152,7 +247,7 @@ document.querySelectorAll('#tabbar .tabbar__item').forEach((b) => {
   b.addEventListener('click', () => showScreen(b.dataset.screen));
 });
 
-/* Моя запись: клиент видит свои записи и может отменить — освободившееся время вернётся в список */
+/* Моя запись: клиент видит свои записи, может поставить в календарь, перенести или отменить */
 function renderMine() {
   const box = $('mine-list');
   if (!box) return;
@@ -165,6 +260,7 @@ function renderMine() {
     box.append(p);
     return;
   }
+  const today = iso(new Date());
   list.slice().reverse().forEach((b) => {
     const li = document.createElement('li');
     li.className = 'mine__item';
@@ -178,11 +274,44 @@ function renderMine() {
     when.textContent = humanDay(b.день) + ', ' + b.время;
     const status = document.createElement('span');
     status.className = 'mine__status';
-    status.textContent = 'ждём вас';
+    const past = b.день < today;
+    status.textContent = past ? 'запись прошла' : 'ждём вас, номер ' + b.id;
+    if (past) status.classList.add('mine__status--past');
     info.append(name, when, status);
+
+    const row = document.createElement('div');
+    row.className = 'mine__actions';
+
+    if (!past) {
+      const cal = document.createElement('a');
+      cal.className = 'mine__action';
+      cal.href = calendarLink(b);
+      cal.download = 'zapis-' + b.id + '.ics';
+      cal.textContent = 'В календарь';
+      row.append(cal);
+
+      const move = document.createElement('button');
+      move.type = 'button';
+      move.className = 'mine__action';
+      move.textContent = 'Перенести';
+      move.addEventListener('click', () => {
+        const left = bookings().filter((x) => x.id !== b.id);
+        localStorage.setItem(KEY, JSON.stringify(left));
+        const service = (state.config.услуги || []).find((s) => s.название === b.услуга);
+        showScreen('booking');
+        if (service) {
+          const btn = Array.from(document.querySelectorAll('#services button'))
+            .find((x) => x.textContent.indexOf(service.название) === 0);
+          if (btn) btn.click();
+        }
+        renderMine();
+      });
+      row.append(move);
+    }
+
     const cancel = document.createElement('button');
     cancel.type = 'button';
-    cancel.className = 'mine__cancel';
+    cancel.className = 'mine__action mine__action--danger';
     cancel.textContent = 'Отменить';
     cancel.addEventListener('click', () => {
       const left = bookings().filter((x) => x.id !== b.id);
@@ -190,7 +319,9 @@ function renderMine() {
       renderMine();
       renderTimes();
     });
-    li.append(info, cancel);
+    row.append(cancel);
+
+    li.append(info, row);
     box.append(li);
   });
 }
@@ -266,9 +397,11 @@ function init(config) {
   renderMine();
   showScreen('booking');
   const s = $('services').querySelector('button');
-  const d = $('days').querySelector('button');
   if (s) s.click();
-  if (d) d.click();
+  selectFirstFreeDay();
+  updateSteps();
+  const wanted = new URLSearchParams(location.search).get('screen');
+  if (wanted && document.getElementById('screen-' + wanted)) showScreen(wanted);
 }
 
 fetch('config.json')
