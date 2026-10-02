@@ -1,6 +1,6 @@
 {
-  "name": "Детейлинг-студия «Глянец»",
-  "short_name": "Глянец",
+  "name": "Detroll",
+  "short_name": "Detroll",
   "description": "Онлайн-запись в детейлинг-студию: услуга, день, свободное время.",
   "lang": "ru",
   "dir": "ltr",
@@ -8,11 +8,17 @@
   "scope": "./",
   "id": "zapis-app",
   "display": "standalone",
-  "display_override": ["standalone", "fullscreen"],
+  "display_override": [
+    "standalone",
+    "fullscreen"
+  ],
   "orientation": "portrait",
   "background_color": "#0E1013",
   "theme_color": "#0E1013",
-  "categories": ["business", "productivity"],
+  "categories": [
+    "business",
+    "productivity"
+  ],
   "icons": [
     {
       "src": "icon-192.png",
