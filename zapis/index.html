@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#131313">
+  <title>Онлайн-запись</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="header">
+    <div class="header__about">
+      <h1 class="header__name" id="company-name"></h1>
+      <p class="header__address" id="company-address"></p>
+    </div>
+    <a class="header__phone" id="company-phone" href="tel:"></a>
+  </header>
+  <main class="page">
+    <section class="screen" id="screen-booking">
+      <section class="block">
+        <h2 class="block__title">Услуга</h2>
+        <ul class="services" id="services"></ul>
+      </section>
+      <section class="block">
+        <h2 class="block__title">День</h2>
+        <div class="days" id="days"></div>
+      </section>
+      <section class="block">
+        <h2 class="block__title">Время</h2>
+        <div class="times" id="times"></div>
+      </section>
+      <section class="block">
+        <h2 class="block__title">Ваши данные</h2>
+        <form class="form" id="booking-form">
+          <label class="field">
+            <span class="field__label">Имя</span>
+            <input class="field__input" id="client-name" type="text" name="name" autocomplete="name" placeholder="Как вас зовут" required>
+          </label>
+          <label class="field">
+            <span class="field__label">Телефон</span>
+            <input class="field__input" id="client-phone" type="tel" inputmode="tel" name="phone" autocomplete="tel" placeholder="+7 900 000-00-00" required>
+          </label>
+          <button class="button" id="submit-button" type="submit">Записаться</button>
+        </form>
+      </section>
+    </section>
+    <section class="screen" id="screen-confirm" hidden>
+      <h2 class="confirm__title">Вы записаны</h2>
+      <dl class="confirm">
+        <div class="confirm__row"><dt>Услуга</dt><dd id="confirm-service"></dd></div>
+        <div class="confirm__row"><dt>День</dt><dd id="confirm-day"></dd></div>
+        <div class="confirm__row"><dt>Время</dt><dd id="confirm-time"></dd></div>
+        <div class="confirm__row"><dt>Номер записи</dt><dd id="confirm-number"></dd></div>
+      </dl>
+      <button class="button button--ghost" id="new-booking" type="button">Записаться ещё раз</button>
+    </section>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>
