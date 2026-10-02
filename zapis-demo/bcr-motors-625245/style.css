@@ -40,9 +40,11 @@ button { font: inherit; color: inherit; cursor: pointer; touch-action: manipulat
 .hero {
   padding: 56px 20px 40px;
   background-image:
-    linear-gradient(180deg, rgba(8, 9, 12, .26) 0%, rgba(8, 9, 12, .6) 55%, var(--bg) 100%),
+    linear-gradient(180deg, rgba(8, 9, 12, .10) 0%, rgba(8, 9, 12, .44) 60%, var(--bg) 100%),
+    radial-gradient(120% 90% at 15% 0%, color-mix(in srgb, var(--accent) 30%, transparent) 0%, transparent 60%),
     var(--hero-image, none);
-  background-size: cover; background-position: center;
+  background-size: cover, cover, cover;
+  background-position: center 40%, center, center 32%;
   border-bottom: 1px solid var(--line);
 }
 .hero__inner { display: grid; gap: 32px; max-width: 1170px; margin-inline: auto; }
