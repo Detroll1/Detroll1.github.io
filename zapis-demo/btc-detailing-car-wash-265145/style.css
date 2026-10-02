@@ -57,8 +57,8 @@ button { font: inherit; color: inherit; cursor: pointer; touch-action: manipulat
   background: linear-gradient(180deg, transparent 0%, rgba(8, 9, 12, .58) 100%);
 }
 .photo .photo__cta { position: absolute; left: 15%; right: 15%; bottom: 22px; width: auto; justify-content: space-between; gap: 10px;
-  padding: 9px 16px; font-size: 14px; font-weight: 600;
-  background: color-mix(in srgb, #0B0D12 68%, transparent);
+  padding: 9px 16px; font-size: 14px; font-weight: 500;
+  background: color-mix(in srgb, #0B0D12 50%, transparent);
   backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, .18); z-index: 1; }
 .photo__arrow { width: 20px; height: 20px; background: currentColor;
   -webkit-mask: var(--icon-arrow) center / contain no-repeat; mask: var(--icon-arrow) center / contain no-repeat; }
