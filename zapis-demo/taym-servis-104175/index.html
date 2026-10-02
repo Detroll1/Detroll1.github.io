@@ -16,8 +16,8 @@
 <body>
   <header class="topbar">
     <img class="topbar__logo" src="icon.svg" alt="" width="28" height="28">
-    <span class="topbar__label">Онлайн-запись</span>
-    <a class="topbar__link" href="#booking-form">Мои записи</a>
+    <span class="topbar__label" id="company-short">Онлайн-запись</span>
+    <span class="topbar__status">запись открыта</span>
   </header>
 
   <section class="hero">
@@ -35,14 +35,14 @@
           <span class="price__sum" id="price-sum"></span>
           <span class="price__note">за услугу</span>
         </div>
-        <a class="button hero__cta" href="#booking-form">Записаться</a>
+        <button class="button hero__cta" id="hero-cta" type="button">Записаться</button>
       </div>
     </div>
   </section>
 
   <main class="page">
-    <ul class="metrics" id="metrics"></ul>
     <section class="screen" id="screen-booking">
+      <ul class="metrics" id="metrics"></ul>
       <section class="block">
         <h2 class="block__title">Услуга</h2>
         <ul class="services" id="services"></ul>
@@ -70,6 +70,19 @@
         </form>
       </section>
     </section>
+
+    <section class="screen" id="screen-mine" hidden>
+      <h2 class="block__title">Моя запись</h2>
+      <ul class="mine" id="mine-list"></ul>
+      <p class="mine__hint">Записи видно только на этом телефоне. Отменить — один тап.</p>
+    </section>
+
+    <section class="screen" id="screen-contacts" hidden>
+      <h2 class="block__title">Как нас найти</h2>
+      <dl class="confirm" id="contacts-list"></dl>
+      <a class="button button--ghost" id="call-button" href="tel:">Позвонить в студию</a>
+    </section>
+
     <section class="screen" id="screen-confirm" hidden>
       <h2 class="confirm__title">Вы записаны</h2>
       <dl class="confirm">
@@ -79,9 +92,23 @@
         <div class="confirm__row"><dt>Номер записи</dt><dd id="confirm-number"></dd></div>
       </dl>
       <p class="confirm__note" id="confirm-note" hidden></p>
+      <p class="confirm__hint">Мы позвоним перед визитом и подтвердим время.</p>
       <button class="button button--ghost" id="new-booking" type="button">Записаться ещё раз</button>
     </section>
   </main>
+
+  <nav class="tabbar" id="tabbar">
+    <button class="tabbar__item" type="button" data-screen="booking" aria-selected="true">
+      <span class="tabbar__icon tabbar__icon--booking" aria-hidden="true"></span>Запись
+    </button>
+    <button class="tabbar__item" type="button" data-screen="mine" aria-selected="false">
+      <span class="tabbar__icon tabbar__icon--mine" aria-hidden="true"></span>Моя запись
+    </button>
+    <button class="tabbar__item" type="button" data-screen="contacts" aria-selected="false">
+      <span class="tabbar__icon tabbar__icon--contacts" aria-hidden="true"></span>Контакты
+    </button>
+  </nav>
+
   <script src="app.js"></script>
   <script>if ('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js');</script>
 </body>

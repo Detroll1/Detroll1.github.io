@@ -113,23 +113,120 @@ $('booking-form').addEventListener('submit', async (e) => {
     note.hidden = false;
   }
   const list = bookings();
-  list.push({ день: state.day, время: state.time, услуга: data.услуга, длительность: state.service.длительность_минут });
+  list.push({ id: number, день: state.day, время: state.time, услуга: data.услуга, длительность: state.service.длительность_минут });
   localStorage.setItem(KEY, JSON.stringify(list));
   $('confirm-service').textContent = data.услуга;
   $('confirm-day').textContent = humanDay(data.день);
   $('confirm-time').textContent = data.время;
   $('confirm-number').textContent = number;
-  $('screen-booking').hidden = true;
-  $('screen-confirm').hidden = false;
   renderTimes();
+  renderMine();
+  showScreen('confirm');
 });
 
 $('new-booking').addEventListener('click', () => {
   state.time = null;
+  showScreen('booking');
   renderTimes();
-  $('screen-confirm').hidden = true;
-  $('screen-booking').hidden = false;
 });
+
+$('hero-cta').addEventListener('click', () => {
+  showScreen('booking');
+  const form = $('booking-form');
+  if (form) form.scrollIntoView({ behavior: 'smooth', block: 'center' });
+});
+
+/* Экраны внутри одной страницы: переключение как в приложении, без перезагрузки */
+function showScreen(name) {
+  for (const s of document.querySelectorAll('.screen')) s.hidden = s.id !== 'screen-' + name;
+  const hero = document.querySelector('.hero');
+  if (hero) hero.hidden = name !== 'booking' && name !== 'confirm';
+  document.body.dataset.screen = name;
+  for (const b of document.querySelectorAll('#tabbar .tabbar__item')) {
+    b.setAttribute('aria-selected', String(b.dataset.screen === name || (name === 'confirm' && b.dataset.screen === 'booking')));
+  }
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+document.querySelectorAll('#tabbar .tabbar__item').forEach((b) => {
+  b.addEventListener('click', () => showScreen(b.dataset.screen));
+});
+
+/* Моя запись: клиент видит свои записи и может отменить — освободившееся время вернётся в список */
+function renderMine() {
+  const box = $('mine-list');
+  if (!box) return;
+  const list = bookings();
+  box.textContent = '';
+  if (!list.length) {
+    const p = document.createElement('li');
+    p.className = 'mine__empty';
+    p.textContent = 'Записей пока нет. Выберите услугу и время — запись появится здесь.';
+    box.append(p);
+    return;
+  }
+  list.slice().reverse().forEach((b) => {
+    const li = document.createElement('li');
+    li.className = 'mine__item';
+    const info = document.createElement('div');
+    info.className = 'mine__info';
+    const name = document.createElement('span');
+    name.className = 'mine__name';
+    name.textContent = b.услуга;
+    const when = document.createElement('span');
+    when.className = 'mine__when';
+    when.textContent = humanDay(b.день) + ', ' + b.время;
+    const status = document.createElement('span');
+    status.className = 'mine__status';
+    status.textContent = 'ждём вас';
+    info.append(name, when, status);
+    const cancel = document.createElement('button');
+    cancel.type = 'button';
+    cancel.className = 'mine__cancel';
+    cancel.textContent = 'Отменить';
+    cancel.addEventListener('click', () => {
+      const left = bookings().filter((x) => x.id !== b.id);
+      localStorage.setItem(KEY, JSON.stringify(left));
+      renderMine();
+      renderTimes();
+    });
+    li.append(info, cancel);
+    box.append(li);
+  });
+}
+
+/* Контакты: адрес, телефон и часы работы из настроек студии */
+function buildContacts(config) {
+  const box = $('contacts-list');
+  if (!box) return;
+  const rows = [['Студия', config.название || ''], ['Адрес', config.адрес || ''], ['Телефон', config.телефон || '']];
+  const часов = config.часы_работы || {};
+  const дни = [['пн', 'Понедельник'], ['вт', 'Вторник'], ['ср', 'Среда'], ['чт', 'Четверг'], ['пт', 'Пятница'], ['сб', 'Суббота'], ['вс', 'Воскресенье']];
+  box.textContent = '';
+  for (const [k, v] of rows) {
+    const row = document.createElement('div');
+    row.className = 'confirm__row';
+    const dt = document.createElement('dt');
+    dt.textContent = k;
+    const dd = document.createElement('dd');
+    dd.textContent = v;
+    row.append(dt, dd);
+    box.append(row);
+  }
+  for (const [key, label] of дни) {
+    const hours = часов[key];
+    const row = document.createElement('div');
+    row.className = 'confirm__row';
+    const dt = document.createElement('dt');
+    dt.textContent = label;
+    const dd = document.createElement('dd');
+    dd.textContent = hours ? hours[0] + ' – ' + hours[1] : 'выходной';
+    row.append(dt, dd);
+    box.append(row);
+  }
+  const call = $('call-button');
+  call.href = 'tel:' + String(config.телефон || '').replace(/[^\d+]/g, '');
+}
 
 function init(config) {
   state.config = config;
@@ -142,6 +239,7 @@ function init(config) {
   const дешевле = цены.length ? Math.min.apply(null, цены) : 0;
   $('price-sum').textContent = дешевле ? 'от ' + new Intl.NumberFormat('ru-RU').format(дешевле) + ' ₽' : '';
   $('company-name').textContent = config.название || '';
+  $('company-short').textContent = config.короткое_имя || config.название || 'Онлайн-запись';
   $('benefit').textContent = config.выгода || '';
   $('company-address').textContent = config.адрес || '';
   const phone = $('company-phone');
@@ -162,6 +260,9 @@ function init(config) {
   }
   buildServices();
   buildDays();
+  buildContacts(config);
+  renderMine();
+  showScreen('booking');
   const s = $('services').querySelector('button');
   const d = $('days').querySelector('button');
   if (s) s.click();
