@@ -122,14 +122,24 @@ function init(config) {
   const c = config.цвета || {};
   if (c.акцент) document.documentElement.style.setProperty('--accent', c.акцент);
   if (c.фон) document.documentElement.style.setProperty('--bg', c.фон);
+  if (config.фон_героя) document.documentElement.style.setProperty('--hero-image', "url('" + config.фон_героя + "')");
+  const услуги = config.услуги || [];
+  const цены = услуги.map((s) => Number(s.цена) || 0).filter((n) => n > 0);
+  const дешевле = цены.length ? Math.min.apply(null, цены) : 0;
+  $('price-sum').textContent = дешевле ? 'от ' + new Intl.NumberFormat('ru-RU').format(дешевле) + ' ₽' : '';
   $('company-name').textContent = config.название || '';
   $('benefit').textContent = config.выгода || '';
   $('company-address').textContent = config.адрес || '';
   const phone = $('company-phone');
   phone.textContent = config.телефон || '';
   phone.href = 'tel:' + String(config.телефон || '').replace(/[^\d+]/g, '');
+  const метрики = (config.метрики && config.метрики.length) ? config.метрики : [
+    { значение: услуги.length + ' услуг', подпись: 'в прайсе студии' },
+    { значение: 'всегда свободно', подпись: 'время видно сразу' },
+    { значение: 'без звонка', подпись: 'запись в два тапа' },
+  ];
   const mb = $('metrics'); mb.textContent = '';
-  for (const m of config.метрики || []) {
+  for (const m of метрики) {
     const li = document.createElement('li');
     li.className = 'metrics__item';
     li.innerHTML = '<span class="metrics__value"></span><span class="metrics__label"></span>';
