@@ -1,23 +1,39 @@
 {
-  "name": "SB DETAILING",
-  "short_name": "SB DETAILING",
-  "description": "Онлайн-запись в детейлинг-студию: услуга, день, свободное время.",
+  "name": "Detroll — онлайн-запись",
+  "short_name": "Detroll",
+  "description": "Онлайн-запись в детейлинг-студию: услуга, день, свободное время, своя запись в личном кабинете.",
   "lang": "ru",
   "dir": "ltr",
   "start_url": "./index.html",
   "scope": "./",
-  "id": "zapis-app",
+  "id": "/zapis-app/",
   "display": "standalone",
   "display_override": [
     "standalone",
-    "fullscreen"
+    "minimal-ui"
   ],
   "orientation": "portrait",
   "background_color": "#0E1013",
   "theme_color": "#0E1013",
+  "prefer_related_applications": false,
+  "launch_handler": {
+    "client_mode": "navigate-existing"
+  },
   "categories": [
     "business",
     "productivity"
+  ],
+  "shortcuts": [
+    {
+      "name": "Записаться",
+      "short_name": "Запись",
+      "url": "./index.html?screen=booking"
+    },
+    {
+      "name": "Моя запись",
+      "short_name": "Моя запись",
+      "url": "./index.html?screen=mine"
+    }
   ],
   "icons": [
     {
@@ -31,6 +47,12 @@
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any"
+    },
+    {
+      "src": "icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
     },
     {
       "src": "icon.svg",
