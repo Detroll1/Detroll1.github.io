@@ -30,7 +30,12 @@ function buildServices() {
     meta.textContent = new Intl.NumberFormat('ru-RU').format(s.цена) + ' ₽ · ' + s.длительность_минут + ' мин';
     meta.className = 'service__meta';
     b.append(name, meta);
-    b.addEventListener('click', () => { state.service = s; state.time = null; pick(list, b); renderTimes(); });
+    b.addEventListener('click', () => {
+      state.service = s; state.time = null; pick(list, b);
+      $('price-sum').textContent = new Intl.NumberFormat('ru-RU').format(s.цена) + ' ₽';
+      $('price-card').querySelector('.price__note').textContent = s.название + ', ' + s.длительность_минут + ' мин';
+      renderTimes();
+    });
     li.append(b);
     list.append(li);
   });
@@ -76,7 +81,16 @@ function renderTimes() {
       box.append(b);
     }
   }
-  if (!box.children.length) box.textContent = 'Свободного времени нет';
+  if (!box.children.length) {
+    box.textContent = 'Свободного времени нет. Позвоните, подберём время вручную.';
+    $('submit-button').disabled = true;
+    $('submit-button').textContent = 'Свободного времени нет';
+    return;
+  }
+  const first = box.querySelector('button');
+  if (first) { state.time = first.textContent; pick(box, first); }
+  $('submit-button').disabled = false;
+  $('submit-button').textContent = 'Записаться';
 }
 
 $('booking-form').addEventListener('submit', async (e) => {
