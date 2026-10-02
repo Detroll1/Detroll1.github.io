@@ -3,22 +3,34 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="theme-color" content="#131313">
+  <meta name="theme-color" content="#0E1013">
   <title>Онлайн-запись</title>
   <link rel="manifest" href="manifest.json">
   <link rel="icon" href="icon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header class="header">
-    <div class="header__about">
-      <h1 class="header__name" id="company-name"></h1>
-      <p class="header__address" id="company-address"></p>
+  <header class="hero">
+    <div class="hero__info">
+      <h1 class="hero__name" id="company-name"></h1>
+      <p class="hero__benefit" id="benefit"></p>
+      <p class="hero__contacts">
+        <span id="company-address"></span>
+        <a class="hero__phone" id="company-phone" href="tel:"></a>
+      </p>
     </div>
-    <a class="header__phone" id="company-phone" href="tel:"></a>
+    <div class="hero__card">
+      <p class="hero__card-text">Свободное время видно сразу: выбираете день и час, подтверждение приходит сразу.</p>
+      <a class="button hero__cta" href="#booking-form">Записаться</a>
+    </div>
   </header>
   <main class="page">
     <section class="screen" id="screen-booking">
+      <ul class="metrics" id="metrics">
+        <li class="metrics__item"><span class="metrics__value">3 бокса</span><span class="metrics__label">принимаем одновременно</span></li>
+        <li class="metrics__item"><span class="metrics__value">12 лет</span><span class="metrics__label">работаем с машинами</span></li>
+        <li class="metrics__item"><span class="metrics__value">без звонка</span><span class="metrics__label">запись в два тапа</span></li>
+      </ul>
       <section class="block">
         <h2 class="block__title">Услуга</h2>
         <ul class="services" id="services"></ul>
