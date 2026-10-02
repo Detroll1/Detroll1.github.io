@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0E1013">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Запись">
+  <title>Онлайн-запись</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="icon-192.png">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <img class="topbar__logo" src="icon.svg" alt="" width="28" height="28">
+    <span class="topbar__label">Онлайн-запись</span>
+    <a class="topbar__link" href="#booking-form">Мои записи</a>
+  </header>
+
+  <section class="hero">
+    <div class="hero__inner">
+      <div class="hero__lead">
+        <h1 class="hero__name" id="company-name"></h1>
+        <p class="hero__benefit" id="benefit"></p>
+        <p class="hero__contacts">
+          <span id="company-address"></span>
+          <a class="hero__phone" id="company-phone" href="tel:"></a>
+        </p>
+      </div>
+      <div class="hero__aside">
+        <div class="price" id="price-card">
+          <span class="price__sum" id="price-sum"></span>
+          <span class="price__note">за услугу</span>
+        </div>
+        <a class="button hero__cta" href="#booking-form">Записаться</a>
+      </div>
+    </div>
+  </section>
+
+  <main class="page">
+    <ul class="metrics" id="metrics"></ul>
+    <section class="screen" id="screen-booking">
+      <section class="block">
+        <h2 class="block__title">Услуга</h2>
+        <ul class="services" id="services"></ul>
+      </section>
+      <section class="block">
+        <h2 class="block__title">День</h2>
+        <div class="days" id="days"></div>
+      </section>
+      <section class="block">
+        <h2 class="block__title">Время</h2>
+        <div class="times" id="times"></div>
+      </section>
+      <section class="block">
+        <h2 class="block__title">Ваши данные</h2>
+        <form class="form" id="booking-form">
+          <label class="field">
+            <span class="field__label">Имя</span>
+            <input class="field__input" id="client-name" type="text" name="name" autocomplete="name" placeholder="Как вас зовут" required>
+          </label>
+          <label class="field">
+            <span class="field__label">Телефон</span>
+            <input class="field__input" id="client-phone" type="tel" inputmode="tel" name="phone" autocomplete="tel" placeholder="+7 900 000-00-00" required>
+          </label>
+          <button class="button" id="submit-button" type="submit">Записаться</button>
+        </form>
+      </section>
+    </section>
+    <section class="screen" id="screen-confirm" hidden>
+      <h2 class="confirm__title">Вы записаны</h2>
+      <dl class="confirm">
+        <div class="confirm__row"><dt>Услуга</dt><dd id="confirm-service"></dd></div>
+        <div class="confirm__row"><dt>День</dt><dd id="confirm-day"></dd></div>
+        <div class="confirm__row"><dt>Время</dt><dd id="confirm-time"></dd></div>
+        <div class="confirm__row"><dt>Номер записи</dt><dd id="confirm-number"></dd></div>
+      </dl>
+      <p class="confirm__note" id="confirm-note" hidden></p>
+      <button class="button button--ghost" id="new-booking" type="button">Записаться ещё раз</button>
+    </section>
+  </main>
+  <script src="app.js"></script>
+  <script>if ('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js');</script>
+</body>
+</html>

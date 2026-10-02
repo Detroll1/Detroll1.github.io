@@ -1,0 +1,154 @@
+/* Онлайн-запись — вид 2 (ТЗ TZ-vid-v2). --accent и --bg app.js подменяет из config.json */
+@font-face { font-family: Inter; src: url(assets/fonts/Inter-Regular.woff2) format("woff2"); font-weight: 400; font-display: swap; }
+@font-face { font-family: Inter; src: url(assets/fonts/Inter-SemiBold.woff2) format("woff2"); font-weight: 600; font-display: swap; }
+@font-face { font-family: Inter; src: url(assets/fonts/Inter-Bold.woff2) format("woff2"); font-weight: 700; font-display: swap; }
+:root {
+  color-scheme: dark;
+  --accent: #2F6BFF;
+  --bg: #0E1013;
+  --surface: #16191E;
+  --text: #F2F4F7;
+  --muted: #9AA3AE;
+  --line: rgba(255, 255, 255, .10);
+}
+* { box-sizing: border-box; margin: 0; }
+body {
+  background: var(--bg); color: var(--text);
+  font: 16px/1.3 Inter, system-ui, sans-serif;
+  min-height: 100svh; overscroll-behavior-y: none;
+  -webkit-tap-highlight-color: transparent;
+}
+button { font: inherit; color: inherit; cursor: pointer; touch-action: manipulation; user-select: none; }
+[hidden] { display: none !important; }
+[disabled] { opacity: .4; pointer-events: none; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+/* Верхняя полоса: как в приложении — иконка, подпись, ссылка; стекло поверх героя */
+.topbar {
+  position: sticky; top: 0; z-index: 10;
+  display: flex; align-items: center; gap: 12px;
+  padding: 12px 20px; padding-top: max(12px, env(safe-area-inset-top));
+  border-bottom: 1px solid var(--line);
+  background: color-mix(in srgb, var(--bg) 72%, transparent);
+  backdrop-filter: blur(16px);
+}
+.topbar__logo { display: block; border-radius: 8px; }
+.topbar__label { font-size: 14px; font-weight: 600; letter-spacing: .02em; }
+.topbar__link { margin-left: auto; font-size: 14px; color: var(--muted); text-decoration: none; }
+
+/* Герой во всю ширину: фон из настроек клиента, затемнение поверх, стеклянная карточка цены */
+.hero {
+  padding: 56px 20px 40px;
+  background-image:
+    linear-gradient(180deg, rgba(8, 9, 12, .26) 0%, rgba(8, 9, 12, .6) 55%, var(--bg) 100%),
+    var(--hero-image, none);
+  background-size: cover; background-position: center;
+  border-bottom: 1px solid var(--line);
+}
+.hero__inner { display: grid; gap: 32px; max-width: 1170px; margin-inline: auto; }
+.hero__lead, .hero__aside { display: grid; justify-items: start; gap: 16px; }
+.hero__name { font-size: clamp(24px, 4vw, 36px); font-weight: 700; line-height: 1.05; letter-spacing: -.02em; max-width: 22ch; }
+.hero__benefit { font-size: 16px; color: rgba(242, 244, 247, .82); max-width: 48ch; }
+.hero__cta { max-width: 320px; }
+.hero__contacts { display: flex; flex-wrap: wrap; gap: 4px 16px; font-size: 14px; color: var(--muted); }
+.hero__phone { color: var(--muted); text-decoration: none; }
+.price {
+  display: inline-flex; align-items: baseline; gap: 8px;
+  padding: 12px 20px; border-radius: 16px; border: 1px solid var(--line);
+  background: color-mix(in srgb, var(--surface) 62%, transparent);
+  backdrop-filter: blur(12px);
+}
+.price__sum { font-size: 24px; font-weight: 700; letter-spacing: -.02em; }
+.price__note { font-size: 14px; color: var(--muted); }
+
+.page { max-width: 1170px; margin-inline: auto; padding: 40px 20px 56px; }
+.screen { display: grid; gap: 40px; }
+#screen-confirm { gap: 24px; }
+
+/* Полоса метрик: три значения в строку, разделены линиями */
+.metrics {
+  list-style: none; padding: 24px 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px;
+  border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
+}
+.metrics__value { display: block; font-size: 24px; font-weight: 600; letter-spacing: -.02em; }
+.metrics__label { display: block; margin-top: 4px; font-size: 14px; color: var(--muted); }
+.metrics__item + .metrics__item { border-left: 1px solid var(--line); padding-left: 12px; }
+
+.block__title { margin-bottom: 16px; font-size: 14px; font-weight: 600; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); }
+
+/* Услуги: выбранная карточка подсвечена акцентом; на широком экране ровные три колонки */
+.services { list-style: none; padding: 0; display: grid; gap: 12px; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); }
+.services button {
+  width: 100%; padding: 20px; text-align: left; font-size: 16px; font-weight: 600;
+  background: var(--surface); border: 1px solid var(--line); border-radius: 16px;
+  transition: border-color 150ms cubic-bezier(.23, 1, .32, 1), background-color 150ms cubic-bezier(.23, 1, .32, 1), transform 150ms cubic-bezier(.23, 1, .32, 1);
+}
+.service__meta { display: block; margin-top: 4px; font-size: 14px; font-weight: 400; color: var(--muted); }
+
+/* Чипы дня и времени: тап-зона не меньше 44 px */
+.days, .times { display: flex; flex-wrap: wrap; gap: 8px; }
+.times { color: var(--muted); font-size: 14px; }
+.days button, .times button {
+  min-height: 44px; padding: 12px 16px; white-space: nowrap; color: var(--text);
+  background: var(--surface); border: 1px solid var(--line); border-radius: 64px;
+  transition: border-color 150ms cubic-bezier(.23, 1, .32, 1), background-color 150ms cubic-bezier(.23, 1, .32, 1);
+}
+.times button { min-width: 72px; }
+.services [aria-pressed="true"], .days [aria-pressed="true"], .times [aria-pressed="true"] {
+  border-color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 22%, var(--surface));
+  box-shadow: inset 0 0 0 1px var(--accent);
+  font-weight: 600;
+}
+
+/* Форма */
+.form { display: grid; gap: 16px; max-width: 560px; }
+.field { display: grid; gap: 8px; }
+.field__label { font-size: 14px; color: var(--muted); }
+.field__input {
+  font: inherit; width: 100%; padding: 16px; color: var(--text);
+  background: var(--surface); border: 1px solid var(--line); border-radius: 12px;
+  transition: border-color 150ms cubic-bezier(.23, 1, .32, 1), background-color 150ms cubic-bezier(.23, 1, .32, 1);
+}
+.field__input:focus { border-color: var(--accent); outline: none; }
+.field__input::placeholder { color: rgba(255, 255, 255, .45); }
+
+/* Кнопка */
+.button {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 100%; padding: 16px 24px; border: 0; border-radius: 64px;
+  font-size: 16px; font-weight: 600; text-decoration: none;
+  background: var(--accent); color: #fff;
+  transition: transform 150ms cubic-bezier(.23, 1, .32, 1);
+}
+.button--ghost { background: none; border: 1px solid var(--line); color: var(--text); }
+#new-booking { max-width: 560px; }
+
+/* Экран подтверждения */
+.confirm__title { font-size: 24px; font-weight: 700; line-height: 1.1; letter-spacing: -.02em; }
+.confirm { max-width: 560px; border-top: 1px solid var(--line); }
+.confirm__row { display: flex; justify-content: space-between; gap: 16px; padding-block: 16px; border-bottom: 1px solid var(--line); }
+.confirm dt { font-size: 14px; color: var(--muted); }
+.confirm dd { text-align: right; }
+#confirm-number { color: var(--accent); font-weight: 600; }
+.confirm__note { max-width: 560px; font-size: 14px; color: var(--muted); }
+
+.days button, .times button, .field__input, .button--ghost {
+  transition: border-color 150ms cubic-bezier(.23, 1, .32, 1), background-color 150ms cubic-bezier(.23, 1, .32, 1);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .days button:hover, .times button:hover { border-color: rgba(255, 255, 255, .3); }
+  .services button:hover { border-color: rgba(255, 255, 255, .3); transform: translateY(-2px); }
+  .button:hover { transform: translateY(-2px); }
+  .button--ghost:hover { border-color: var(--accent); }
+  .hero__phone:hover { color: var(--text); }
+}
+.button:active { transform: scale(.97); }
+
+@media (min-width: 900px) {
+  .hero { padding: 96px 40px 72px; }
+  .hero__inner { grid-template-columns: minmax(0, 1fr) 360px; gap: 64px; align-items: center; }
+  .hero__name { letter-spacing: -.03em; }
+}
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
