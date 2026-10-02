@@ -28,7 +28,7 @@ function buildServices() {
     name.textContent = s.название;
     const meta = document.createElement('span');
     meta.textContent = new Intl.NumberFormat('ru-RU').format(s.цена) + ' ₽ · ' + s.длительность_минут + ' мин';
-    meta.style.cssText = 'display:block;font-size:14px;color:var(--muted)';
+    meta.className = 'service__meta';
     b.append(name, meta);
     b.addEventListener('click', () => { state.service = s; state.time = null; pick(list, b); renderTimes(); });
     li.append(b);
@@ -123,10 +123,19 @@ function init(config) {
   if (c.акцент) document.documentElement.style.setProperty('--accent', c.акцент);
   if (c.фон) document.documentElement.style.setProperty('--bg', c.фон);
   $('company-name').textContent = config.название || '';
+  $('benefit').textContent = config.выгода || '';
   $('company-address').textContent = config.адрес || '';
   const phone = $('company-phone');
   phone.textContent = config.телефон || '';
   phone.href = 'tel:' + String(config.телефон || '').replace(/[^\d+]/g, '');
+  const mb = $('metrics'); mb.textContent = '';
+  for (const m of config.метрики || []) {
+    const li = document.createElement('li');
+    li.className = 'metrics__item';
+    li.innerHTML = '<span class="metrics__value"></span><span class="metrics__label"></span>';
+    li.firstChild.textContent = m.значение; li.lastChild.textContent = m.подпись;
+    mb.append(li);
+  }
   buildServices();
   buildDays();
   const s = $('services').querySelector('button');

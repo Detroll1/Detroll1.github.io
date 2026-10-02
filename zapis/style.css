@@ -1,94 +1,129 @@
-/* Онлайн-запись: тёмная тема. --accent и --bg app.js подменяет из config.json */
+/* Онлайн-запись — вид 2 (ТЗ TZ-vid-v2). --accent и --bg app.js подменяет из config.json */
+@font-face { font-family: Inter; src: url(assets/fonts/Inter-Regular.woff2) format("woff2"); font-weight: 400; font-display: swap; }
+@font-face { font-family: Inter; src: url(assets/fonts/Inter-SemiBold.woff2) format("woff2"); font-weight: 600; font-display: swap; }
+@font-face { font-family: Inter; src: url(assets/fonts/Inter-Bold.woff2) format("woff2"); font-weight: 700; font-display: swap; }
 :root {
   color-scheme: dark;
-  --accent: #FF6B2C;
-  --bg: #131313;
-  --panel: #0E0E0E;
-  --text: #FFFFFF;
-  --muted: rgba(255, 255, 255, .6);
-  --line: rgba(255, 255, 255, .12);
+  --accent: #2F6BFF;
+  --bg: #0E1013;
+  --surface: #16191E;
+  --text: #F2F4F7;
+  --muted: #9AA3AE;
+  --line: rgba(255, 255, 255, .10);
 }
 * { box-sizing: border-box; margin: 0; }
 body {
   background: var(--bg); color: var(--text);
-  font: 16px/1.3 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  font: 16px/1.3 Inter, system-ui, sans-serif;
   min-height: 100svh; overscroll-behavior-y: none;
   -webkit-tap-highlight-color: transparent;
 }
 button { font: inherit; color: inherit; cursor: pointer; touch-action: manipulation; user-select: none; }
-
-.header {
-  display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between;
-  gap: 8px 24px; padding: 20px; border-bottom: 1px solid var(--line);
-}
-.header__about { display: grid; gap: 8px; }
-.header__name { font-size: 20px; font-weight: 600; }
-.header__address { font-size: 14px; color: var(--muted); }
-.header__phone { font-size: 14px; color: var(--muted); text-decoration: none; }
-
-.page { max-width: 560px; margin: 0 auto; padding: 40px 20px; }
-.screen { display: grid; gap: 40px; }
 [hidden] { display: none !important; }
-.block__title { font-size: 14px; font-weight: 500; text-transform: uppercase; color: var(--muted); margin-bottom: 16px; }
-
-.services { list-style: none; padding: 0; display: grid; gap: 12px; }
-.services li, .days button, .times button {
-  padding: 16px; background: var(--panel); border: 1px solid var(--line);
-  border-radius: 12px; text-align: left; cursor: pointer; user-select: none;
-}
-.services li > button { all: unset; display: block; width: 100%; font: inherit; color: inherit; cursor: pointer; text-align: left; }
-.days { display: flex; flex-wrap: wrap; gap: 8px; }
-.days button { padding: 12px 16px; border-radius: 64px; white-space: nowrap; min-height: 44px; }
-.times { display: grid; grid-template-columns: repeat(auto-fill, minmax(72px, 1fr)); gap: 8px; }
-.times button { padding: 12px; text-align: center; min-height: 44px; }
 [disabled] { opacity: .4; pointer-events: none; }
-/* Выбранное состояние должно читаться с первого взгляда: рамка акцентом, заливка и жирный текст.
-   У карточек услуг переключатель лежит внутри кнопки, поэтому подсветку вешаем на сам li через :has */
-.is-active, [aria-pressed="true"], [aria-selected="true"] {
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+/* Герой: на десктопе две колонки, на телефоне одна */
+.hero, .page { max-width: 1170px; margin-inline: auto; padding-inline: 20px; }
+.hero { display: grid; gap: 24px; padding-block: 40px; }
+.hero__name { font-size: clamp(24px, 4vw, 36px); font-weight: 700; line-height: 1.05; letter-spacing: -.02em; }
+.hero__benefit { margin-top: 12px; font-size: 16px; color: rgba(242, 244, 247, .8); }
+.hero__contacts { margin-top: 16px; display: flex; flex-wrap: wrap; gap: 4px 16px; font-size: 14px; color: var(--muted); }
+.hero__phone { color: var(--muted); text-decoration: none; }
+.hero__card {
+  padding: 24px; border-radius: 24px;
+  border: 1px solid color-mix(in srgb, var(--accent) 35%, transparent);
+  background: color-mix(in srgb, var(--accent) 14%, var(--surface));
+}
+.hero__card-text { font-size: 16px; }
+.hero__cta { margin-top: 20px; }
+
+.page { padding-block: 40px 56px; }
+.screen { display: grid; gap: 40px; }
+#screen-confirm { gap: 24px; }
+
+/* Полоса метрик: три значения в строку, разделены линиями */
+.metrics {
+  list-style: none; padding: 24px 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px;
+  border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
+}
+.metrics__value { display: block; font-size: 24px; font-weight: 600; letter-spacing: -.02em; }
+.metrics__label { display: block; margin-top: 4px; font-size: 14px; color: var(--muted); }
+.metrics__item + .metrics__item { border-left: 1px solid var(--line); padding-left: 12px; }
+
+.block__title { margin-bottom: 16px; font-size: 14px; font-weight: 600; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); }
+
+/* Услуги: выбранная карточка подсвечена акцентом; на широком экране ровные три колонки */
+.services { list-style: none; padding: 0; display: grid; gap: 12px; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); }
+.services button {
+  width: 100%; padding: 20px; text-align: left; font-size: 16px; font-weight: 600;
+  background: var(--surface); border: 1px solid var(--line); border-radius: 16px;
+  transition: border-color 150ms cubic-bezier(.23, 1, .32, 1), background-color 150ms cubic-bezier(.23, 1, .32, 1), transform 150ms cubic-bezier(.23, 1, .32, 1);
+}
+.service__meta { display: block; margin-top: 4px; font-size: 14px; font-weight: 400; color: var(--muted); }
+
+/* Чипы дня и времени: тап-зона не меньше 44 px */
+.days, .times { display: flex; flex-wrap: wrap; gap: 8px; }
+.times { color: var(--muted); font-size: 14px; }
+.days button, .times button {
+  min-height: 44px; padding: 12px 16px; white-space: nowrap; color: var(--text);
+  background: var(--surface); border: 1px solid var(--line); border-radius: 64px;
+  transition: border-color 150ms cubic-bezier(.23, 1, .32, 1), background-color 150ms cubic-bezier(.23, 1, .32, 1);
+}
+.times button { min-width: 72px; }
+[aria-pressed="true"] {
   border-color: var(--accent);
-  background: color-mix(in srgb, var(--accent) 18%, var(--panel));
+  background: color-mix(in srgb, var(--accent) 16%, var(--surface));
   font-weight: 600;
 }
-.services li:has(button[aria-pressed="true"]) {
-  border-color: var(--accent);
-  background: color-mix(in srgb, var(--accent) 18%, var(--panel));
-}
 
-.form { display: grid; gap: 16px; }
+/* Форма */
+.form { display: grid; gap: 16px; max-width: 560px; }
 .field { display: grid; gap: 8px; }
 .field__label { font-size: 14px; color: var(--muted); }
 .field__input {
   font: inherit; width: 100%; padding: 16px; color: var(--text);
-  background: var(--panel); border: 1px solid var(--line); border-radius: 12px;
+  background: var(--surface); border: 1px solid var(--line); border-radius: 12px;
+  transition: border-color 150ms cubic-bezier(.23, 1, .32, 1), background-color 150ms cubic-bezier(.23, 1, .32, 1);
 }
-.field__input:focus { border-color: var(--accent); }
-.field__input::placeholder { color: rgba(255, 255, 255, .35); }
-:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.field__input:focus { border-color: var(--accent); outline: none; }
+.field__input::placeholder { color: rgba(255, 255, 255, .45); }
 
+/* Кнопка */
 .button {
-  width: 100%; padding: 16px 24px; border: 0; border-radius: 64px; font-size: 18px;
-  background: var(--accent); color: var(--bg);
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 100%; padding: 16px 24px; border: 0; border-radius: 64px;
+  font-size: 16px; font-weight: 600; text-decoration: none;
+  background: var(--accent); color: #fff;
   transition: transform 150ms cubic-bezier(.23, 1, .32, 1);
 }
-.button:active { transform: scale(.97); }
 .button--ghost { background: none; border: 1px solid var(--line); color: var(--text); }
+#new-booking { max-width: 560px; }
 
-.confirm__title { font-size: 32px; }
-.confirm { display: grid; border-top: 1px solid var(--line); }
-.confirm__row { display: flex; justify-content: space-between; gap: 16px; padding: 16px 0; border-bottom: 1px solid var(--line); }
+/* Экран подтверждения */
+.confirm__title { font-size: 24px; font-weight: 700; line-height: 1.1; letter-spacing: -.02em; }
+.confirm { max-width: 560px; border-top: 1px solid var(--line); }
+.confirm__row { display: flex; justify-content: space-between; gap: 16px; padding-block: 16px; border-bottom: 1px solid var(--line); }
 .confirm dt { font-size: 14px; color: var(--muted); }
 .confirm dd { text-align: right; }
-#confirm-number { color: var(--accent); }
-.confirm__note { font-size: 14px; color: var(--muted); }
+#confirm-number { color: var(--accent); font-weight: 600; }
+.confirm__note { max-width: 560px; font-size: 14px; color: var(--muted); }
 
-.services li, .days button, .times button, .field__input, .button--ghost {
+.days button, .times button, .field__input, .button--ghost {
   transition: border-color 150ms cubic-bezier(.23, 1, .32, 1), background-color 150ms cubic-bezier(.23, 1, .32, 1);
 }
 
 @media (hover: hover) and (pointer: fine) {
-  .header__phone:hover { color: var(--accent); }
-  .services li:hover, .days button:hover, .times button:hover { border-color: rgba(255, 255, 255, .3); }
+  .days button:hover, .times button:hover { border-color: rgba(255, 255, 255, .3); }
+  .services button:hover { border-color: rgba(255, 255, 255, .3); transform: translateY(-2px); }
   .button:hover { transform: translateY(-2px); }
   .button--ghost:hover { border-color: var(--accent); }
+  .hero__phone:hover { color: var(--text); }
 }
-@media (prefers-reduced-motion: reduce) { * { transition: none; } }
+.button:active { transform: scale(.97); }
+
+@media (min-width: 900px) {
+  .hero { grid-template-columns: minmax(0, 1fr) 400px; gap: 40px; align-items: center; }
+  .hero__name { letter-spacing: -.03em; }
+}
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
