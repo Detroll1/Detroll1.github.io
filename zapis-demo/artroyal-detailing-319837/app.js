@@ -562,6 +562,7 @@ async function submitBooking(event) {
   showScreen('confirm');
   renderMine();
   fillFromProfile();
+  fillProfile();
 }
 
 /* Вход в кабинет */
