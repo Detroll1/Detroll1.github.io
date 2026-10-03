@@ -24,6 +24,13 @@ const toMin = (hm) => Number(hm.slice(0, 2)) * 60 + Number(hm.slice(3, 5));
 const toHm = (m) => pad(Math.floor(m / 60)) + ':' + pad(m % 60);
 const iso = (d) => d.getFullYear() + '-' + pad(d.getMonth() + 1) + '-' + pad(d.getDate());
 const money = (n) => new Intl.NumberFormat('ru-RU').format(Number(n) || 0) + ' ₽';
+
+/* Телефон в кабинете приходит цифрами: показываем его как привычно — +7 900 000-00-00 */
+function prettyPhone(value) {
+  const d = String(value || '').replace(/\D/g, '').slice(-10);
+  if (d.length !== 10) return String(value || '');
+  return '+7 ' + d.slice(0, 3) + ' ' + d.slice(3, 6) + '-' + d.slice(6, 8) + '-' + d.slice(8);
+}
 const humanDay = (s) => new Date(s + 'T00:00:00').toLocaleDateString('ru-RU', { weekday: 'long', day: 'numeric', month: 'long' });
 const today = () => iso(new Date());
 
@@ -448,7 +455,7 @@ function fillProfile() {
   $('profile-card').hidden = false;
   $('profile-guest').hidden = true;
   $('profile-name').value = p.name || '';
-  $('profile-phone').value = p.phone || '';
+  $('profile-phone').value = prettyPhone(p.phone);
   $('profile-car').value = p.car || '';
   $('profile-remind').value = String(p.remindHours == null ? 3 : p.remindHours);
   $('profile-contact').value = p.contact || 'звонок';
