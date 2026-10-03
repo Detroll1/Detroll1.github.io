@@ -17,43 +17,55 @@
   <header class="topbar">
     <img class="topbar__logo" src="icon.svg" alt="" width="28" height="28">
     <span class="topbar__label" id="company-short">Онлайн-запись</span>
-    <button class="install" id="install-button" type="button" hidden>
-      <span class="install__icon" aria-hidden="true"></span>На экран Домой
+    <button class="topbar__profile" id="topbar-profile" type="button" aria-label="Профиль">
+      <span class="topbar__profile-icon" aria-hidden="true"></span>
     </button>
   </header>
 
-  <section class="hero">
-    <div class="hero__inner">
-      <div class="hero__lead">
-        <h1 class="hero__name" id="company-name"></h1>
-        <p class="hero__benefit" id="benefit"></p>
-      </div>
-      <figure class="photo" id="photo-card">
-        <img class="photo__img" id="photo-img" src="assets/car-1.jpg" alt="">
-        <button class="button photo__cta" id="hero-cta" type="button">Записаться
-          <span class="photo__arrow" aria-hidden="true"></span>
-        </button>
-      </figure>
-      <div class="price" id="price-card">
-        <span class="price__sum" id="price-sum"></span>
-        <span class="price__note">за услугу</span>
-      </div>
-      <p class="hero__contacts">
-        <span id="company-address"></span>
-        <a class="hero__phone" id="company-phone" href="tel:"></a>
-      </p>
-    </div>
-  </section>
-
   <main class="page">
+    <!-- Главная: запись -->
     <section class="screen" id="screen-booking">
+      <button class="install-banner" id="install-banner" type="button" hidden>
+        <img class="install-banner__icon" src="icon-192.png" alt="" width="44" height="44">
+        <span class="install-banner__text">
+          <b>Установить приложение</b>
+          <span>Откроется на весь экран, без адресной строки</span>
+        </span>
+        <span class="install-banner__go">Установить</span>
+      </button>
+      <p class="install-hint" id="install-hint" hidden></p>
+
+      <section class="hero">
+        <div class="hero__inner">
+          <div class="hero__lead">
+            <h1 class="hero__name" id="company-name"></h1>
+            <p class="hero__benefit" id="benefit"></p>
+          </div>
+          <figure class="photo" id="photo-card">
+            <img class="photo__img" id="photo-img" src="assets/hero.jpg" alt="">
+            <button class="button photo__cta" id="hero-cta" type="button">Записаться
+              <span class="photo__arrow" aria-hidden="true"></span>
+            </button>
+          </figure>
+          <div class="price" id="price-card">
+            <span class="price__sum" id="price-sum"></span>
+            <span class="price__note">за услугу</span>
+          </div>
+          <p class="hero__contacts">
+            <span id="company-address"></span>
+            <a class="hero__phone" id="company-phone" href="tel:"></a>
+          </p>
+        </div>
+      </section>
+
       <ol class="steps" id="steps">
         <li class="steps__item" data-step="service"><span class="steps__num">1</span><span class="steps__label">Выберите услугу</span></li>
         <li class="steps__item" data-step="when"><span class="steps__num">2</span><span class="steps__label">День и время</span></li>
         <li class="steps__item" data-step="data"><span class="steps__num">3</span><span class="steps__label">Имя и телефон</span></li>
       </ol>
-      <p class="install-hint" id="install-hint" hidden></p>
+
       <ul class="metrics" id="metrics"></ul>
+
       <section class="block">
         <h2 class="block__title">Услуга</h2>
         <ul class="services" id="services"></ul>
@@ -66,9 +78,9 @@
         <h2 class="block__title">Свободное время</h2>
         <div class="times" id="times"></div>
       </section>
-      <section class="block">
+      <section class="block" id="form-block">
         <h2 class="block__title">Как с вами связаться</h2>
-        <form class="form" id="booking-form">
+        <form class="form" id="booking-form" novalidate>
           <label class="field">
             <span class="field__label">Имя</span>
             <input class="field__input" id="client-name" type="text" name="name" autocomplete="name" placeholder="Как вас зовут" required>
@@ -77,24 +89,107 @@
             <span class="field__label">Телефон</span>
             <input class="field__input" id="client-phone" type="tel" inputmode="tel" name="phone" autocomplete="tel" placeholder="+7 900 000-00-00" required>
           </label>
+          <label class="field" id="pin-field">
+            <span class="field__label">Пин для входа в кабинет</span>
+            <input class="field__input" id="client-pin" type="password" inputmode="numeric" name="pin" autocomplete="off" maxlength="6" placeholder="4–6 цифр">
+            <span class="field__hint">Придумайте 4–6 цифр — по нему откроете свои записи с любого телефона.</span>
+          </label>
+          <label class="field">
+            <span class="field__label">Автомобиль (не обязательно)</span>
+            <input class="field__input" id="client-car" type="text" name="car" autocomplete="off" maxlength="60" placeholder="Марка, модель, номер">
+          </label>
           <p class="form__summary" id="form-summary"></p>
+          <p class="form__error" id="form-error" hidden></p>
           <button class="button" id="submit-button" type="submit">Записаться</button>
         </form>
       </section>
     </section>
 
+    <!-- Мои записи: кабинет клиента -->
     <section class="screen" id="screen-mine" hidden>
-      <h2 class="block__title">Моя запись</h2>
+      <h2 class="block__title">Мои записи</h2>
+
+      <section class="card login" id="login-card" hidden>
+        <p class="login__lead">Войдите по телефону и пину, чтобы видеть свои записи на любом устройстве.</p>
+        <form class="form" id="login-form" novalidate>
+          <label class="field">
+            <span class="field__label">Телефон</span>
+            <input class="field__input" id="login-phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="+7 900 000-00-00" required>
+          </label>
+          <label class="field">
+            <span class="field__label">Пин</span>
+            <input class="field__input" id="login-pin" type="password" inputmode="numeric" autocomplete="off" maxlength="6" placeholder="4–6 цифр" required>
+          </label>
+          <p class="form__error" id="login-error" hidden></p>
+          <button class="button" type="submit">Войти</button>
+        </form>
+        <p class="login__hint">Записываетесь впервые — пин придумаете при записи.</p>
+      </section>
+
       <ul class="mine" id="mine-list"></ul>
-      <p class="mine__hint">Записи хранятся на этом телефоне. Отменить или перенести — один тап.</p>
+      <p class="mine__hint" id="mine-hint" hidden></p>
+      <button class="button button--ghost" id="logout-button" type="button" hidden>Выйти из кабинета</button>
     </section>
 
-    <section class="screen" id="screen-contacts" hidden>
-      <h2 class="block__title">Как нас найти</h2>
-      <dl class="confirm" id="contacts-list"></dl>
-      <a class="button button--ghost" id="call-button" href="tel:">Позвонить в студию</a>
+    <!-- Профиль: данные клиента, настройки и важная информация -->
+    <section class="screen" id="screen-profile" hidden>
+      <h2 class="block__title">Профиль</h2>
+
+      <section class="card" id="profile-card" hidden>
+        <form class="form" id="profile-form" novalidate>
+          <label class="field">
+            <span class="field__label">Имя</span>
+            <input class="field__input" id="profile-name" type="text" autocomplete="name">
+          </label>
+          <label class="field">
+            <span class="field__label">Телефон</span>
+            <input class="field__input" id="profile-phone" type="tel" disabled>
+            <span class="field__hint">Телефон меняется вместе с новой записью.</span>
+          </label>
+          <label class="field">
+            <span class="field__label">Автомобиль</span>
+            <input class="field__input" id="profile-car" type="text" maxlength="60" placeholder="Марка, модель, номер">
+          </label>
+          <label class="field">
+            <span class="field__label">Напомнить о записи</span>
+            <select class="field__input" id="profile-remind">
+              <option value="0">не напоминать</option>
+              <option value="1">за час</option>
+              <option value="3">за 3 часа</option>
+              <option value="6">за 6 часов</option>
+              <option value="24">за сутки</option>
+            </select>
+          </label>
+          <label class="field">
+            <span class="field__label">Как с вами связываться</span>
+            <select class="field__input" id="profile-contact">
+              <option value="звонок">звонок</option>
+              <option value="телеграм">телеграм</option>
+              <option value="ватсап">ватсап</option>
+              <option value="смс">смс</option>
+            </select>
+          </label>
+          <label class="field">
+            <span class="field__label">Пожелания к визиту</span>
+            <textarea class="field__input" id="profile-note" rows="3" maxlength="200" placeholder="Например: нужен второй комплект ключей"></textarea>
+          </label>
+          <p class="form__ok" id="profile-ok" hidden>Сохранено</p>
+          <button class="button" type="submit">Сохранить</button>
+        </form>
+      </section>
+
+      <section class="card" id="profile-guest" hidden>
+        <p class="login__lead">Войдите в кабинет — здесь появятся ваши данные, настройки и важная информация о визите.</p>
+        <button class="button button--ghost" id="profile-login" type="button">Войти в кабинет</button>
+      </section>
+
+      <section class="card">
+        <h3 class="card__title">Важная информация</h3>
+        <dl class="confirm" id="important-list"></dl>
+      </section>
     </section>
 
+    <!-- Подтверждение записи -->
     <section class="screen" id="screen-confirm" hidden>
       <h2 class="confirm__title">Вы записаны</h2>
       <dl class="confirm">
@@ -105,21 +200,45 @@
       </dl>
       <p class="confirm__note" id="confirm-note" hidden></p>
       <p class="confirm__hint">Мы позвоним перед визитом и подтвердим время.</p>
+      <a class="button button--ghost" id="confirm-calendar" href="#" download>В календарь</a>
       <button class="button button--ghost" id="new-booking" type="button">Записаться ещё раз</button>
     </section>
   </main>
 
   <nav class="tabbar" id="tabbar">
     <button class="tabbar__item" type="button" data-screen="booking" aria-selected="true">
-      <span class="tabbar__icon tabbar__icon--booking" aria-hidden="true"></span>Запись
+      <span class="tabbar__icon tabbar__icon--booking" aria-hidden="true"></span>Главная
     </button>
     <button class="tabbar__item" type="button" data-screen="mine" aria-selected="false">
-      <span class="tabbar__icon tabbar__icon--mine" aria-hidden="true"></span>Моя запись
+      <span class="tabbar__icon tabbar__icon--mine" aria-hidden="true"></span>Мои записи
     </button>
-    <button class="tabbar__item" type="button" data-screen="contacts" aria-selected="false">
-      <span class="tabbar__icon tabbar__icon--contacts" aria-hidden="true"></span>Контакты
+    <button class="tabbar__item" type="button" data-screen="profile" aria-selected="false">
+      <span class="tabbar__icon tabbar__icon--profile" aria-hidden="true"></span>Профиль
     </button>
   </nav>
+
+  <!-- Лист изменения записи -->
+  <div class="sheet" id="sheet" hidden>
+    <div class="sheet__backdrop" data-close="1"></div>
+    <div class="sheet__box" role="dialog" aria-modal="true">
+      <h3 class="sheet__title" id="sheet-title">Изменить запись</h3>
+      <div class="sheet__body">
+        <label class="field">
+          <span class="field__label">Услуга</span>
+          <select class="field__input" id="edit-service"></select>
+        </label>
+        <span class="field__label">День</span>
+        <div class="days" id="edit-days"></div>
+        <span class="field__label">Время</span>
+        <div class="times" id="edit-times"></div>
+        <p class="form__error" id="edit-error" hidden></p>
+      </div>
+      <div class="sheet__actions">
+        <button class="button" id="edit-save" type="button">Сохранить</button>
+        <button class="button button--ghost" id="edit-close" type="button" data-close="1">Закрыть</button>
+      </div>
+    </div>
+  </div>
 
   <script src="app.js"></script>
   <script>if ('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js');</script>
