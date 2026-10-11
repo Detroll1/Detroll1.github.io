@@ -149,3 +149,4 @@ button { cursor: pointer; background: none; border: 0; }
 .extra .stepper { flex: none; }
 .extra__text, .extra > div:first-child { min-width: 0; overflow-wrap: anywhere; }
 @media (max-width: 420px) { .extra .stepper { min-width: 112px; } .extra .stepper button { width: 36px; } }
+.step > .choices { margin-bottom: 16px; }
