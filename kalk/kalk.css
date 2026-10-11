@@ -92,7 +92,7 @@ button { cursor: pointer; background: none; border: 0; }
 .stepper output { font-weight: 600; font-variant-numeric: tabular-nums; }
 .stepper output small { font-weight: 400; color: var(--muted); }
 
-.extras { display: grid; gap: 8px; }
+.extras { display: grid; grid-template-columns: minmax(0, 1fr); gap: 8px; }
 .extra { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 8px 8px 8px 14px; border-radius: 12px; background: #fbfaf8; border: 1px solid var(--line); }
 .extra b { display: block; font-weight: 500; }
 .extra small { color: var(--muted); font-size: 13px; }
@@ -146,3 +146,6 @@ button { cursor: pointer; background: none; border: 0; }
 .brand img.logo-wide { width: auto; max-width: 132px; height: 44px; object-fit: contain; border-radius: 10px; background: var(--ink); padding: 6px 10px; }
 .brand img.logo-light { background: #fff; border: 1px solid var(--line); }
 .choice__pic { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; border-radius: 8px; margin-bottom: 8px; }
+.extra .stepper { flex: none; }
+.extra__text, .extra > div:first-child { min-width: 0; overflow-wrap: anywhere; }
+@media (max-width: 420px) { .extra .stepper { min-width: 112px; } .extra .stepper button { width: 36px; } }

@@ -90,7 +90,7 @@ function nicheBody() {
       + section(3, 'Когда приехать на замер', `<label class="field"><span>Удобная дата</span><input type="date" name="date" min="${today}" value="${state.date}"></label>`, t.measure || 'Замер бесплатный, цена уточнится на месте.');
   }
   const t = cfg.klining;
-  return section(1, 'Вид уборки', choice('type', t.types, state.type, (x) => `<b>${esc(x.name)}</b><small>${rub(x.price)} / м²</small>${x.desc ? `<em>${esc(x.desc)}</em>` : ''}`)
+  return section(1, 'Вид уборки', choice('type', t.types, state.type, (x) => `${x.photo ? `<img class="choice__pic" src="${esc(x.photo)}" alt="" loading="lazy">` : ''}<b>${esc(x.name)}</b><small>${rub(x.price)} / м²</small>${x.desc ? `<em>${esc(x.desc)}</em>` : ''}`)
       + `<div class="field"><span>Площадь</span>${stepper('area', state.area, { min: 10, max: 500, step: 5, unit: 'м²' })}</div>`)
     + section(2, 'Дополнительно', extrasBlock(t.extras))
     + section(3, 'Когда', `<label class="field"><span>Дата уборки</span><input type="date" name="date" min="${today}" value="${state.date}"></label>`);
@@ -113,7 +113,7 @@ function render() {
         <p>${esc(cfg.hero.sub)}</p>
         <ul class="pills">${(cfg.hero.points || ['Цена сразу', 'Заявка в Telegram', 'Без звонков']).map((p) => `<li>${ICONS.check}${esc(p)}</li>`).join('')}</ul>
       </div>
-      ${cfg.hero.photo ? `<img class="hero__photo" src="${esc(cfg.hero.photo)}" alt="">` : `<i class="hero__pict">${ICONS[icon]}</i>`}
+      ${cfg.hero.photo ? `<img class="hero__photo" src="${esc(cfg.hero.photo)}" alt=""${cfg.hero.photoPos ? ` style="object-position:${esc(cfg.hero.photoPos)}"` : ''}>` : `<i class="hero__pict">${ICONS[icon]}</i>`}
     </section>
 
     <form class="steps" id="form" autocomplete="on" onsubmit="return false">
