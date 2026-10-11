@@ -1,0 +1,26 @@
+{
+  "niche": "potolki",
+  "company": { "name": "Мир потолков", "logo": "../img/mir-potolkov/logo.png", "logoWide": true, "logoLight": true, "city": "Казань, Волжск, Зеленодольск", "phone": "+7 (903) 313-60-90", "telegram": "sergey_zapis_auto", "address": "ул. Габдуллы Тукая, 125 к4", "hours": "выезд замерщика бесплатно", "accent": "#f28a00", "accentInk": "#16181b" },
+  "hero": { "title": "Натяжной потолок под ключ — цена за минуту", "sub": "Выберите полотно и укажите площадь — сразу увидите стоимость с монтажом. Своё производство, монтаж за 1 день, гарантия на полотно 10 лет.", "points": ["Монтаж за 1 день", "Гарантия 10 лет", "Замер бесплатно"], "photo": "../img/mir-potolkov/multi.webp" },
+  "range": [1, 1.15],
+  "note": "Цена предварительная, по ценам с сайта. Итоговую смету фиксируем после замера — без накруток в процессе работы.",
+  "commentHint": "Какие комнаты, есть ли трубы, нужна ли подсветка…",
+  "potolki": {
+    "textures": [
+      { "name": "Классический (мат, сатин)", "price": 650, "from": true, "photo": "../img/mir-potolkov/classic.webp" },
+      { "name": "Теневой", "price": 700, "from": true, "desc": "Зазор 6 мм, без плинтусов", "photo": "../img/mir-potolkov/shadow.webp" },
+      { "name": "Парящий", "price": 700, "from": true, "desc": "Контурная LED-подсветка", "photo": "../img/mir-potolkov/float.webp" },
+      { "name": "Тканевый", "price": 999, "from": true, "desc": "Не горит, без запаха", "photo": "../img/mir-potolkov/tkan.webp" }
+    ],
+    "cornerPrice": 100,
+    "min": 0,
+    "measure": "Мастер приедет бесплатно, всё измерит и зафиксирует смету.",
+    "extras": [
+      { "id": "pipe", "name": "Обход трубы", "price": 400, "unit": "шт" },
+      { "id": "razd", "name": "Разделительный профиль (вставка)", "price": 1000, "unit": "м", "max": 40 },
+      { "id": "two", "name": "Второй уровень (пластик)", "price": 1500, "unit": "м", "max": 40, "photo": "../img/mir-potolkov/multi.webp" },
+      { "id": "keramo", "name": "Монтаж по керамограниту", "price": 900, "unit": "м", "max": 60 },
+      { "id": "plitka", "name": "Монтаж по кафельной плитке", "price": 300, "unit": "м", "max": 60 }
+    ]
+  }
+}

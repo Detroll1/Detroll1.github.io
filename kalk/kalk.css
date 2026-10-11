@@ -144,3 +144,5 @@ button { cursor: pointer; background: none; border: 0; }
 .extra__pic { width: 52px; height: 52px; border-radius: 10px; object-fit: cover; flex: none; }
 .extra__text { flex: 1; min-width: 0; }
 .brand img.logo-wide { width: auto; max-width: 132px; height: 44px; object-fit: contain; border-radius: 10px; background: var(--ink); padding: 6px 10px; }
+.brand img.logo-light { background: #fff; border: 1px solid var(--line); }
+.choice__pic { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; border-radius: 8px; margin-bottom: 8px; }

@@ -84,7 +84,7 @@ function nicheBody() {
           <div class="field"><span>Площадь потолка</span>${stepper('area', state.area, { min: 1, max: 300, unit: 'м²' })}</div>
           ${t.cornerPrice ? `<div class="field"><span>Углов в комнате</span>${stepper('corners', state.corners, { min: 3, max: 20 })}</div>` : ''}
         </div>
-        <div class="field"><span>Полотно</span>${choice('texture', t.textures, state.texture, (x) => `<b>${esc(x.name)}</b><small>${rub(x.price)} / м²</small>`)}</div>`,
+        <div class="field"><span>Полотно</span>${choice('texture', t.textures, state.texture, (x) => `${x.photo ? `<img class="choice__pic" src="${esc(x.photo)}" alt="" loading="lazy">` : ''}<b>${esc(x.name)}</b><small>${x.from ? 'от ' : ''}${rub(x.price)} / м²</small>${x.desc ? `<em>${esc(x.desc)}</em>` : ''}`)}</div>`,
       t.cornerPrice ? `Четыре угла входят в цену, каждый следующий — ${rub(t.cornerPrice)}.` : (t.areaNote || ''))
       + section(2, 'Свет и обходы', extrasBlock(t.extras))
       + section(3, 'Когда приехать на замер', `<label class="field"><span>Удобная дата</span><input type="date" name="date" min="${today}" value="${state.date}"></label>`, t.measure || 'Замер бесплатный, цена уточнится на месте.');
@@ -101,7 +101,7 @@ function render() {
   root.innerHTML = `
     <header class="top">
       <div class="brand">
-        ${co.logo ? `<img class="${co.logoWide ? 'logo-wide' : ''}" src="${esc(co.logo)}" alt="">` : `<i class="mono">${esc(co.name.replace(/[«»"]/g, '').slice(0, 1))}</i>`}
+        ${co.logo ? `<img class="${co.logoWide ? 'logo-wide' : ''}${co.logoLight ? ' logo-light' : ''}" src="${esc(co.logo)}" alt="">` : `<i class="mono">${esc(co.name.replace(/[«»"]/g, '').slice(0, 1))}</i>`}
         <div><b>${esc(co.name)}</b><small>${esc(co.city || '')}</small></div>
       </div>
       ${co.phone ? `<a class="top__call" href="tel:${esc(co.phone.replace(/[^\d+]/g, ''))}">${ICONS.phone}<span>${esc(co.phone)}</span></a>` : ''}
