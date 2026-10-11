@@ -1,0 +1,106 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+"""Видео на минуту для владельца: как клиент считает цену и отправляет заявку на его странице.
+
+Записывает телефонный экран (Playwright), касания подсвечиваются кружком, потом ffmpeg делает mp4.
+Нужен локальный сервер из папки сайта: python -m http.server 8000
+Запуск: python tools/kalk-video.py <слаг> [--out папка]
+"""
+import argparse
+import asyncio
+import glob
+import json
+import os
+import shutil
+import subprocess
+
+from playwright.async_api import async_playwright
+
+SITE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+# кружок на месте касания и плавная прокрутка — чтобы зритель видел, что происходит
+HELPERS = """
+window.__tap = (x, y) => {
+  const d = document.createElement('div');
+  d.style.cssText = `position:fixed;left:${x - 22}px;top:${y - 22}px;width:44px;height:44px;border-radius:50%;
+    background:rgba(255,255,255,.35);border:2px solid rgba(20,20,20,.55);z-index:99;pointer-events:none;
+    transition:transform .45s ease,opacity .45s ease`;
+  document.body.appendChild(d);
+  requestAnimationFrame(() => { d.style.transform = 'scale(1.5)'; d.style.opacity = '0'; });
+  setTimeout(() => d.remove(), 600);
+};
+"""
+
+
+async def tap(pg, selector):
+    el = pg.locator(selector).first
+    await el.scroll_into_view_if_needed()
+    await pg.evaluate("(sel) => { const r = document.querySelector(sel).getBoundingClientRect(); window.scrollBy({top: r.top - innerHeight * 0.35, behavior: 'smooth'}); }", selector)
+    await pg.wait_for_timeout(700)
+    box = await el.bounding_box()
+    x, y = box['x'] + box['width'] / 2, box['y'] + box['height'] / 2
+    await pg.evaluate(f'window.__tap({x}, {y})')
+    await pg.wait_for_timeout(250)
+    await el.click()
+    await pg.wait_for_timeout(650)
+
+
+async def typing(pg, selector, text):
+    await tap(pg, selector)
+    await pg.locator(selector).first.type(text, delay=70)
+    await pg.wait_for_timeout(400)
+
+
+async def record(slug, out_dir):
+    cfg = json.load(open(os.path.join(SITE, 'kalk', 't', slug + '.json'), encoding='utf-8'))
+    tmp = os.path.join(out_dir, '_raw')
+    shutil.rmtree(tmp, ignore_errors=True)
+    async with async_playwright() as p:
+        b = await p.chromium.launch()
+        ctx = await b.new_context(viewport={'width': 390, 'height': 780}, device_scale_factor=2, is_mobile=True,
+                                  has_touch=False, record_video_dir=tmp, record_video_size={'width': 780, 'height': 1560})
+        pg = await ctx.new_page()
+        await pg.goto(f'http://127.0.0.1:8000/kalk/{slug}/')
+        await pg.add_script_tag(content=HELPERS)
+        await pg.wait_for_timeout(2200)
+        n = cfg['niche']
+        if n == 'tech':
+            first = next(i for i in cfg['tech']['items'] if not i.get('busy'))
+            await tap(pg, f'[data-item="{first["id"]}"]')
+            await typing(pg, 'input[name=address]', cfg.get('demoAddress', 'ул. Ленина, 10'))
+            await tap(pg, '[data-key=hours] [data-d="1"]')
+            await tap(pg, '[data-key=hours] [data-d="1"]')
+        elif n == 'potolki':
+            for _ in range(3):
+                await tap(pg, '[data-key=area] [data-d="1"]')
+            await tap(pg, '[data-choice=texture][data-i="1"]')
+            await tap(pg, '[data-key="x:spot"] [data-d="1"]')
+            await tap(pg, '[data-key="x:spot"] [data-d="1"]')
+            await tap(pg, '[data-key="x:lustra"] [data-d="1"]')
+        else:
+            await tap(pg, '[data-choice=type][data-i="1"]')
+            await tap(pg, '[data-key=area] [data-d="1"]')
+            await tap(pg, '[data-key="x:window"] [data-d="1"]')
+            await tap(pg, '[data-key="x:window"] [data-d="1"]')
+        await typing(pg, 'input[name=name]', 'Андрей')
+        await typing(pg, 'input[name=phone]', '+7 912 345-67-89')
+        await pg.wait_for_timeout(600)
+        await tap(pg, '#send')
+        await pg.wait_for_timeout(3500)
+        await ctx.close()
+        await b.close()
+    raw = glob.glob(os.path.join(tmp, '*.webm'))[0]
+    dst = os.path.join(out_dir, slug + '.mp4')
+    subprocess.run(['ffmpeg', '-y', '-loglevel', 'error', '-i', raw, '-vf', 'scale=720:-2', '-c:v', 'libx264',
+                    '-pix_fmt', 'yuv420p', '-crf', '23', '-movflags', '+faststart', dst], check=True)
+    shutil.rmtree(tmp, ignore_errors=True)
+    print(dst)
+
+
+if __name__ == '__main__':
+    ap = argparse.ArgumentParser()
+    ap.add_argument('slug')
+    ap.add_argument('--out', default=os.path.join(os.path.expanduser('~'), 'Documents', 'orders', 'kalk-video'))
+    a = ap.parse_args()
+    os.makedirs(a.out, exist_ok=True)
+    asyncio.run(record(a.slug, a.out))
