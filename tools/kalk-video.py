@@ -87,10 +87,12 @@ async def record(slug, out_dir):
         elif n == 'potolki':
             for _ in range(3):
                 await tap(pg, '[data-key=area] [data-d="1"]')
-            await tap(pg, '[data-choice=texture][data-i="1"]')
-            await tap(pg, '[data-key="x:spot"] [data-d="1"]')
-            await tap(pg, '[data-key="x:spot"] [data-d="1"]')
-            await tap(pg, '[data-key="x:lustra"] [data-d="1"]')
+            if len(cfg['potolki']['textures']) > 1:
+                await tap(pg, '[data-choice=texture][data-i="1"]')
+            # пара первых доп. услуг: одну дважды, другую трижды — видно, как растёт цена
+            for x, n in zip(cfg['potolki']['extras'][:2], (1, 3)):
+                for _ in range(n):
+                    await tap(pg, f'[data-key="x:{x["id"]}"] [data-d="1"]')
         else:
             await tap(pg, '[data-choice=type][data-i="1"]')
             await tap(pg, '[data-key=area] [data-d="1"]')

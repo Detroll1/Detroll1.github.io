@@ -37,16 +37,16 @@ export const NICHES = {
     const area = Math.max(0, s.area);
     if (!area) return { sum: 0, lines: [], ready: false, hint: 'Укажите площадь' };
     const extra = extrasSum(cfg.potolki.extras, s.counts);
-    const corners = Math.max(0, s.corners - 4);
-    let sum = area * tex.price + corners * cfg.potolki.cornerPrice + extra.sum;
+    const corners = cfg.potolki.cornerPrice ? Math.max(0, s.corners - 4) : 0;
+    let sum = area * tex.price + corners * (cfg.potolki.cornerPrice || 0) + extra.sum;
     sum = Math.max(sum, cfg.potolki.min || 0);
     const lines = [
       `Площадь: ${area} м²`,
       `Полотно: ${tex.name}`,
-      `Углов: ${s.corners}`,
+      cfg.potolki.cornerPrice ? `Углов: ${s.corners}` : '',
       ...extra.lines,
     ];
-    return { sum, lines, ready: true };
+    return { sum, lines: lines.filter(Boolean), ready: true };
   },
 
   // Уборка: площадь × цена вида уборки, дополнительные услуги поштучно, есть минимальный заказ

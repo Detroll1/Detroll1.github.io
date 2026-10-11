@@ -139,3 +139,8 @@ button { cursor: pointer; background: none; border: 0; }
   .card__price { margin-top: 2px; font-size: 15px; }
   .hero__pict { top: auto; bottom: 12px; }
 }
+
+/* фото к дополнительной услуге и широкий логотип компании */
+.extra__pic { width: 52px; height: 52px; border-radius: 10px; object-fit: cover; flex: none; }
+.extra__text { flex: 1; min-width: 0; }
+.brand img.logo-wide { width: auto; max-width: 132px; height: 44px; object-fit: contain; border-radius: 10px; background: var(--ink); padding: 6px 10px; }
