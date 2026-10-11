@@ -2,13 +2,15 @@
 # -*- coding: utf-8 -*-
 """Видео на минуту для владельца: как клиент считает цену и отправляет заявку на его странице.
 
-Записывает телефонный экран (Playwright), касания подсвечиваются кружком, потом ffmpeg делает mp4.
+Снимает телефонный экран покадрово (скринкаст Chrome в полном разрешении), касания подсвечиваются
+кружком, потом ffmpeg склеивает кадры в mp4. Обычная запись Playwright не годится: при чётком экране
+она кладёт страницу в угол кадра.
 Нужен локальный сервер из папки сайта: python -m http.server 8000
 Запуск: python tools/kalk-video.py <слаг> [--out папка]
 """
 import argparse
 import asyncio
-import glob
+import base64
 import json
 import os
 import shutil
@@ -55,12 +57,24 @@ async def record(slug, out_dir):
     cfg = json.load(open(os.path.join(SITE, 'kalk', 't', slug + '.json'), encoding='utf-8'))
     tmp = os.path.join(out_dir, '_raw')
     shutil.rmtree(tmp, ignore_errors=True)
+    os.makedirs(tmp)
+    frames = []  # (время, файл)
     async with async_playwright() as p:
         b = await p.chromium.launch()
-        ctx = await b.new_context(viewport={'width': 390, 'height': 780}, device_scale_factor=2, is_mobile=True,
-                                  has_touch=False, record_video_dir=tmp, record_video_size={'width': 780, 'height': 1560})
+        ctx = await b.new_context(viewport={'width': 390, 'height': 780}, device_scale_factor=2, is_mobile=True)
         pg = await ctx.new_page()
+        cdp = await ctx.new_cdp_session(pg)
+
+        async def on_frame(ev):
+            path = os.path.join(tmp, '%05d.jpg' % len(frames))
+            with open(path, 'wb') as f:
+                f.write(base64.b64decode(ev['data']))
+            frames.append((ev['metadata']['timestamp'], path))
+            await cdp.send('Page.screencastFrameAck', {'sessionId': ev['sessionId']})
+
+        cdp.on('Page.screencastFrame', lambda ev: asyncio.ensure_future(on_frame(ev)))
         await pg.goto(f'http://127.0.0.1:8000/kalk/{slug}/')
+        await cdp.send('Page.startScreencast', {'format': 'jpeg', 'quality': 90, 'maxWidth': 780, 'maxHeight': 1560, 'everyNthFrame': 1})
         await pg.add_script_tag(content=HELPERS)
         await pg.wait_for_timeout(2200)
         n = cfg['niche']
@@ -87,12 +101,20 @@ async def record(slug, out_dir):
         await pg.wait_for_timeout(600)
         await tap(pg, '#send')
         await pg.wait_for_timeout(3500)
+        await cdp.send('Page.stopScreencast')
+        await pg.wait_for_timeout(300)
         await ctx.close()
         await b.close()
-    raw = glob.glob(os.path.join(tmp, '*.webm'))[0]
+    # кадры приходят неравномерно (только когда экран меняется) — каждому своя длительность
+    lst = os.path.join(tmp, 'list.txt')
+    with open(lst, 'w', encoding='utf-8') as f:
+        for (t, path), nxt in zip(frames, frames[1:] + [(frames[-1][0] + 1.5, None)]):
+            f.write("file '%s'\nduration %.3f\n" % (path.replace(os.sep, '/'), max(0.01, nxt[0] - t)))
+        f.write("file '%s'\n" % frames[-1][1].replace(os.sep, '/'))
     dst = os.path.join(out_dir, slug + '.mp4')
-    subprocess.run(['ffmpeg', '-y', '-loglevel', 'error', '-i', raw, '-vf', 'scale=720:-2', '-c:v', 'libx264',
-                    '-pix_fmt', 'yuv420p', '-crf', '23', '-movflags', '+faststart', dst], check=True)
+    subprocess.run(['ffmpeg', '-y', '-loglevel', 'error', '-f', 'concat', '-safe', '0', '-i', lst,
+                    '-vf', 'scale=720:-2,fps=30', '-c:v', 'libx264', '-pix_fmt', 'yuv420p', '-crf', '22',
+                    '-movflags', '+faststart', dst], check=True)
     shutil.rmtree(tmp, ignore_errors=True)
     print(dst)
 
