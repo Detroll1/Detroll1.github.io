@@ -1,0 +1,22 @@
+{
+  "niche": "potolki",
+  "company": { "name": "Потолки Самары", "logo": "../img/potolki-samary/logo.webp", "city": "Самара и область", "phone": "8 (902) 377-99-39", "telegram": "sergey_zapis_auto", "hours": "ежедневно 9:00–21:00, замер бесплатно", "accent": "#ff6704" },
+  "hero": { "title": "Натяжной потолок с установкой — цена за минуту", "sub": "Своё производство в Самаре, монтаж за 2–3 дня от замера. Выберите полотно, укажите площадь и треки — сразу увидите стоимость.", "points": ["От 300 ₽/м² с установкой", "Гарантия до 20 лет", "Рассрочка 0%"], "photo": "../img/potolki-samary/lines.webp" },
+  "range": [1, 1.15],
+  "note": "Цена предварительная, по ценам с сайта. Точная сумма зависит от профиля и света — назовём после бесплатного замера.",
+  "commentHint": "Какие комнаты, нужны ли световые линии, карниз, споты…",
+  "potolki": {
+    "textures": [
+      { "name": "MSD Classic", "price": 300, "from": true, "desc": "Китай, гарантия 10 лет", "photo": "../img/potolki-samary/gloss.webp" },
+      { "name": "BAUF", "price": 800, "from": true, "desc": "Германия, гарантия 20 лет", "photo": "../img/potolki-samary/room.webp" },
+      { "name": "TEQTUM", "price": 1200, "from": true, "desc": "Германия, гарантия 20 лет", "photo": "../img/potolki-samary/shadow.webp" },
+      { "name": "Тканевый DESCOR", "price": 2000, "from": true, "desc": "Германия, гарантия пожизненная", "photo": "../img/potolki-samary/tkan.webp" }
+    ],
+    "min": 0,
+    "areaNote": "Цена полотна с установкой. Профиль, углы и закладные посчитает замерщик.",
+    "measure": "Замер бесплатный даже при отказе от заказа. В день замера — скидка до 10%.",
+    "extras": [
+      { "id": "track", "name": "Магнитные треки (акция)", "price": 6930, "unit": "м", "max": 40, "photo": "../img/potolki-samary/track.webp" }
+    ]
+  }
+}
