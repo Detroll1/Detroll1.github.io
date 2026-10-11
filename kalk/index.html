@@ -4,11 +4,80 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#16181b">
-  <title>Расчёт стоимости и заявка</title>
-  <link rel="stylesheet" href="kalk.css">
+  <title>Калькулятор цены и заявки в Telegram — Detroll</title>
+  <meta name="description" content="Страница, где клиент сам считает цену и отправляет готовую заявку вам в Telegram. Для спецтехники, потолков, уборки и других услуг. Настройка за день.">
+  <meta property="og:title" content="Калькулятор цены и заявки в Telegram">
+  <meta property="og:description" content="Клиент сам считает цену, вам приходит готовая заявка. Настройка под ваши цены за день.">
+  <link rel="stylesheet" href="landing.css">
 </head>
 <body>
-  <div id="app"></div>
-  <script type="module" src="kalk.js"></script>
+  <header class="top">
+    <a class="logo" href="#top"><i>D</i><span>Detroll</span></a>
+    <a class="top__cta" href="https://t.me/Detrollq" target="_blank" rel="noopener">Написать в Telegram</a>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="hero__text">
+        <p class="eyebrow">Для малого бизнеса</p>
+        <h1>Клиент сам считает цену. Вам приходит готовая заявка.</h1>
+        <p class="sub">Страница-калькулятор под ваши услуги и цены. Человек выбирает, что ему нужно, сразу видит стоимость и отправляет заявку вам в Telegram — с адресом, датой и телефоном. Без переписки «а сколько стоит?».</p>
+        <div class="hero__btns">
+          <a class="btn" href="https://t.me/Detrollq" target="_blank" rel="noopener">Хочу такую страницу</a>
+          <a class="btn btn--ghost" href="#demo">Посмотреть примеры</a>
+        </div>
+        <ul class="facts">
+          <li><b>1 день</b><span>настройка под ваши цены</span></li>
+          <li><b>0 ₽</b><span>абонплаты и хостинга</span></li>
+          <li><b>от 3 000 ₽</b><span>разово, под ключ</span></li>
+        </ul>
+      </div>
+      <div class="phones" aria-label="Живые примеры страниц">
+        <div class="phone phone--back"><iframe src="demo-potolki/" title="Пример: натяжные потолки" loading="lazy" tabindex="-1"></iframe></div>
+        <div class="phone phone--front"><iframe src="demo-tehnika/" title="Пример: аренда спецтехники" tabindex="-1"></iframe></div>
+        <div class="phone phone--side"><iframe src="demo-klining/" title="Пример: уборка" loading="lazy" tabindex="-1"></iframe></div>
+      </div>
+    </section>
+
+    <section class="steps" id="how">
+      <h2>Как это работает</h2>
+      <ol>
+        <li><span>1</span><h3>Клиент открывает ссылку</h3><p>Из Авито, ВК, визитки или вашего сайта. Ничего не нужно устанавливать.</p></li>
+        <li><span>2</span><h3>Сам собирает заказ</h3><p>Выбирает технику, площадь или вид услуги и видит цену диапазоном, без обещаний «до рубля».</p></li>
+        <li><span>3</span><h3>Вам приходит заявка</h3><p>В Telegram уже всё заполнено: что нужно, куда, когда, телефон. Остаётся подтвердить.</p></li>
+      </ol>
+    </section>
+
+    <section class="demos" id="demo">
+      <h2>Примеры — нажимайте, всё работает</h2>
+      <div class="demos__grid">
+        <a class="demo" href="demo-tehnika/"><i style="--c:#e8641b"></i><b>Аренда спецтехники</b><span>Машины, часы, зона подачи, минимальная смена</span></a>
+        <a class="demo" href="demo-potolki/"><i style="--c:#2f6fe4"></i><b>Натяжные потолки</b><span>Площадь, полотно, углы, светильники, замер</span></a>
+        <a class="demo" href="demo-klining/"><i style="--c:#16a37f"></i><b>Уборка квартир</b><span>Вид уборки, площадь, окна, холодильник</span></a>
+      </div>
+      <p class="demos__note">Подходит любым услугам, где цена считается по понятным правилам: грузоперевозки, окна, мебель на заказ, бани, прокат, ремонт.</p>
+    </section>
+
+    <section class="price">
+      <div>
+        <h2>Что входит</h2>
+        <ul class="check">
+          <li>Ваше название, логотип, фото работ и цены</li>
+          <li>Расчёт по вашим правилам: минимальный заказ, доплаты, скидки</li>
+          <li>Заявки в ваш Telegram, WhatsApp или звонок в один тап</li>
+          <li>Своя ссылка для компании — открывается с любого телефона</li>
+          <li>Показываю на ваших данных до оплаты</li>
+        </ul>
+      </div>
+      <div class="price__card">
+        <small>Разово, без абонплаты</small>
+        <b>от 3 000 ₽</b>
+        <p>Готово за 1 день. Цены потом меняете сами или пишете мне — поправлю.</p>
+        <a class="btn" href="https://t.me/Detrollq" target="_blank" rel="noopener">Обсудить в Telegram</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="foot">Detroll · сайты и заявки для бизнеса · <a href="https://t.me/Detrollq" target="_blank" rel="noopener">t.me/Detrollq</a></footer>
 </body>
 </html>
