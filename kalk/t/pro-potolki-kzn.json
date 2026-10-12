@@ -1,0 +1,29 @@
+{
+  "niche": "potolki",
+  "company": { "name": "PRO потолки", "logo": "../img/pro-potolki-kzn/logo.webp", "logoWide": true, "logoLight": true, "city": "Казань", "phone": "8 (843) 240-80-40", "telegram": "sergey_zapis_auto", "address": "ул. Р. Зорге, 11А, ТЦ Максидом", "hours": "ежедневно 9:00–21:00, замер бесплатно", "accent": "#2ba84a" },
+  "hero": { "title": "Натяжной потолок в Казани — цена за минуту", "sub": "Ставим потолки с 2007 года. Выберите полотно, укажите площадь, свет и профиль — сразу увидите стоимость с установкой.", "points": ["Цена на замере не меняется", "Нашли дешевле — снизим", "Замер бесплатно"], "photo": "../img/pro-potolki-kzn/satin.webp" },
+  "range": [1, 1.1],
+  "note": "Цена предварительная, по прайс-листу с сайта. Точную сумму назовёт замерщик, и после замера она не изменится.",
+  "commentHint": "Какие комнаты, нужен ли карниз или подсветка…",
+  "potolki": {
+    "textures": [
+      { "name": "MSD Classic", "price": 300, "desc": "Матовое, бюджетное", "photo": "../img/pro-potolki-kzn/mat.webp" },
+      { "name": "MSD Premium", "price": 350, "desc": "Плотнее, без запаха", "photo": "../img/pro-potolki-kzn/gloss.webp" },
+      { "name": "MSD Perfect", "price": 400, "desc": "Самое плотное из MSD", "photo": "../img/pro-potolki-kzn/tkan.webp" },
+      { "name": "Teqtum Euro", "price": 650, "desc": "Германия, негорючее", "photo": "../img/pro-potolki-kzn/lines.webp" }
+    ],
+    "cornerPrice": 100,
+    "min": 0,
+    "areaNote": "Цена за м² для комнат до 3,6 м шириной. Шире — плюс 50 ₽/м², глянец — плюс 20 ₽/м².",
+    "measure": "Замерщик приедет в удобное время и бесплатно. За объектом закрепим одного специалиста — от замера до сдачи работ.",
+    "extras": [
+      { "id": "spot", "name": "Светильник GX53 с монтажом", "price": 600, "unit": "шт", "max": 40 },
+      { "id": "track", "name": "Магнитный трек с монтажом", "price": 1600, "unit": "м", "max": 40, "photo": "../img/pro-potolki-kzn/track.webp" },
+      { "id": "lustra", "name": "Монтаж люстры (закладная)", "price": 600, "unit": "шт", "max": 10 },
+      { "id": "line", "name": "Световая линия", "price": 2000, "unit": "м", "max": 40 },
+      { "id": "fly", "name": "Парящий профиль FLY", "price": 1500, "unit": "м", "max": 80 },
+      { "id": "perim", "name": "Профиль ПВХ по периметру", "price": 200, "unit": "м", "max": 80 },
+      { "id": "gardina", "name": "Скрытая гардина, 2 ряда", "price": 2100, "unit": "м", "max": 30 }
+    ]
+  }
+}

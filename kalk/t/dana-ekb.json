@@ -1,0 +1,28 @@
+{
+  "niche": "tech",
+  "demoAddress": "Екатеринбург, ул. Минеральная, 1",
+  "company": { "name": "DANA 96", "logo": "../img/dana-ekb/logo.svg", "logoWide": true, "logoLight": true, "city": "Екатеринбург и Свердловская область", "phone": "+7 (343) 300-96-96", "telegram": "sergey_zapis_auto", "address": "ул. Минеральная, 1", "hours": "ежедневно 8:00–22:00, подача 24/7", "accent": "#ffc430", "accentInk": "#16181b" },
+  "hero": { "title": "Аренда спецтехники в Екатеринбурге — цена за минуту", "sub": "Больше 90 своих машин, на рынке с 2006 года. Выберите технику, адрес и часы — сразу увидите стоимость, а заявка придёт диспетчеру уже заполненной.", "points": ["Цена сразу", "Подача 24/7", "Договор и безнал"], "photo": "../img/dana-ekb/hero.webp", "photoPos": "60% 50%" },
+  "range": [1, 1.1],
+  "note": "Минимальный заказ — 4 часа работы и 2 часа подачи. Цена по прайсу с сайта, без НДС. Точную сумму и время подачи диспетчер подтвердит после заявки.",
+  "commentHint": "Что сделать: траншея, монтаж, вывоз мусора…",
+  "tech": {
+    "hours": 6,
+    "items": [
+      { "id": "case570", "name": "Экскаватор-погрузчик Case 570", "kind": "loader", "purpose": "Траншеи, котлованы, погрузка, планировка", "rate": 2700, "min": 6, "photo": "../img/dana-ekb/case570.webp" },
+      { "id": "kubota", "name": "Мини-экскаватор KUBOTA", "kind": "excavator", "purpose": "Работы на участке и в тесных дворах", "rate": 2900, "min": 6, "photo": "../img/dana-ekb/kubota.webp" },
+      { "id": "xcmg180", "name": "Колёсный экскаватор XCMG XE180WD", "kind": "excavator", "purpose": "Земляные работы в городе, быстрый переезд", "rate": 3500, "min": 6, "photo": "../img/dana-ekb/xcmg180.webp" },
+      { "id": "r220", "name": "Гусеничный экскаватор HYUNDAI R220", "kind": "excavator", "purpose": "Большие котлованы и тяжёлый грунт", "rate": 3500, "min": 6, "photo": "../img/dana-ekb/r220.webp" },
+      { "id": "minipogr", "name": "Мини-погрузчик LONKING CDM 307", "kind": "loader", "purpose": "Погрузка, уборка территории, планировка", "rate": 2300, "min": 6, "photo": "../img/dana-ekb/minipogr.webp" },
+      { "id": "samosval15", "name": "Самосвал КАМАЗ, 15 т", "kind": "truck", "purpose": "Вывоз грунта и мусора, песок, щебень", "rate": 2100, "min": 6, "photo": "../img/dana-ekb/samosval15.webp" },
+      { "id": "lomovoz", "name": "Ломовоз КАМАЗ 30 м³", "kind": "truck", "purpose": "Вывоз строительного мусора и металлолома", "rate": 3500, "min": 6, "photo": "../img/dana-ekb/lomovoz.webp" },
+      { "id": "manip7", "name": "Манипулятор КАМАЗ — кран 7 т, кузов 10 т", "kind": "truck", "purpose": "Погрузка и перевозка за один рейс", "rate": 3000, "min": 6, "photo": "../img/dana-ekb/manip7.webp" },
+      { "id": "kran25", "name": "Автокран КАМАЗ — 25 т, стрела 22 м", "kind": "crane", "purpose": "Монтаж плит и конструкций, подъём грузов", "rate": 2850, "min": 6, "photo": "../img/dana-ekb/kran25.webp" },
+      { "id": "vyshka17", "name": "Автовышка ISUZU, 17 м", "kind": "crane", "purpose": "Фасады, кровля, вывески, освещение", "rate": 2000, "min": 6, "photo": "../img/dana-ekb/vyshka17.webp" }
+    ],
+    "zones": [
+      { "name": "Екатеринбург", "price": 0, "text": "по городу" },
+      { "name": "Свердловская область", "price": 0, "text": "подачу посчитает диспетчер" }
+    ]
+  }
+}

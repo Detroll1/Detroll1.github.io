@@ -1,0 +1,19 @@
+{
+  "niche": "klining",
+  "company": { "name": "Чистый свет", "logo": "../img/chistyy-svet-vrn/logo.webp", "logoWide": true, "city": "Воронеж", "phone": "+7 961 971-55-67", "telegram": "sergey_zapis_auto", "address": "ул. Товарищеская, 61", "hours": "ежедневно 8:00–23:00", "accent": "#f5c518", "accentInk": "#16181b" },
+  "hero": { "title": "Уборка в Воронеже — цена за минуту, без звонков", "sub": "Выберите вид уборки, укажите площадь и окна — сразу увидите стоимость. Заявка придёт нам уже заполненной, а цену после уборки не меняем.", "points": ["Гарантия по договору", "Цена не растёт после работы", "Заявка в Telegram"], "photo": "../img/chistyy-svet-vrn/kuhnya.webp", "photoPos": "50% 35%" },
+  "range": [1, 1.1],
+  "note": "Цена предварительная, по ценам с сайта. Точную сумму зафиксируем до начала работ, после уборки она не изменится.",
+  "commentHint": "Этаж, животные, помыть ли внутри шкафов…",
+  "klining": {
+    "types": [
+      { "name": "Уборка квартиры", "price": 89, "desc": "Пыль, полы, кухня, санузел", "photo": "../img/chistyy-svet-vrn/kvartira.webp" },
+      { "name": "Генеральная", "price": 130, "desc": "Люстры, батареи, фартук, двери", "photo": "../img/chistyy-svet-vrn/general.webp" },
+      { "name": "После ремонта", "price": 150, "desc": "Строительная пыль с потолков и стен", "photo": "../img/chistyy-svet-vrn/remont.webp" }
+    ],
+    "min": 0,
+    "extras": [
+      { "id": "window", "name": "Мойка окон", "price": 400, "unit": "м²", "max": 60, "photo": "../img/chistyy-svet-vrn/okna.webp" }
+    ]
+  }
+}
