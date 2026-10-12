@@ -6,8 +6,8 @@
 <meta name="theme-color" content="#151514">
 <title>Кафе-кулинария на Пионерской — Североморск</title>
 <meta name="description" content="Домашняя еда в Североморске: комплексный обед за 360 ₽, свежая выпечка, доставка по городу. ул. Пионерская, 22, ежедневно 10:00–22:00.">
-<link rel="stylesheet" href="style.css?v=4">
-<link rel="stylesheet" href="motion.css?v=4">
+<link rel="stylesheet" href="style.css?v=5">
+<link rel="stylesheet" href="motion.css?v=5">
 </head>
 <body>
 
@@ -52,10 +52,13 @@
         </ul>
       </div>
       <div class="hero-pic">
+        <div class="tilt" id="tilt">
         <img src="assets/img/soup.jpg" alt="Тарелка супа" width="900" height="600">
+        <canvas class="steam" id="steam" aria-hidden="true"></canvas>
         <div class="today">
           <span class="today-label" id="todayLabel">Сегодня в комплексе</span>
           <b id="todayMenu">Оливье · Щи · Ёжики</b>
+        </div>
         </div>
       </div>
     </div>
@@ -157,7 +160,8 @@
   </div>
 </footer>
 
-<script src="app.js?v=4"></script>
-<script src="motion.js?v=4"></script>
+<script src="app.js?v=5"></script>
+<script src="motion.js?v=5"></script>
+<script src="steam.js?v=5"></script>
 </body>
 </html>

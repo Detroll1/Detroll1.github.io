@@ -11,9 +11,9 @@
   .hero-text>:nth-child(3){animation-delay:.16s}
   .hero-text>:nth-child(4){animation-delay:.24s}
   .hero-text>:nth-child(5){animation-delay:.32s}
-  .hero-pic{animation:reveal 1.1s cubic-bezier(.2,.7,.2,1) .1s both}
-  .hero-pic img{animation:settle 1.6s cubic-bezier(.2,.7,.2,1) .1s both}
-  .today{animation:rise .7s cubic-bezier(.2,.7,.2,1) .7s both}
+  .hero-pic img,.steam{animation:reveal 1.1s cubic-bezier(.2,.7,.2,1) .1s both}
+  .hero-pic img{animation:reveal 1.1s cubic-bezier(.2,.7,.2,1) .1s both,settle 1.6s cubic-bezier(.2,.7,.2,1) .1s both}
+  .today{animation:rise .7s cubic-bezier(.2,.7,.2,1) .7s both,float 5s ease-in-out 1.4s infinite}
 
   /* меню: фото и блюда въезжают при смене вкладки */
   .menu-pic img{animation:settle .9s cubic-bezier(.2,.7,.2,1) both}
@@ -65,4 +65,11 @@
 @keyframes pop{50%{transform:scale(1.07)}}
 @keyframes bump{40%{transform:scale(1.15);color:var(--accent)}}
 @keyframes blink{50%{opacity:.25}}
+@keyframes float{50%{translate:0 -6px}}
 @keyframes run{to{transform:translateX(-50%)}}
+
+/* фото на первом экране: объём и пар */
+.hero-pic{perspective:1000px}
+.tilt{position:relative;transform-style:preserve-3d;transition:transform .6s cubic-bezier(.2,.7,.2,1);will-change:transform}
+.hero-pic img{filter:brightness(.86) contrast(1.05)}
+.steam{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;border-radius:var(--r)}
