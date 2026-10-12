@@ -1,65 +1,46 @@
-// Стек, мобильное меню, появление блоков и терминал на первом экране.
-const STACK = ['JavaScript', 'Node.js', 'React', 'Python', 'HTML', 'CSS', 'Git', 'Lua', 'Android Studio', 'AI-инструменты'];
+// Общее для всех страниц: шапка и подвал, мобильное меню, появление блоков.
+(function () {
+  const page = document.body.dataset.page;
 
-// Сценарий терминала: команда, затем строки ответа. Меняется только здесь.
-const SCRIPT = [
-  ['quorvox --about', ['Николай, full-stack разработчик', 'Североморск · работаю удалённо']],
-  ['quorvox services', ['лендинг ........ 24 часа', 'telegram-бот ... по ТЗ', 'парсинг ........ разово или по расписанию', 'веб-сервис ..... Node.js + React']],
-  ['quorvox projects', ['[ok] сайт кафе-кулинарии', '[ok] QuorStream — совместный просмотр', '[ok] QuorKick — видео без привязки']],
-  ['quorvox order --landing', ['принято. напишите в Telegram: @Quorvox_team']]
-];
+  const LOGO = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 8h8v8H8z"/><path d="M16 16l3 3"/></svg>';
 
-const $ = (s) => document.querySelector(s);
-document.documentElement.classList.add('js');
+  document.getElementById('top').innerHTML =
+    '<div class="wrap top-in">' +
+      '<a class="logo" href="index.html">' + LOGO + 'quorvox</a>' +
+      '<nav class="nav" id="nav">' +
+        '<a href="projects.html"' + (page === 'projects' ? ' aria-current="page"' : '') + '>Проекты</a>' +
+        '<a href="journal.html"' + (page === 'journal' ? ' aria-current="page"' : '') + '>Журнал</a>' +
+        '<a href="contact.html"' + (page === 'contact' ? ' aria-current="page"' : '') + '>Контакты</a>' +
+      '</nav>' +
+      '<div class="top-btns">' +
+        '<a class="btn btn-line" href="https://github.com/Quorvox" target="_blank" rel="noopener">GitHub</a>' +
+        '<a class="btn" href="contact.html">Обсудить проект</a>' +
+      '</div>' +
+      '<button class="burger" id="burger" aria-label="Открыть меню"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>' +
+    '</div>';
 
-$('#stackList').innerHTML = STACK.map((s) => '<span>' + s + '</span>').join('');
+  document.getElementById('foot').innerHTML =
+    '<div class="wrap">' +
+      '<div class="foot-cols">' +
+        '<div><span class="mono">Сайт</span><a href="index.html">Главная</a><a href="projects.html">Проекты</a><a href="journal.html">Журнал</a><a href="contact.html">Контакты</a></div>' +
+        '<div><span class="mono">Связь</span><a href="https://t.me/Quorvox_team" target="_blank" rel="noopener">Telegram</a><a href="mailto:neironkabot@gmail.com">Почта</a><a href="https://github.com/Quorvox" target="_blank" rel="noopener">GitHub</a></div>' +
+        '<div><span class="mono">© 2026</span><a href="https://t.me/Quorvox_team" target="_blank" rel="noopener">Quorvox_team</a><span class="mono" style="text-transform:none">Североморск · удалённо</span></div>' +
+      '</div>' +
+      '<div class="word" aria-hidden="true">quorvox</div>' +
+    '</div>';
 
-$('#burger').addEventListener('click', () => $('#nav').classList.toggle('open'));
-document.querySelectorAll('#nav a').forEach((a) => a.addEventListener('click', () => $('#nav').classList.remove('open')));
+  const nav = document.getElementById('nav');
+  document.getElementById('burger').addEventListener('click', () => nav.classList.toggle('open'));
 
-const calm = matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-if (!calm && 'IntersectionObserver' in window) {
+  document.documentElement.classList.add('js');
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) return;
   const io = new IntersectionObserver((entries) => entries.forEach((e) => {
     if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
-  }), { rootMargin: '0px 0px -8% 0px' });
-  ['.sec-head', '.svc-item', '.proj-item', '.stack span', '.about-lead', '.about p', '.timeline li', '.person', '.contacts li', '.form']
+  }), { rootMargin: '0px 0px -6% 0px' });
+  ['.sec-title', '.grid4>*', '.statement', '.folder', '.list', '.rows li', '.team>div', '.stack', '.cta', '.clist li', '.form']
     .forEach((sel) => document.querySelectorAll(sel).forEach((el, i) => {
       el.classList.add('rv');
-      el.style.setProperty('--d', Math.min(i, 8) * 0.06 + 's');
+      el.style.setProperty('--d', Math.min(i, 6) * 0.06 + 's');
       io.observe(el);
     }));
-}
-
-// терминал
-const term = $('#term');
-const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;');
-const line = (s) => s.startsWith('[ok]') ? '<span class="ok">[ok]</span>' + esc(s.slice(4)) : esc(s);
-const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
-
-async function run() {
-  let html = '';
-  const paint = (extra) => { term.innerHTML = html + (extra || '') + '<span class="caret"></span>'; term.scrollTop = term.scrollHeight; };
-  for (const [cmd, out] of SCRIPT) {
-    let typed = '';
-    for (const ch of cmd) {
-      typed += ch;
-      paint('<span class="p">$ </span><span class="c">' + esc(typed) + '</span>');
-      await sleep(calm ? 0 : 45 + Math.random() * 50);
-    }
-    html += '<span class="p">$ </span><span class="c">' + esc(cmd) + '</span>\n';
-    paint();
-    await sleep(calm ? 0 : 350);
-    for (const o of out) {
-      html += line(o) + '\n';
-      paint();
-      await sleep(calm ? 0 : 110);
-    }
-    html += '\n';
-    await sleep(calm ? 0 : 700);
-  }
-  if (calm) return;
-  await sleep(4000);
-  run();
-}
-run();
+})();
