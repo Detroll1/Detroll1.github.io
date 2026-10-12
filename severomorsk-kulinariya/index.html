@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Кафе-кулинария на Пионерской — Североморск</title>
+<meta name="description" content="Домашняя еда в Североморске: комплексный обед за 360 ₽, свежая выпечка, доставка по городу. ул. Пионерская, 22, ежедневно 10:00–22:00.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap top-in">
+    <a class="brand" href="#">
+      <svg class="brand-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 15h18"/><path d="M5 15a7 7 0 0 1 14 0"/><path d="M12 6V4"/><path d="M4 19h16"/></svg>
+      <span>Кулинария<small>Североморск</small></span>
+    </a>
+    <nav class="nav" id="nav">
+      <a href="#menu">Меню</a>
+      <a href="#combo">Комплекс</a>
+      <a href="#week">На неделю</a>
+      <a href="#delivery">Доставка</a>
+      <a href="#contacts">Контакты</a>
+    </nav>
+    <a class="btn btn-sm" href="tel:+79113222130">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>
+      <span class="hide-xs">322-21-30</span>
+    </a>
+    <button class="burger" id="burger" aria-label="Открыть меню">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="wrap hero-in">
+      <div class="hero-text">
+        <p class="eyebrow">Кафе-кулинария · ул. Пионерская, 22</p>
+        <h1>Домашняя кухня в&nbsp;Североморске</h1>
+        <p class="lead">Комплексный обед за 360 ₽: салат, суп, горячее, компот и хлеб. Подаём за 10 минут, с собой и с доставкой по городу.</p>
+        <div class="hero-btns">
+          <a class="btn" href="tel:+79113222130">Заказать доставку</a>
+          <a class="btn btn-ghost" href="#menu">Смотреть меню</a>
+        </div>
+        <ul class="facts">
+          <li><b>10:00–22:00</b><span>ежедневно</span></li>
+          <li><b>12:00–16:00</b><span>комплексные обеды</span></li>
+          <li><b>от 1000 ₽</b><span>доставка бесплатно</span></li>
+        </ul>
+      </div>
+      <div class="hero-pic">
+        <img src="assets/img/soup.jpg" alt="Тарелка супа" width="900" height="600">
+        <div class="today">
+          <span class="today-label" id="todayLabel">Сегодня в комплексе</span>
+          <b id="todayMenu">Оливье · Щи · Ёжики</b>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="menu">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Меню</h2>
+        <p>Цены в зале. Всё готовим сами, каждый день с утра.</p>
+      </div>
+      <div class="tabs" id="tabs" role="tablist"></div>
+      <div class="menu-body" id="menuBody"></div>
+    </div>
+  </section>
+
+  <section class="sec sec-alt" id="combo">
+    <div class="wrap combo">
+      <div class="combo-text">
+        <h2>Соберите комплекс</h2>
+        <p>Выберите по одному блюду из каждой группы. Хлеб входит в цену.</p>
+        <div class="mode" role="radiogroup">
+          <button class="mode-btn on" data-price="360" type="button">В зале · 360 ₽</button>
+          <button class="mode-btn" data-price="385" type="button">С собой · 385 ₽</button>
+        </div>
+        <div id="comboPick"></div>
+      </div>
+      <aside class="receipt" aria-live="polite">
+        <h3>Ваш обед</h3>
+        <ul id="comboList"></ul>
+        <div class="receipt-row"><span>По отдельности</span><s id="comboSum">0 ₽</s></div>
+        <div class="receipt-total"><span>Комплексом</span><b id="comboPrice">360 ₽</b></div>
+        <p class="receipt-save" id="comboSave"></p>
+        <a class="btn btn-wide" href="tel:+79113222130">Позвонить и заказать</a>
+        <a class="link" href="https://vk.com/cookingseveromorsk" target="_blank" rel="noopener">или написать во ВКонтакте</a>
+      </aside>
+    </div>
+  </section>
+
+  <section class="sec" id="week">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Комплекс на неделю</h2>
+        <p>Меню может меняться, свежее каждый день публикуем во ВКонтакте.</p>
+      </div>
+      <div class="week" id="weekGrid"></div>
+    </div>
+  </section>
+
+  <section class="sec sec-dark" id="delivery">
+    <div class="wrap deliv">
+      <div>
+        <h2>Доставка по Североморску</h2>
+        <p>Позвоните, мы соберём заказ и привезём горячим.</p>
+        <a class="phone-big" href="tel:+79113222130">+7 911 322-21-30</a>
+      </div>
+      <ul class="deliv-list">
+        <li><b>250 ₽</b><span>стоимость доставки</span></li>
+        <li><b>Бесплатно</b><span>при заказе от 1000 ₽</span></li>
+        <li><b>385 ₽</b><span>комплекс с собой и в доставку</span></li>
+        <li><b>Обеды и кейтеринг</b><span>корпоративные обеды для офисов, по звонку</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="sec" id="contacts">
+    <div class="wrap contacts">
+      <div>
+        <h2>Как нас найти</h2>
+        <dl class="cdl">
+          <dt>Адрес</dt><dd>Североморск, ул. Пионерская, 22</dd>
+          <dt>Часы</dt><dd>Ежедневно, 10:00–22:00</dd>
+          <dt>Кафе</dt><dd><a href="tel:+79113066379">+7 911 306-63-79</a></dd>
+          <dt>Доставка</dt><dd><a href="tel:+79113222130">+7 911 322-21-30</a></dd>
+        </dl>
+        <div class="hero-btns">
+          <a class="btn" href="https://yandex.ru/maps/?rtext=~Североморск, Пионерская 22" target="_blank" rel="noopener">Построить маршрут</a>
+          <a class="btn btn-ghost" href="https://vk.com/cookingseveromorsk" target="_blank" rel="noopener">Мы во ВКонтакте</a>
+        </div>
+      </div>
+      <a class="map-card" href="https://yandex.ru/maps/?text=Североморск, Пионерская 22" target="_blank" rel="noopener">
+        <img src="assets/img/bake.jpg" alt="Свежая выпечка" width="900" height="600" loading="lazy">
+        <span>Свежая выпечка каждый день. Заходите на чай.</span>
+      </a>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap foot-in">
+    <span>Кафе-кулинария, Североморск, ул. Пионерская, 22</span>
+    <span>Сайт сделал <a href="https://t.me/Quorvox_team" target="_blank" rel="noopener">Quorvox</a></span>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>
