@@ -63,7 +63,8 @@
     }
     if (fimg) {
       var fr = fimg.parentNode.getBoundingClientRect();
-      fimg.style.transform = 'translateY(' + ((fr.top + fr.height / 2 - vh / 2) * -0.08) + 'px)';
+      var off = Math.max(-80, Math.min(80, (fr.top + fr.height / 2 - vh / 2) * -0.08));
+      fimg.style.transform = 'translateY(' + off + 'px)';
     }
   }
   window.addEventListener('scroll', function () { if (!ticking) { ticking = true; requestAnimationFrame(frame); } }, { passive: true });
